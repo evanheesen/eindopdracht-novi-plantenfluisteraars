@@ -1,0 +1,26 @@
+@import './assets/fonts/fonts.css';
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 400;
+    color: #F1F1EF;
+    background-color: #F1F1EF;
+    width: 100vw;
+    /*height: 100vw;*/
+}
+
+h1 {
+    font-family: 'Loved by the King', cursive;
+    font-size: 55px;
+    margin: 5px 0 10px 0;
+}
+
+h2 {
+    font-size: 25px;
+    margin: 5px 0 10px 0;
+}

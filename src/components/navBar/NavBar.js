@@ -1,3 +1,4 @@
+import styles from "./NavBar.module.css"
 import React from 'react';
 import logo from '../../assets/logo-plantenfluisteraars.png'
 import {useHistory, Link} from "react-router-dom";
@@ -10,9 +11,7 @@ function NavBar({link, name}) {
     return (
         <nav>
             <Link to="/">
-        <span className="logo-container">
-            <img src={logo} alt="logo-plantenfluisteraars"/>
-        </span>
+            <img className={styles["logo-container"]} src={logo} alt="logo-plantenfluisteraars"/>
             </Link>
 
             <div>
@@ -33,7 +32,6 @@ function NavBar({link, name}) {
                     name="Aanvragen"
                 />
             </div>
-
         </nav>
     );
 }

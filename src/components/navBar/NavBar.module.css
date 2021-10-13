@@ -1,0 +1,13 @@
+nav {
+    background-color: #22333B;
+    padding: 5px 10% 5px 10%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-container {
+    width: 200px;
+}

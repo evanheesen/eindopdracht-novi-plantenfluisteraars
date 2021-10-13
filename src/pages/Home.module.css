@@ -1,0 +1,9 @@
+
+.home-container {
+    /*box-sizing: content-box;*/
+    background: url("../assets/achtergrond-groene-straat.jpg") rgba(0, 0 ,0, 0.4) center no-repeat fixed;
+    background-size: cover;
+    background-blend-mode: multiply;
+    min-height: 700px;
+    padding: 100px 10% 100px 10%;
+}
