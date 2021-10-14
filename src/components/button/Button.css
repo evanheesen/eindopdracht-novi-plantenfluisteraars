@@ -1,15 +1,14 @@
-button {
+.button {
     width: auto;
     background-color: #22333B;
     color: #F1F1EF;
     border: none;
     border-radius: 20px;
     padding: 15px 30px 15px 30px;
-    font-size: 16px;
+    font-size: 18px;
     margin: 10px 0 10px 0;
 }
 
-/* checken hoe CSS door te geven via button component naar andere pagina's met Classname als property*/
 .button--red {
-    color: #CD5C5C;
+    background-color: #CD5C5C;
 }

@@ -1,20 +1,20 @@
-import styles from "./NavBar.module.css"
+import styles from './NavBar.module.css';
 import React from 'react';
-import logo from '../../assets/logo-plantenfluisteraars.png'
+import logo from '../../assets/logo-plantenfluisteraars-white.png'
 import {useHistory, Link} from "react-router-dom";
 import NavButton from "./navButton/NavButton";
 
-function NavBar({link, name}) {
+function NavBar() {
 
     const history = useHistory();
 
     return (
-        <nav>
+        <nav className={styles["nav-bar"]}>
             <Link to="/">
-            <img className={styles["logo-container"]} src={logo} alt="logo-plantenfluisteraars"/>
+                <img className={styles["logo-container"]} src={logo} alt="logo-plantenfluisteraars"/>
             </Link>
 
-            <div>
+            <menu>
                 <NavButton
                     onClick={() => history.push("/concept")}
                     name="Concept"
@@ -31,7 +31,7 @@ function NavBar({link, name}) {
                     onClick={() => history.push("/aanvragen")}
                     name="Aanvragen"
                 />
-            </div>
+            </menu>
         </nav>
     );
 }
