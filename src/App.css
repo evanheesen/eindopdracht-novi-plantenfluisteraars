@@ -26,3 +26,20 @@ h2 {
     font-size: 25px;
     margin-bottom: 5px;
 }
+
+.section--container {
+    min-height: 700px;
+    padding: 0 10% 100px 10%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.section-item {
+    flex: 1 auto 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+}

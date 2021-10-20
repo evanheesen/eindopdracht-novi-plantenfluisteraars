@@ -31,6 +31,14 @@ function NavBar() {
                     onClick={() => history.push("/aanvragen")}
                     name="Aanvragen"
                 />
+                <NavButton
+                    link="/login"
+                    name="Login"
+                />
+                <NavButton
+                    link="/registreren"
+                    name="Registreren"
+                />
             </menu>
         </nav>
     );

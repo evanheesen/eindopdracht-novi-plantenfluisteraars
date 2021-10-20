@@ -1,11 +1,15 @@
 import React from 'react';
 import './Button.css'
+import {useHistory} from "react-router-dom";
 
-function Button({onClick, name, className, type}) {
+function Button({link, name, className, type}) {
+
+    const history = useHistory();
+
     return (
         <button
             type={type}
-            onClick={onClick}
+            onClick={() => history.push(`${link}`)}
             className={className}
         >
             {name}

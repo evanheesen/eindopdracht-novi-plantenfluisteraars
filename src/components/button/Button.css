@@ -9,6 +9,24 @@
     margin: 10px 0 10px 0;
 }
 
+.button--top {
+    display: block;
+    position: relative;
+    top: 25px;
+    margin: 0 auto 0 auto;
+}
+
+.button--bottom {
+    display: block;
+    position: relative;
+    bottom: 25px;
+    margin: 0 auto 0 auto;
+}
+
 .button--red {
     background-color: #CD5C5C;
+}
+
+.button--dark {
+    background-color: #22333B;
 }
