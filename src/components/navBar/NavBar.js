@@ -16,19 +16,19 @@ function NavBar() {
 
             <menu>
                 <NavButton
-                    onClick={() => history.push("/concept")}
+                    link="/concept"
                     name="Concept"
                 />
                 <NavButton
-                    onClick={() => history.push("/prijzen")}
+                    link="/prijzen"
                     name="Prijzen"
                 />
                 <NavButton
-                    onClick={() => history.push("/over-ons")}
+                    link="/over-ons"
                     name="Over ons"
                 />
                 <NavButton
-                    onClick={() => history.push("/aanvragen")}
+                    link="/aanvragen"
                     name="Aanvragen"
                 />
                 <NavButton

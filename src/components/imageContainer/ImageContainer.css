@@ -1,11 +1,49 @@
+.image {
+    height: auto;
+    border: none;
+}
 
 .image--left {
-    /*margin-top: 50px;*/
-    /*min-width: 300px;*/
     max-width: 500px;
-    height: auto;
-    margin-left: 0;
-    border: none;
     border-radius: 0 50px 50px 0;
+}
 
+.image--right {
+    max-width: 500px;
+    border-radius: 50px 0 0 50px;
+    margin-left: auto;
+}
+
+.image--top {
+    max-width: 600px;
+    margin-left: auto;
+}
+
+.image--gallery {
+    max-width: 500px;
+    line-height: 0;
+    column-count: 2;
+    column-gap: 5px;
+}
+
+.image--gallery img {
+    width: 100% !important;
+    height: auto !important;
+    margin-bottom: 5px;
+}
+
+.image-gallery-top-right {
+    border-radius: 0 50px 0 0;
+}
+
+.image-gallery-bottom-right {
+    border-radius: 0 0 50px 0;
+}
+
+.image-gallery-top-left {
+    border-radius: 50px 0 0 0;
+}
+
+.image-gallery-bottom-left {
+    border-radius: 0 0 0 50px;
 }

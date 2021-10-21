@@ -3,24 +3,21 @@ import './ColoredContainer.css';
 import React from 'react';
 import Button from "../button/Button";
 
-function ColoredContainer({ className, title, text, buttonClassNameTop, buttonTitleTop, buttonLinkTop, buttonClassNameBottom, buttonTitleBottom, buttonLinkBottom}) {
+function ColoredContainer({ classNameItem, className, title, text, buttonClassNameTop, buttonTitleTop, buttonClassNameBottom, buttonTitleBottom, buttonLinkBottom}) {
 
     return (
-        <div className="section-item">
+        <div className={classNameItem}>
         <section className={className}>
             {buttonTitleTop &&
             <Button
                 className={buttonClassNameTop}
-                link={buttonLinkTop}
                 name={buttonTitleTop}
                 type="button"
             />}
 
-            <h2>{title}</h2>
-            <p>{text}</p>
+            <h2 className="text-justified">{title}</h2>
+            <p className="text-justified">{text}</p>
 
-
-        </section>
             {buttonTitleBottom &&
             <Button
                 className={buttonClassNameBottom}
@@ -28,6 +25,7 @@ function ColoredContainer({ className, title, text, buttonClassNameTop, buttonTi
                 name={buttonTitleBottom}
                 type="button"
             />}
+        </section>
         </div>
     );
 }

@@ -4,6 +4,7 @@ import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import Home from "./pages/home/Home";
 import NavBar from "./components/navBar/NavBar";
 import Concept from "./pages/concept/Concept";
+import Prijzen from "./pages/prijzen/Prijzen";
 
 function App() {
     return (
@@ -15,6 +16,9 @@ function App() {
                 </Route>
                 <Route path="/concept">
                     <Concept/>
+                </Route>
+                <Route path="/prijzen">
+                    <Prijzen/>
                 </Route>
             </Switch>
         </Router>

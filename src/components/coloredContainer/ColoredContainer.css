@@ -2,11 +2,27 @@
 .block {
     color: #F1F1EF;
     border: none;
-    border-radius: 200px 100px 200px 100px;
-    margin-top: 50px;
+    border-radius: 150px 100px 150px 100px;
     padding: 60px;
     min-width: 300px;
-    max-width: 700px;
+    max-width: 900px;
+    margin: 70px 0 70px 0;
+}
+
+.block--left {
+    margin-left: 10%;
+    margin-right: 5px;
+}
+
+.block--right {
+    margin-right: 10%;
+    margin-left: 5px;
+}
+
+.block--center {
+    min-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .block--green {
@@ -15,4 +31,8 @@
 
 .block--red {
     background-color: #CD5C5C;
+}
+
+.text-justified {
+    text-align: justify;
 }

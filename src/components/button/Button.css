@@ -1,26 +1,28 @@
 .button {
-    width: auto;
+    width: 300px;
     background-color: #22333B;
     color: #F1F1EF;
     border: none;
     border-radius: 20px;
     padding: 15px 30px 15px 30px;
     font-size: 18px;
-    margin: 10px 0 10px 0;
+    /*margin: 10px 0 10px 0;*/
 }
 
 .button--top {
     display: block;
     position: relative;
-    top: 25px;
-    margin: 0 auto 0 auto;
+    top: -85px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .button--bottom {
     display: block;
     position: relative;
-    bottom: 25px;
-    margin: 0 auto 0 auto;
+    bottom: -85px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .button--red {
