@@ -1,12 +1,10 @@
 import styles from './NavBar.module.css';
 import React from 'react';
 import logo from '../../assets/logo-plantenfluisteraars-white.png'
-import {useHistory, Link} from "react-router-dom";
+import {Link} from "react-router-dom";
 import NavButton from "./navButton/NavButton";
 
 function NavBar() {
-
-    const history = useHistory();
 
     return (
         <nav className={styles["nav-bar"]}>

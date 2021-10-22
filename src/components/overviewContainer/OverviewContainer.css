@@ -1,0 +1,47 @@
+/* Flex container overview columns */
+.overview-container {
+    color: #22333B;
+    padding: 20px 20px 0 20px;
+    text-align: center;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    align-content: flex-start;
+    gap: 20px 20px;
+}
+
+.overview-item {
+    /*flex-basis: 30%;*/
+    flex-grow: 1;
+    flex-shrink: 0;
+    border: 5px solid black;
+    max-width: 350px;
+    min-width: 250px;
+    padding: 20px 20px 20px 10px;
+    border-radius: 20px;
+    background-color: #F1F1EF;
+}
+
+.overview-container--white {
+    color: black;
+}
+
+.overview-container--white h3 {
+    color: #CD5C5C;
+    font-weight: bolder;
+}
+
+.overview-container--white p {
+    font-style: italic;
+}
+
+ul.overview-list {
+    list-style-type: square;
+    padding-left: 30px;
+    text-align: left;
+}
+
+ul.overview-list li {
+    padding-bottom: 10px;
+}

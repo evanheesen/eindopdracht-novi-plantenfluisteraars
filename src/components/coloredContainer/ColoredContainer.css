@@ -1,3 +1,4 @@
+/* Colored block settings */
 
 .block {
     color: #F1F1EF;
@@ -5,8 +6,9 @@
     border-radius: 150px 100px 150px 100px;
     padding: 60px;
     min-width: 300px;
-    max-width: 900px;
-    margin: 70px 0 70px 0;
+    max-width: 1100px;
+    margin-top: 70px;
+    margin-bottom: 70px;
 }
 
 .block--left {
@@ -20,9 +22,16 @@
 }
 
 .block--center {
+    padding-top: 20px;
     min-width: 600px;
+    width: fit-content;
     margin-left: auto;
     margin-right: auto;
+}
+
+.block--white {
+    background-color: #F1F1EF;
+    border: 5px solid #22333B;
 }
 
 .block--green {
@@ -36,3 +45,4 @@
 .text-justified {
     text-align: justify;
 }
+

@@ -14,7 +14,7 @@ function Concept() {
         <div className="section--split">
             <ColoredContainer
                 classNameItem="section-item section-item--split"
-                className="block block--left block--red"
+                classNameBlock="block block--left block--red"
                 title="Het concept"
                 text="Onze ambitie is om Amsterdam een beetje groener en socialer te maken. Daarom matchen wij bewoners die op zoek zijn naar wat meer groen aan huis met onze Plantenfluisteraars. Deze gepassioneerde groene guru's zorgen voor de aanleg van jouw geveltuin."
             />
@@ -36,10 +36,10 @@ function Concept() {
             />
             <ColoredContainer
                 classNameItem="section-item section-item--split"
-                className="block block--right block--green"
+                classNameBlock="block block--right block--green"
                 title="Hoe werkt het?"
                 text="1. Vul het formulier in"
-                buttonClassNameBottom="button button--bottom button--dark"
+                buttonClassNameBottom="button button--bottom button--bottom-split"
                 buttonTitleBottom="Vraag een geveltuin aan"
                 buttonLinkBottom="/aanvragen"
             />

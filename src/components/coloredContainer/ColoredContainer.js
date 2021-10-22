@@ -3,29 +3,52 @@ import './ColoredContainer.css';
 import React from 'react';
 import Button from "../button/Button";
 
-function ColoredContainer({ classNameItem, className, title, text, buttonClassNameTop, buttonTitleTop, buttonClassNameBottom, buttonTitleBottom, buttonLinkBottom}) {
+function ColoredContainer({
+                              children,
+                              classNameItem,
+                              classNameBlock,
+                              title,
+                              text,
+                              classNameColumns,
+                              buttonClassNameTop,
+                              buttonTitleTop,
+                              buttonClassNameBottom,
+                              buttonTitleBottom,
+                              buttonLinkBottom,
+                          }) {
 
     return (
         <div className={classNameItem}>
-        <section className={className}>
-            {buttonTitleTop &&
-            <Button
-                className={buttonClassNameTop}
-                name={buttonTitleTop}
-                type="button"
-            />}
+            <section className={classNameBlock}>
+                {buttonTitleTop &&
+                <Button
+                    className={buttonClassNameTop}
+                    name={buttonTitleTop}
+                    type="button"
+                />}
 
-            <h2 className="text-justified">{title}</h2>
-            <p className="text-justified">{text}</p>
+                {title &&
+                <h2 className="text-justified">{title}</h2>
+                }
+                {text &&
+                <p className="text-justified">{text}</p>
+                }
 
-            {buttonTitleBottom &&
-            <Button
-                className={buttonClassNameBottom}
-                link={buttonLinkBottom}
-                name={buttonTitleBottom}
-                type="button"
-            />}
-        </section>
+                {/* child property for possible overview container */}
+                {children &&
+                <div className={classNameColumns}>
+                    {children}
+                </div>
+                }
+
+                {buttonTitleBottom &&
+                <Button
+                    className={buttonClassNameBottom}
+                    link={buttonLinkBottom}
+                    name={buttonTitleBottom}
+                    type="button"
+                />}
+            </section>
         </div>
     );
 }

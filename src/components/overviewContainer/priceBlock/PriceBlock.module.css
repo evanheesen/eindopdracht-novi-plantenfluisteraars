@@ -1,0 +1,26 @@
+.price-block {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 5px;
+    color: black;
+    font-weight: bolder;
+    /*padding: 5px;*/
+}
+
+.var--currency {
+    font-size: 14px;
+    margin-top: 20px;
+}
+
+.span--amount {
+    font-size: 50px;
+    /* uitzoeken bold lettertype Raleway*/
+}
+
+.span--unit {
+    font-size: 14px;
+    margin-top: auto;
+    margin-bottom: 10px;
+}

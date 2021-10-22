@@ -7,6 +7,7 @@
 
 body {
     font-family: 'Raleway', sans-serif;
+    font-size: 18px;
     font-weight: 400;
     color: #F1F1EF;
     background-color: #F1F1EF;
@@ -24,8 +25,14 @@ h1 {
 
 h2 {
     font-family: 'Loved by the King', cursive;
-    font-size: 36px;
+    font-size: 40px;
     margin-bottom: 10px;
+}
+
+h3 {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 600;
+    font-size: 24px;
 }
 
 /* Flex container split into two items */
@@ -46,9 +53,8 @@ h2 {
     gap: 0 50px;
 }
 
-/* Flex items */
+/* Flex items general settings */
 .section-item {
-    width: 50%;
     /*min-height: 400px;*/
     flex-grow: 1;
     flex-shrink: 0;
@@ -58,13 +64,15 @@ h2 {
     justify-content: flex-start;
 }
 
+/* Flex items, two per row */
 .section-item--split {
     width: 50%;
 }
 
+/* Flex items, one per row */
 .section-item--center {
-    max-width: 900px;
-    min-width: 600px;
-    margin: 0 auto 0 auto;
+    margin: 0 10% 0 10%;
 }
+
+
 
