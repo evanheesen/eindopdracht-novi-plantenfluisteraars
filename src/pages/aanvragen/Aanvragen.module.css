@@ -1,0 +1,20 @@
+.form--container {
+    color: black;
+    font-weight: bolder;
+    border: none;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 10px 10px;
+    margin-left: 10%;
+}
+
+.form-item {
+    width: 100%;
+}
+
+.h2--form {
+    color: #22333B;
+    margin-left: 10%;
+}
