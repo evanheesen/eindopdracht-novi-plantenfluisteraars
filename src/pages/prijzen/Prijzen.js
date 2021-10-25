@@ -1,4 +1,4 @@
-// import styles from './Prijzen.css';
+// import styles from './Prijzen.module.css';
 import React from "react";
 import aanlegGeveltuin from "../../assets/aanleg-geveltuin.webp";
 import ColoredContainer from "../../components/coloredContainer/ColoredContainer";
@@ -41,18 +41,24 @@ function Prijzen() {
                     description="Lage wintergroene beplanting"
                     priceAmount="25"
                     unit="/ 30cm breedte"
+                    bullit1="Laag onderhoud"
+                    bullit2="Hele jaar door groen"
                 />
                 <OverviewContainer
                     subTitle="Pakket 2"
                     description="Lage kleurrijke beplanting"
                     priceAmount="30"
                     unit="/ 30cm breedte"
+                    bullit1="Onderhoudsintensiever"
+                    bullit2="Zeer kleurrijk in de lente en zomer"
                 />
                 <OverviewContainer
                     subTitle="Pakket 3"
                     description="Kleurrijke klimbeplanting"
                     priceAmount="35"
                     unit="/ 30cm breedte"
+                    bullit1="Onderhoudsintensiever"
+                    bullit2="Zeer fraaie uitstraling"
                 />
             </ColoredContainer>
 

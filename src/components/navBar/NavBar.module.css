@@ -6,8 +6,28 @@
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
+    /*position: fixed;*/
+    /*width: 100%;*/
+    /*top: 0;*/
 }
 
 .logo-container {
     width: 200px;
 }
+
+/* make position navbar only fixed when scrolling with this function: */
+
+/*<script>*/
+/* window.onscroll = function() {myFunction()};*/
+
+/*var header = document.getElementById("myHeader");*/
+/*var sticky = header.offsetTop;*/
+
+/*function myFunction() {*/
+/*if (window.pageYOffset > sticky) {*/
+/*    header.classList.add("sticky");*/
+/*} else {*/
+/*      header.classList.remove("sticky");*/
+/*  }*/
+/*}*/
+/*</script>*/

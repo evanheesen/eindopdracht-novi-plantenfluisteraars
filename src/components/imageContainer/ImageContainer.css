@@ -19,6 +19,13 @@
     margin-left: auto;
 }
 
+.image--bottom {
+    max-height: 600px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 0;
+}
+
 .image--gallery {
     max-width: 500px;
     line-height: 0;
