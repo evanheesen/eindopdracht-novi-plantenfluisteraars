@@ -62,14 +62,15 @@ function Aanvragen() {
                     className="section-item section-item--split"
                 >
                     <h2 className={styles["h2--form"]}>Aanvraagformulier</h2>
-                    <fieldset className={styles["form--container"]}>
+                    <fieldset className="form--container">
                         <InputElement
                             errors={errors}
                             register={register}
+                            classNameItem="form-item--half"
                             name="firstname"
                             label="Voornaam"
                             inputType="text"
-                            className="inputField inputField--half"
+                            className="inputField"
                             validationRules={{
                                 required: "Voornaam is verplicht",
                             }}
@@ -77,10 +78,11 @@ function Aanvragen() {
                         <InputElement
                             errors={errors}
                             register={register}
+                            classNameItem="form-item--half"
                             name="lastname"
                             label="Achternaam"
                             inputType="text"
-                            className="inputField inputField--half"
+                            className="inputField"
                             validationRules={{
                                 required: "Achternaam is verplicht",
                             }}
@@ -88,10 +90,11 @@ function Aanvragen() {
                         <InputElement
                             errors={errors}
                             register={register}
+                            classNameItem="form-item--full"
                             name="email"
                             label="Emailadres"
                             inputType="text"
-                            className="inputField inputField--full"
+                            className="inputField"
                             validationRules={{
                                 required: "Emailadres is verplicht",
                                 minLength: {
@@ -103,10 +106,11 @@ function Aanvragen() {
                         <InputElement
                             errors={errors}
                             register={register}
+                            classNameItem="form-item--half"
                             name="phonenumber"
                             label="Telefoonnummer"
                             inputType="tel"
-                            className="inputField inputField--full"
+                            className="inputField"
                             placeholder="06-12345678"
                             validationRules={{
                                 required: "Telefoonnummer is verplicht",
@@ -115,10 +119,11 @@ function Aanvragen() {
                         <InputElement
                             errors={errors}
                             register={register}
+                            classNameItem="form-item--full"
                             name="address"
                             label="Straat en huisnummer"
                             inputType="text"
-                            className="inputField inputField--full"
+                            className="inputField"
                             validationRules={{
                                 required: "Adres is verplicht",
                             }}
@@ -126,10 +131,11 @@ function Aanvragen() {
                         <InputElement
                             errors={errors}
                             register={register}
+                            classNameItem="form-item--half"
                             name="postalcode"
                             label="Postcode"
                             inputType="text"
-                            className="inputField inputField--half"
+                            className="inputField"
                             validationRules={{
                                 required: "Postcode is verplicht",
                                 pattern: {
@@ -141,43 +147,49 @@ function Aanvragen() {
                         <InputElement
                             errors={errors}
                             register={register}
+                            classNameItem="form-item--half"
                             name="city"
                             label="Woonplaats"
                             inputType="text"
-                            className="inputField inputField--half"
+                            className="inputField"
                             validationRules={{
                                 required: "Woonplaats is verplicht",
                             }}
                         />
 
-                        <h3 className="form-subtitle">Woningsituatie</h3>
+                        <h3 className="h3--form">Woningsituatie</h3>
                         <MultiSelectElement
                             errors={errors}
                             register={register}
+                            classNameItem="form-item--full"
                             name="floorlevel"
                             label="Ik woon in een woning op de begane grond"
                             selectType="checkbox"
+                            className="checkbox"
                             validationRules={{
                                 required: "Je kan alleen een geveltuin aanvragen als je op de begane grond woont",
                             }}
-                        >
-                        </MultiSelectElement>
-                        <SingleSelectElement
-                            errors={errors}
-                            register={register}
-                            name="ownership"
-                            label="Wat is jouw woningsituatie?"
-                            selectType="radio"
-                            >
-                            <option value="owner">Ik ben eigenaar van de woning</option>
-                            <option value="tenant">Ik ben huurder van de woning</option>
-                        </SingleSelectElement>
+                        />
+                        <div className="form-item--full">
+                            <SingleSelectElement
+                                errors={errors}
+                                register={register}
+                                classNameItem="form-item--full"
+                                name="ownership"
+                                label="Wat is jouw woningsituatie?"
+                                className="radioField"
+                                value1="Ik ben eigenaar van de woning"
+                                value2="Ik ben huurder van de woning"
+                            />
+                        </div>
+
 
                         {/* toevoegen 2 upload velden (toestemming eigenaar + situatieschets) */}
 
                         <InputElement
                             errors={errors}
                             register={register}
+                            classNameItem="form-item--full"
                             name="width-garden"
                             label="Wat wordt de breedte van de geveltuin (in cm)?"
                             inputType="number"
@@ -187,7 +199,7 @@ function Aanvragen() {
                             }}
                         />
 
-                        <h3 className="form-subtitle">Aanleg en Onderhoud</h3>
+                        <h3 className="h3--form">Aanleg en Onderhoud</h3>
                         <SingleSelectElement
                             errors={errors}
                             register={register}

@@ -74,5 +74,74 @@ h3 {
     margin: 0 10% 0 10%;
 }
 
+/* form styling */
+/* form flex container*/
+.form--container {
+    color: black;
+    font-weight: 800;
+    border: none;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 10px;
+    margin-left: 10%;
+    max-width: 500px;
+}
+
+/* form flex items*/
+.form-item--half {
+    width: calc(50% - 30px);
+}
+
+.form-item--full {
+    width: 100%;
+}
+
+/* form label styling */
+label {
+    display: block;
+}
+
+/* form checkbox label styling */
+.label--checkbox {
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+}
+
+/* form general input field styling */
+.inputField {
+    margin-top: 2px;
+    padding: 5px 15px 5px 15px;
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 100%;
+    background-color: white;
+    color: #22333B;
+    font-size: 16px;
+}
+
+.inputField--half {
+    width: calc(50% - 30px);
+}
+
+/* form checkbox field styling */
+input.checkbox {
+    width: 50px;
+    height: 20px;
+    padding: 25px;
+}
+
+.radioField {
+
+}
+
+/* form subtitle styling */
+.h3--form {
+    color: #CD5C5C;
+    margin: 30px 0 10px 0;
+    font-size: 24px;
+}
 
 

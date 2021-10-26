@@ -1,9 +1,9 @@
 import React from 'react';
 import './InputElement.css';
 
-function InputElement({ errors, register, name, label, inputType, placeholder, className ,validationRules }) {
+function InputElement({ errors, register, classNameItem, name, label, inputType, placeholder, className ,validationRules }) {
     return (
-        <>
+        <div className={classNameItem}>
             <label htmlFor={`${name}-field`}>
                 {label}
             </label>
@@ -27,7 +27,7 @@ function InputElement({ errors, register, name, label, inputType, placeholder, c
                     />
                     {errors[name] && <p>{errors[name].message}</p>}
                 </>)}
-        </>
+        </div>
     );
 }
 
