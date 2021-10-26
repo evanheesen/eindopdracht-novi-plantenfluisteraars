@@ -1,13 +1,14 @@
 import styles from './NavBar.module.css';
 import React, {useContext} from 'react';
 import logo from '../../assets/logo-plantenfluisteraars-white.png';
-import {useHistory, Link} from "react-router-dom";
+import userIcon from '../../assets/user-icon.png';
+import logoutIcon from '../../assets/logout-icon.png';
+import {Link} from "react-router-dom";
 import NavButton from "./navButton/NavButton";
 import {AuthContext} from "../../context/AuthContext";
 
 function NavBar() {
 
-    const history = useHistory();
     const {isAuth, logOut, user} = useContext(AuthContext);
 
     return (
@@ -33,18 +34,28 @@ function NavBar() {
                     link="/aanvragen"
                     name="Aanvragen"
                 />
-                <NavButton
-                    link="/login"
-                    name="Login"
-                />
-                <NavButton
-                    link="/registreren"
-                    name="Registreren"
-                />
-                <NavButton
-                    name="Log uit"
 
-                />
+                {!isAuth ?
+                        <NavButton
+                            link="/login"
+                            name="Login"
+                            image={userIcon}
+                        />
+                    : ""}
+
+                {isAuth ?
+                    <>
+                        <span className="first-name">
+                            {user.firstName}
+                        </span>
+
+                    <NavButton
+                        link={logOut}
+                        name="Log-uit"
+                        image={logoutIcon}
+                    />
+                    </>
+                    : ""}
             </menu>
         </nav>
     );
