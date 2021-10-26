@@ -69,12 +69,18 @@ h3 {
     width: 50%;
 }
 
+.section-item--split-top {
+    width: 50%;
+    margin-bottom: auto;
+}
+
 /* Flex items, one per row */
 .section-item--center {
     margin: 0 10% 0 10%;
 }
 
 /* form styling */
+
 /* form flex container*/
 .form--container {
     color: black;
@@ -86,6 +92,7 @@ h3 {
     align-items: flex-start;
     gap: 10px;
     margin-left: 10%;
+    margin-bottom: 10%;
     max-width: 500px;
 }
 
@@ -105,6 +112,24 @@ label {
 
 /* form checkbox label styling */
 .label--checkbox {
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+}
+
+.label--checkbox-conditions {
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+}
+
+/* form radio buttons label styling*/
+.label--singleSelect {
+    margin-top: 2px;
+}
+
+.value--singleSelect {
     font-weight: 400;
     display: flex;
     align-items: center;
@@ -133,8 +158,10 @@ input.checkbox {
     padding: 25px;
 }
 
-.radioField {
-
+input.radioField {
+    width: 50px;
+    height: 20px;
+    padding: 25px;
 }
 
 /* form subtitle styling */

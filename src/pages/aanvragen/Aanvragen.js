@@ -106,6 +106,22 @@ function Aanvragen() {
                         <InputElement
                             errors={errors}
                             register={register}
+                            classNameItem="form-item--full"
+                            name="password"
+                            label="Wachtwoord"
+                            inputType="password"
+                            className="inputField"
+                            validationRules={{
+                                required: "Wachtwoord is verplicht",
+                                minLength: {
+                                    value: 6,
+                                    message: "Het wachtwoord moet minimaal minstens 6 tekens bevatten",
+                                }
+                            }}
+                        />
+                        <InputElement
+                            errors={errors}
+                            register={register}
                             classNameItem="form-item--half"
                             name="phonenumber"
                             label="Telefoonnummer"
@@ -171,18 +187,24 @@ function Aanvragen() {
                             }}
                         />
                         <div className="form-item--full">
+                            <p className="label--singleSelect">Wat is jouw woningsituatie?</p>
                             <SingleSelectElement
                                 errors={errors}
                                 register={register}
-                                classNameItem="form-item--full"
-                                name="ownership"
-                                label="Wat is jouw woningsituatie?"
                                 className="radioField"
-                                value1="Ik ben eigenaar van de woning"
-                                value2="Ik ben huurder van de woning"
+                                name="ownership"
+                                value="eigenaar"
+                                label="Ik ben eigenaar van de woning"
+                            />
+                            <SingleSelectElement
+                                errors={errors}
+                                register={register}
+                                className="radioField"
+                                name="ownership"
+                                value="huurder"
+                                label="Ik ben huurder van de woning"
                             />
                         </div>
-
 
                         {/* toevoegen 2 upload velden (toestemming eigenaar + situatieschets) */}
 
@@ -200,36 +222,65 @@ function Aanvragen() {
                         />
 
                         <h3 className="h3--form">Aanleg en Onderhoud</h3>
-                        <SingleSelectElement
-                            errors={errors}
-                            register={register}
-                            name="package"
-                            label="Welk pakket beplanting wil je?"
-                        >
-                            <option value="package1">Pakket 1 - € 25,00 per 30cm</option>
-                            <option value="package2">Pakket 2 - € 30,00 per 30cm</option>
-                            <option value="package3">Pakket 3 - € 35,00 per 30cm</option>
-                        </SingleSelectElement>
+                        <div className="form-item--full">
+                            <p className="label--singleSelect">Welk pakket beplanting wil je?</p>
+                            <SingleSelectElement
+                                errors={errors}
+                                register={register}
+                                className="radioField"
+                                name="packageplants"
+                                value="pakket1"
+                                label="Pakket 1 - € 25,00 per 30cm"
+                            />
+                            <SingleSelectElement
+                                errors={errors}
+                                register={register}
+                                className="radioField"
+                                name="packageplants"
+                                value="pakket2"
+                                label="Pakket 2 - € 30,00 per 30cm"
+                            />
+                            <SingleSelectElement
+                                errors={errors}
+                                register={register}
+                                className="radioField"
+                                name="packageplants"
+                                value="pakket3"
+                                label="Pakket 3 - € 35,00 per 30cm"
+                            />
+                        </div>
+
+                        <div className="form-item--full">
+                            <p className="label--singleSelect">Welk onderhoudsplan wil je?</p>
+                            <SingleSelectElement
+                                errors={errors}
+                                register={register}
+                                className="radioField"
+                                name="packageplants"
+                                value="coaching"
+                                label="Coachingsplan - € 5,00 per maand"
+                            />
+                            <SingleSelectElement
+                                errors={errors}
+                                register={register}
+                                className="radioField"
+                                name="packageplants"
+                                value="fixed-maintenance"
+                                label="Vast onderhoudsplan - € 29,00 per maand"
+                            />
+                        </div>
 
                         {/* toevoegen total price veld met calculatie pakket * breedte geveltuin */}
 
-                        <SingleSelectElement
-                            errors={errors}
-                            register={register}
-                            name="maintenance"
-                            label="Welk onderhoudsplan wil je?"
-                        >
-                            <option value="coaching">Coachingsplan - € 5,00 per maand</option>
-                            <option value="fixed-maintenance">Vast onderhoudsplan - € 29,00 per maand</option>
-                        </SingleSelectElement>
-
-
+                        <br/>
                         <MultiSelectElement
                             errors={errors}
                             register={register}
+                            classNameItem="form-item--full"
                             name="terms-and-conditions"
                             label="Ik ga akkoord met de algemene voorwaarden"
                             selectType="checkbox"
+                            className="checkbox"
                             validationRules={{
                                 required: "Je bent vergeten akkoord te gaan met de algemene voorwaarden",
                             }}
@@ -238,6 +289,7 @@ function Aanvragen() {
                         <button
                             type="submit"
                             value={true}
+                            className="button button--dark"
                             {...register("isAuth")}
                         >
                             Verzend aanvraag
@@ -246,7 +298,7 @@ function Aanvragen() {
                 </form>
 
                 <ColoredContainer
-                    classNameItem="section-item section-item--split"
+                    classNameItem="section-item section-item--split-top"
                     classNameBlock="block block--right block--red"
                     title="Planning"
                     text="bullits planning"

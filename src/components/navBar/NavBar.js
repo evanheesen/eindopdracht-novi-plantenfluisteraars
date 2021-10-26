@@ -1,10 +1,14 @@
 import styles from './NavBar.module.css';
-import React from 'react';
-import logo from '../../assets/logo-plantenfluisteraars-white.png'
-import {Link} from "react-router-dom";
+import React, {useContext} from 'react';
+import logo from '../../assets/logo-plantenfluisteraars-white.png';
+import {useHistory, Link} from "react-router-dom";
 import NavButton from "./navButton/NavButton";
+import {AuthContext} from "../../context/AuthContext";
 
 function NavBar() {
+
+    const history = useHistory();
+    const {isAuth, logOut, user} = useContext(AuthContext);
 
     return (
         <nav className={styles["nav-bar"]}>
@@ -36,6 +40,10 @@ function NavBar() {
                 <NavButton
                     link="/registreren"
                     name="Registreren"
+                />
+                <NavButton
+                    name="Log uit"
+
                 />
             </menu>
         </nav>

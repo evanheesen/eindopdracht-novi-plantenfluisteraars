@@ -1,5 +1,5 @@
 import './App.css';
-import React from 'react';
+import React, {useContext} from 'react';
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import Home from "./pages/home/Home";
 import NavBar from "./components/navBar/NavBar";
@@ -7,11 +7,15 @@ import Concept from "./pages/concept/Concept";
 import Prijzen from "./pages/prijzen/Prijzen";
 import OverOns from "./pages/overOns/OverOns";
 import Aanvragen from "./pages/aanvragen/Aanvragen";
+import {AuthContext} from "./context/AuthContext";
 
 function App() {
+
+    const {isAuth} = useContext(AuthContext);
+
     return (
         <Router>
-            <NavBar/>
+            <NavBar />
             <Switch>
                 <Route exact path="/">
                     <Home/>
