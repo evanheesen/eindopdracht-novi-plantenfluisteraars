@@ -164,6 +164,33 @@ input.radioField {
     padding: 25px;
 }
 
+/* form file upload field styling */
+input.fileUpload {
+    margin-top: 2px;
+    padding: 5px 15px 5px 15px;
+    border: none;
+    width: 100%;
+    color: #22333B;
+    font-size: 16px;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 400;
+}
+
+input[type=file]::file-selector-button {
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: .2em .4em;
+    background-color: white;
+    font-family: 'Raleway', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+input[type=file]::file-selector-button:hover {
+    background-color: #ececec;
+    border: 2px solid black;
+}
+
 /* form subtitle styling */
 .h3--form {
     color: #CD5C5C;

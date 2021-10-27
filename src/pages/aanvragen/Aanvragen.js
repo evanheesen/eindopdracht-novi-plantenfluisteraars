@@ -6,9 +6,11 @@ import ColoredContainer from "../../components/coloredContainer/ColoredContainer
 import ImageContainer from "../../components/imageContainer/ImageContainer";
 import InputElement from "../../components/formComponents/inputElement/InputElement";
 import SingleSelectElement from "../../components/formComponents/singleSelectElement/SingleSelectElement";
+import MultiSelectElement from "../../components/formComponents/multiSelectElement/MultiSelectElement";
+import FileUploadElement from "../../components/formComponents/fileUploadElement/FileUploadElement";
 import {useForm} from "react-hook-form";
 import {useHistory} from "react-router-dom";
-import MultiSelectElement from "../../components/formComponents/multiSelectElement/MultiSelectElement";
+
 
 function Aanvragen() {
 
@@ -205,6 +207,23 @@ function Aanvragen() {
                                 label="Ik ben huurder van de woning"
                             />
                         </div>
+
+                        <FileUploadElement
+                        errors={errors}
+                        register={register}
+                        classNameItem="form-item--full"
+                        name="permission-owner"
+                        className="fileUpload"
+                        label="Upload toestemming van de woningeigenaar"
+                        />
+                        <FileUploadElement
+                            errors={errors}
+                            register={register}
+                            classNameItem="form-item--full"
+                            name="situation-drawing"
+                            className="fileUpload"
+                            label="Upload situatieschets"
+                        />
 
                         {/* toevoegen 2 upload velden (toestemming eigenaar + situatieschets) */}
 
