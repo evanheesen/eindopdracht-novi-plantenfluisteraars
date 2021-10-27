@@ -3,8 +3,12 @@ import ColoredContainer from "../../components/coloredContainer/ColoredContainer
 import plantenFluisteraar from "../../assets/plantenfluisteraar.png";
 import plantHand from "../../assets/plant-zaden.png";
 import ImageContainer from "../../components/imageContainer/ImageContainer";
+import {useHistory} from "react-router-dom";
 
-function OverOns(props) {
+function OverOns() {
+
+    const history = useHistory();
+
     return (
         <div className="section--split">
             <ColoredContainer
@@ -25,12 +29,13 @@ function OverOns(props) {
             />
             <ColoredContainer
                 classNameItem="section-item section-item--split"
-                classNameBlock="block block--left block--green"
+                classNameBlock="block block--right block--green"
                 title="Wat maakt ons speciaal?"
                 text="Wij zijn een sociaal bedrijf. Enkel inheemse plantsoorten voor betere biodiversiteit. ETC"
                 buttonClassNameBottom="button button--bottom button--bottom-split"
                 buttonTitleBottom="Vraag een geveltuin aan"
-                buttonLinkBottom="/aanvragen"
+                linkButton="/aanvragen"
+                buttonTypeBottom="button"
             />
         </div>
     );

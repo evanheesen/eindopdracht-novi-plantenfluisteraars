@@ -1,5 +1,4 @@
 import './ColoredContainer.css';
-// import '../../App.css';
 import React from 'react';
 import Button from "../button/Button";
 
@@ -14,7 +13,9 @@ function ColoredContainer({
                               buttonTitleTop,
                               buttonClassNameBottom,
                               buttonTitleBottom,
-                              buttonLinkBottom,
+                              onClickButton,
+                              linkButton,
+                              buttonTypeBottom,
                           }) {
 
     return (
@@ -44,9 +45,10 @@ function ColoredContainer({
                 {buttonTitleBottom &&
                 <Button
                     className={buttonClassNameBottom}
-                    link={buttonLinkBottom}
+                    onClick={onClickButton}
                     name={buttonTitleBottom}
-                    type="button"
+                    type={buttonTypeBottom}
+                    link={linkButton}
                 />}
             </section>
         </div>

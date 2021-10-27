@@ -92,8 +92,15 @@ h3 {
     align-items: flex-start;
     gap: 10px;
     margin-left: 10%;
-    margin-bottom: 10%;
+    /*margin-bottom: 10%;*/
     max-width: 500px;
+}
+
+.form--container-block {
+    /*color: #F1F1EF;*/
+    margin-left: 0;
+    margin-bottom: 0;
+    margin-right: auto;
 }
 
 /* form flex items*/

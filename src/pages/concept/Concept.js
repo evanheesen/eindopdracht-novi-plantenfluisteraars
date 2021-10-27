@@ -7,8 +7,11 @@ import geveltuintje3 from "../../assets/geveltuintje3.jpg";
 import geveltuintje4 from "../../assets/geveltuintje4.jpg";
 import ColoredContainer from "../../components/coloredContainer/ColoredContainer";
 import ImageContainer from "../../components/imageContainer/ImageContainer";
+import {useHistory} from "react-router-dom";
 
 function Concept() {
+
+    const history = useHistory();
 
     return (
         <div className="section--split">
@@ -41,7 +44,8 @@ function Concept() {
                 text="1. Vul het formulier in"
                 buttonClassNameBottom="button button--bottom button--bottom-split"
                 buttonTitleBottom="Vraag een geveltuin aan"
-                buttonLinkBottom="/aanvragen"
+                linkButton="/aanvragen"
+                buttonTypeBottom="button"
             />
         </div>
     );

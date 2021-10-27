@@ -3,13 +3,16 @@ import React, {useContext} from 'react';
 import logo from '../../assets/logo-plantenfluisteraars-white.png';
 import userIcon from '../../assets/user-icon.png';
 import logoutIcon from '../../assets/logout-icon.png';
-import {Link} from "react-router-dom";
+import {Link, useHistory} from "react-router-dom";
 import NavButton from "./navButton/NavButton";
+import NavIcon from "./navIcon/NavIcon";
 import {AuthContext} from "../../context/AuthContext";
 
 function NavBar() {
 
     const {isAuth, logOut, user} = useContext(AuthContext);
+    const history = useHistory();
+
 
     return (
         <nav className={styles["nav-bar"]}>
@@ -36,11 +39,11 @@ function NavBar() {
                 />
 
                 {!isAuth ?
-                        <NavButton
-                            link="/login"
-                            name="Login"
-                            image={userIcon}
-                        />
+                    <NavIcon
+                        link={() => history.push("/login")}
+                        name="Login"
+                        icon={userIcon}
+                    />
                     : ""}
 
                 {isAuth ?
@@ -49,11 +52,11 @@ function NavBar() {
                             {user.firstName}
                         </span>
 
-                    <NavButton
-                        link={logOut}
-                        name="Log-uit"
-                        image={logoutIcon}
-                    />
+                        <NavButton
+                            link={logOut}
+                            name="Log-uit"
+                            image={logoutIcon}
+                        />
                     </>
                     : ""}
             </menu>

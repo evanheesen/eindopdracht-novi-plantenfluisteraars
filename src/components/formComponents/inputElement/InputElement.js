@@ -1,7 +1,7 @@
 import React from 'react';
 import './InputElement.css';
 
-function InputElement({ errors, register, classNameItem, name, label, inputType, placeholder, className ,validationRules }) {
+function InputElement({ errors, register, classNameItem, name, label, inputType, placeholder, value, className ,validationRules, onChange }) {
     return (
         <div className={classNameItem}>
             <label htmlFor={`${name}-field`}>
@@ -15,6 +15,8 @@ function InputElement({ errors, register, classNameItem, name, label, inputType,
                     cols="30"
                     rows="10"
                     placeholder={placeholder}
+                    value={value}
+                    onChange={onChange}
                     {...register(name, validationRules)}>
                 </textarea>
                 : (<>
@@ -23,6 +25,8 @@ function InputElement({ errors, register, classNameItem, name, label, inputType,
                         id={`${name}-field`}
                         className={className}
                         placeholder={placeholder}
+                        value={value}
+                        onChange={onChange}
                         {...register(name, validationRules)}
                     />
                     {errors[name] && <p>{errors[name].message}</p>}

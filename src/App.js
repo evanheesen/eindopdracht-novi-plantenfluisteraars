@@ -7,6 +7,7 @@ import Concept from "./pages/concept/Concept";
 import Prijzen from "./pages/prijzen/Prijzen";
 import OverOns from "./pages/overOns/OverOns";
 import Aanvragen from "./pages/aanvragen/Aanvragen";
+import Login from "./pages/login/Login";
 import {AuthContext} from "./context/AuthContext";
 
 function App() {
@@ -31,6 +32,9 @@ function App() {
                 </Route>
                 <Route path="/aanvragen">
                     <Aanvragen/>
+                </Route>
+                <Route path="/login">
+                    <Login/>
                 </Route>
             </Switch>
         </Router>

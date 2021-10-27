@@ -51,7 +51,8 @@ function Aanvragen() {
                     text="tekst aanvragen geveltuin"
                     buttonClassNameBottom="button button--bottom button--bottom-split"
                     buttonTitleBottom="Ga naar het aanvraagformulier"
-                    buttonLinkBottom="/#aanvraagformulier"
+                    linkButton="#aanvraagformulier"
+                    buttonTypeBottom="button"
                 />
                 <ImageContainer
                     source={aanlegGeveltuin}
@@ -63,7 +64,7 @@ function Aanvragen() {
                     onSubmit={handleSubmit(onSubmit)}
                     className="section-item section-item--split"
                 >
-                    <h2 className={styles["h2--form"]}>Aanvraagformulier</h2>
+                    <h2 className={styles["h2--form"]} id="aanvraagformulier">Aanvraagformulier</h2>
                     <fieldset className="form--container">
                         <InputElement
                             errors={errors}

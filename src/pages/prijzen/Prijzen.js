@@ -4,8 +4,11 @@ import aanlegGeveltuin from "../../assets/aanleg-geveltuin.webp";
 import ColoredContainer from "../../components/coloredContainer/ColoredContainer";
 import ImageContainer from "../../components/imageContainer/ImageContainer";
 import OverviewContainer from "../../components/overviewContainer/OverviewContainer";
+import {useHistory} from "react-router-dom";
 
 function Prijzen() {
+
+    const history = useHistory();
 
     return (
         <>
@@ -17,8 +20,8 @@ function Prijzen() {
                     text="We maken onderscheid in de aanleg van een geveltuin enerzijds en het onderhoud van een bestaande geveltuin anderzijds. Het afnemen van een onderhoudsplan is verplicht. Er kan bij het onderhoud worden gekozen tussen een vast onderhoudsplan of een coachingsplan."
                     buttonClassNameBottom="button button--bottom button--bottom-split"
                     buttonTitleBottom="Vraag een geveltuin aan"
-                    buttonLinkBottom="/aanvragen"
-
+                    linkButton="/aanvragen"
+                    buttonTypeBottom="button"
                 />
                 <ImageContainer
                     source={aanlegGeveltuin}
@@ -71,7 +74,8 @@ function Prijzen() {
                 text="Voor het onderhoud van je geveltuin kan je kiezen uit twee verschillende pakketten:"
                 buttonClassNameBottom="button button--bottom button--bottom-centered"
                 buttonTitleBottom="Vraag een geveltuin aan"
-                buttonLinkBottom="/aanvragen"
+                linkButton="/aanvragen"
+                buttonTypeBottom="button"
                 classNameColumns="overview-container overview-container--white"
             >
                 <OverviewContainer

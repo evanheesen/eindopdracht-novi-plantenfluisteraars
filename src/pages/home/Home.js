@@ -3,8 +3,11 @@ import logo from "../../assets/logo-plantenfluisteraars-white.png"
 import React from "react";
 import Button from "../../components/button/Button";
 import NavButton from "../../components/navBar/navButton/NavButton";
+import {useHistory} from "react-router-dom";
 
 function Home() {
+
+    const history = useHistory();
 
     return (
       <div className={styles["home-container"]}>
@@ -12,7 +15,7 @@ function Home() {
     <img className={styles["header__img"]} src={logo} alt="logo-plantenfluisteraars"/>
     <div>
         <NavButton
-            link="/concept"
+            onClick="/concept"
             name="Concept"
         />
         <NavButton
@@ -33,7 +36,7 @@ function Home() {
           <h2>Wij verzorgen de aanleg en het onderhoud van jouw geveltuin!</h2>
           <Button
           type="button"
-          link="/concept"
+          onClick={() => history.push("/concept")}
           className="button button--red"
           name="Ik wil meer weten!"
           />

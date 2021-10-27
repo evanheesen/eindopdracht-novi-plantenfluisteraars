@@ -7,8 +7,15 @@
     margin: 5px 10px 5px 10px
 }
 
-.nav-icon {
-    width: 20px;
-    position: relative;
-    bottom: -5px;
+.nav-button:hover, .nav-button:focus {
+    color: #CD5C5C;
 }
+
+/*.subnav-bar {*/
+/*    background-color: #F1F1EF;*/
+/*    overflow: hidden;*/
+/*}*/
+
+/*.subnav-content {*/
+/*    color: #22333B;*/
+/*}*/

@@ -46,3 +46,10 @@
     text-align: justify;
 }
 
+.text-justified--block {
+    color: #F1F1EF;
+    font-weight: 400;
+    font-style: italic;
+    margin-top: 10px;
+}
+
