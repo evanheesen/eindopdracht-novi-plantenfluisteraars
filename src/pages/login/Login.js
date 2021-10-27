@@ -7,6 +7,8 @@ import ColoredContainer from "../../components/coloredContainer/ColoredContainer
 import FormContainer from "../../components/formContainer/FormContainer";
 import InputElement from "../../components/formComponents/inputElement/InputElement";
 import {useForm} from "react-hook-form";
+import aanlegGeveltuin from "../../assets/aanleg-geveltuin.webp";
+import ImageContainer from "../../components/imageContainer/ImageContainer";
 
 function Login() {
 
@@ -50,14 +52,14 @@ function Login() {
                     classNameContainer="form--container form--container-block"
                     title="Inloggen"
                     onSubmit={handleSubmit(onSubmit)}
-                    buttonClassName="button button--bottom button--bottom-split"
-                    buttonTitle="Login"
-                    buttonType="submit"
+                    // buttonClassName="button button--dark"
+                    // buttonTitle="Login"
+                    // buttonType="submit"
                     // buttonRegister={register}
                 >
                     <InputElement
                         errors={errors}
-                        // register={register}
+                        register={register}
                         classNameItem="form-item--full"
                         name="email"
                         label="Emailadres"
@@ -70,7 +72,7 @@ function Login() {
                     />
                     <InputElement
                         errors={errors}
-                        // register={register}
+                        register={register}
                         classNameItem="form-item--full"
                         name="password"
                         label="Wachtwoord"
@@ -81,8 +83,25 @@ function Login() {
                             required: "Wachtwoord is verplicht",
                         }}
                     />
-                    <p className="text-justified--block">Heb je nog geen account? Registreer je dan <Link to="/registreren">hier</Link> als Plantenfluisteraar.</p>
+
+                    {/* Dit of button in form component ?? */}
+                    <button
+                        type="submit"
+                        className="button button--dark"
+                    >
+                        Login
+                    </button>
+
+
+
                 </FormContainer>
+
+                <ImageContainer
+                    source={aanlegGeveltuin}
+                    alt="aanleg-geveltuin"
+                    classNameImg="image image--right"
+                />
+
             </div>
 
         </>
