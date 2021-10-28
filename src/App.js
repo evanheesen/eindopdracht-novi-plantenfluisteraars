@@ -1,6 +1,8 @@
 import './App.css';
 import React, {useContext} from 'react';
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
+import {AuthContext} from "./context/AuthContext";
+import PrivateRoute from "./components/privateRoute/PrivateRoute";
 import Home from "./pages/home/Home";
 import NavBar from "./components/navBar/NavBar";
 import Concept from "./pages/concept/Concept";
@@ -8,8 +10,8 @@ import Prijzen from "./pages/prijzen/Prijzen";
 import OverOns from "./pages/overOns/OverOns";
 import Aanvragen from "./pages/aanvragen/Aanvragen";
 import Login from "./pages/login/Login";
-import {AuthContext} from "./context/AuthContext";
 import Registreren from "./pages/registreren/Registreren";
+import Profiel from "./pages/profiel/Profiel";
 
 function App() {
 
@@ -22,6 +24,9 @@ function App() {
                 <Route exact path="/">
                     <Home/>
                 </Route>
+                <PrivateRoute path="/profiel" isAuth={isAuth}>
+                    <Profiel />
+                </PrivateRoute>
                 <Route path="/concept">
                     <Concept/>
                 </Route>

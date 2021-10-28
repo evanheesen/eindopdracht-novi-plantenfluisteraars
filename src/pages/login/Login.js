@@ -11,8 +11,6 @@ import {Link} from "react-router-dom";
 function Login() {
 
     const {register, handleSubmit, formState: {errors}} = useForm();
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
     const {logIn} = useContext(AuthContext);
     const source = axios.CancelToken.source();
 
@@ -24,10 +22,12 @@ function Login() {
         try {
             const result = await axios.post('http://localhost:3000/login', {
                 cancelToken: source.token,
-                email: email,
-                password: password,
+                email: data.email,
+                password: data.password,
             });
             console.log(result.data.accessToken);
+
+            // geef JWT door aan de context
             logIn(result.data.accessToken);
 
             return function cleanup() {

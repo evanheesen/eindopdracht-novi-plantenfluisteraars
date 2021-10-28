@@ -69,6 +69,7 @@ function AuthContextProvider({ children }) {
                     email: result.data.email,
                     id: result.data.id,
                     fistName: result.data.firstName,
+                    lastName: result.data.lastName,
                 },
                 status: 'done',
             });
