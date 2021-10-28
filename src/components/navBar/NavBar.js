@@ -48,15 +48,18 @@ function NavBar() {
 
                 {isAuth ?
                     <>
-                        <span className="first-name">
-                            {user.firstName}
-                        </span>
-
-                        <NavButton
+                        <NavIcon
                             link={logOut}
                             name="Log-uit"
-                            image={logoutIcon}
+                            icon={logoutIcon}
                         />
+
+                        {/* hier voornaam weergeven user: */}
+
+                        {/*/!*<span className={styles["nav-button"]}>*!/*/}
+                        {/*/!*    {user.firstName}*!/*/}
+                        {/*/!*</span>*!/*/}
+
                     </>
                     : ""}
             </menu>

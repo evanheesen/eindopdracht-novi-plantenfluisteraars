@@ -1,0 +1,40 @@
+.profile-container {
+    background: url("../../assets/achtergrond-groene-straat.jpg") rgba(0, 0, 0, 0.4) center no-repeat fixed;
+    background-size: cover;
+    background-blend-mode: multiply;
+    /* 100% of screen height - this padding container - height nav-bar - padding nav-bar */
+    min-height: calc(100vh - 280px);
+    padding: 100px 10% 100px 10%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 50px 50px;
+}
+
+.section-item {
+    flex-grow: 1;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: flex-start;
+    max-width: 600px;
+}
+
+p.register {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px 20px 10px 20px;
+    border: none;
+    border-radius: 20px;
+    width: max-content;
+}
+
+.image-profile {
+    height: 200px;
+    width: 200px;
+    border: none;
+    border-radius: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}

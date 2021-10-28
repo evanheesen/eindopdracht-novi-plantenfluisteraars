@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './NavIcon.module.css';
+
 import {Link} from "react-router-dom";
 
 function NavIcon({ name, link, icon, sublabel1, sublink1, sublabel2, sublink2 }) {

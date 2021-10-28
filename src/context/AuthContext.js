@@ -11,7 +11,7 @@ export const AuthContext = createContext({});
 //3. Wikkel Provider component om <App />
 // Function is jasje voor Provider. Hiermee wikkelen we een component om de basis heen, zodat we meer functies mee kunnen geven.
 
-function AuthContextProvider({ children }) {
+function AuthContextProvider({children}) {
 
     const [isAuth, toggleIsAuth] = useState({
         isAuth: false,
@@ -80,6 +80,13 @@ function AuthContextProvider({ children }) {
 
         } catch (e) {
             console.error(e.response.data);
+            // console.error(e);
+            // als er iets mis is gegaan, geen data in state:
+            toggleIsAuth({
+                isAuth: false,
+                user: null,
+                status: 'done',
+            });
         }
     }
 

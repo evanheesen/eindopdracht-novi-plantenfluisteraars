@@ -1,6 +1,6 @@
 import './App.css';
 import React, {useContext} from 'react';
-import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
+import {Switch, Route} from "react-router-dom";
 import {AuthContext} from "./context/AuthContext";
 import PrivateRoute from "./components/privateRoute/PrivateRoute";
 import Home from "./pages/home/Home";
@@ -18,14 +18,14 @@ function App() {
     const {isAuth} = useContext(AuthContext);
 
     return (
-        <Router>
-            <NavBar />
+        <>
+            <NavBar/>
             <Switch>
                 <Route exact path="/">
                     <Home/>
                 </Route>
                 <PrivateRoute path="/profiel" isAuth={isAuth}>
-                    <Profiel />
+                    <Profiel/>
                 </PrivateRoute>
                 <Route path="/concept">
                     <Concept/>
@@ -46,7 +46,7 @@ function App() {
                     <Registreren/>
                 </Route>
             </Switch>
-        </Router>
+        </>
     );
 }
 
