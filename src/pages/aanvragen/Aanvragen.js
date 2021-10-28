@@ -226,8 +226,6 @@ function Aanvragen() {
                             label="Upload situatieschets"
                         />
 
-                        {/* toevoegen 2 upload velden (toestemming eigenaar + situatieschets) */}
-
                         <InputElement
                             errors={errors}
                             register={register}

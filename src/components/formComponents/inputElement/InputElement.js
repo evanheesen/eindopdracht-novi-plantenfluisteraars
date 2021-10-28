@@ -1,5 +1,5 @@
 import React from 'react';
-import './InputElement.css';
+import styles from './InputElement.module.css';
 
 function InputElement({ errors, register, classNameItem, name, label, inputType, placeholder, value, className ,validationRules, onChange }) {
     return (
@@ -29,7 +29,7 @@ function InputElement({ errors, register, classNameItem, name, label, inputType,
                         onChange={onChange}
                         {...register(name, validationRules)}
                     />
-                    {errors[name] && <p>{errors[name].message}</p>}
+                    {errors[name] && <p className={styles["error-message"]}>{errors[name].message}</p>}
                 </>)}
         </div>
     );

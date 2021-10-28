@@ -3,7 +3,7 @@
     background: url("../../assets/achtergrond-groene-straat.jpg") rgba(0, 0 ,0, 0.4) center no-repeat fixed;
     background-size: cover;
     background-blend-mode: multiply;
-    min-height: 700px;
+    min-height: calc(100vh - 280px);
     padding: 100px 10% 100px 10%;
 }
 

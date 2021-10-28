@@ -5,7 +5,7 @@
     padding: 0;
 }
 
-body {
+body, html {
     font-family: 'Raleway', sans-serif;
     font-size: 18px;
     font-weight: 400;
@@ -13,7 +13,7 @@ body {
     background-color: #F1F1EF;
     width: 100vw;
     line-height: 1.5;
-    /*height: 100vw;*/
+    /*height: 100%;*/
 }
 
 h1 {
@@ -33,6 +33,10 @@ h3 {
     font-family: 'Raleway', sans-serif;
     font-weight: 600;
     font-size: 24px;
+}
+
+Link, a {
+    color: #CD5C5C;
 }
 
 /* Flex container split into two items */
@@ -100,7 +104,7 @@ h3 {
     /*color: #F1F1EF;*/
     margin-left: 0;
     margin-bottom: 0;
-    margin-right: auto;
+    /*margin-right: auto;*/
 }
 
 /* form flex items*/

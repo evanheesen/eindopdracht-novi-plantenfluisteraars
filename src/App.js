@@ -9,6 +9,7 @@ import OverOns from "./pages/overOns/OverOns";
 import Aanvragen from "./pages/aanvragen/Aanvragen";
 import Login from "./pages/login/Login";
 import {AuthContext} from "./context/AuthContext";
+import Registreren from "./pages/registreren/Registreren";
 
 function App() {
 
@@ -35,6 +36,9 @@ function App() {
                 </Route>
                 <Route path="/login">
                     <Login/>
+                </Route>
+                <Route path="/registreren">
+                    <Registreren/>
                 </Route>
             </Switch>
         </Router>

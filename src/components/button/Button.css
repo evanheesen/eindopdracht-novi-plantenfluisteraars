@@ -39,7 +39,7 @@
     top: -95px;
 }
 
-.button--bottom-split {
+.button--bottom-split, .button--bottom-centered {
     display: block;
     position: relative;
     bottom: -95px;
@@ -51,8 +51,16 @@
     top: -55px;
 }
 
-.button--bottom-centered {
-    display: block;
-    position: relative;
-    bottom: -95px;
+.button:hover {
+    cursor: pointer;
+}
+
+.button--red:hover {
+    color: white;
+    background-color: #DE7171;
+}
+
+.button--dark:hover, .button--bottom:hover {
+    color: white;
+    background-color: #37525E;
 }

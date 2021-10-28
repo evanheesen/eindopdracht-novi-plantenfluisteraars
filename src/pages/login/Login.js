@@ -2,13 +2,11 @@ import React, {useContext, useState} from 'react';
 import styles from './Login.module.css';
 import {AuthContext} from "../../context/AuthContext";
 import axios from "axios";
-import {Link} from "react-router-dom";
-import ColoredContainer from "../../components/coloredContainer/ColoredContainer";
+import arrow from "../../assets/white-arrow.png";
 import FormContainer from "../../components/formContainer/FormContainer";
 import InputElement from "../../components/formComponents/inputElement/InputElement";
 import {useForm} from "react-hook-form";
-import aanlegGeveltuin from "../../assets/aanleg-geveltuin.webp";
-import ImageContainer from "../../components/imageContainer/ImageContainer";
+import {Link} from "react-router-dom";
 
 function Login() {
 
@@ -44,18 +42,14 @@ function Login() {
     return (
         <>
 
-            <div className="section--split">
+            <div className={styles["login-container"]}>
 
                 <FormContainer
-                    classNameItem="section-item section-item--split"
-                    classNameBlock="block block--left block--green"
-                    classNameContainer="form--container form--container-block"
+                    classNameItem={styles["section-item"]}
+                    classNameBlock={styles["block-login"]}
+                    classNameContainer={styles["form--container"]}
                     title="Inloggen"
                     onSubmit={handleSubmit(onSubmit)}
-                    // buttonClassName="button button--dark"
-                    // buttonTitle="Login"
-                    // buttonType="submit"
-                    // buttonRegister={register}
                 >
                     <InputElement
                         errors={errors}
@@ -64,8 +58,8 @@ function Login() {
                         name="email"
                         label="Emailadres"
                         inputType="text"
-                        className="inputField"
-                        value={email}
+                        className={styles["inputField"]}
+                        // value={email}
                         validationRules={{
                             required: "Emailadres is verplicht",
                         }}
@@ -77,30 +71,27 @@ function Login() {
                         name="password"
                         label="Wachtwoord"
                         inputType="password"
-                        className="inputField"
-                        value={password}
+                        className={styles["inputField"]}
+                        // value={password}
                         validationRules={{
                             required: "Wachtwoord is verplicht",
                         }}
                     />
 
-                    {/* Dit of button in form component ?? */}
                     <button
                         type="submit"
                         className="button button--dark"
                     >
                         Login
                     </button>
-
-
-
                 </FormContainer>
 
-                <ImageContainer
-                    source={aanlegGeveltuin}
-                    alt="aanleg-geveltuin"
-                    classNameImg="image image--right"
-                />
+                <div className={styles["section-item"]}>
+                    <img src={arrow} className={styles["arrow"]}/>
+                    <p className={styles["register"]}>Heb je nog geen account? Registreer je <Link
+                        to="/registreren">hier</Link> dan eerst.</p>
+                </div>
+
 
             </div>
 
