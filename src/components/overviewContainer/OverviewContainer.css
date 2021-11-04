@@ -45,3 +45,7 @@ ul.overview-list {
 ul.overview-list li {
     padding-bottom: 10px;
 }
+
+p.overview {
+    text-align: justify;
+}
