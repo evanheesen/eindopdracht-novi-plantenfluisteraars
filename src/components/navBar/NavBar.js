@@ -49,6 +49,11 @@ function NavBar() {
                 {isAuth ?
                     <>
                         <NavIcon
+                            link={() => history.push("/profiel")}
+                            name="Profiel"
+                            icon={userIcon}
+                        />
+                        <NavIcon
                             link={logOut}
                             name="Log-uit"
                             icon={logoutIcon}

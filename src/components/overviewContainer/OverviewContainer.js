@@ -3,6 +3,9 @@ import React from "react";
 import PriceBlock from "./priceBlock/PriceBlock";
 
 function OverviewContainer({
+                               image,
+                               imageAlt,
+                               imageClassName,
                                subTitle,
                                description,
                                priceAmount,
@@ -14,8 +17,9 @@ function OverviewContainer({
     return (
         <>
             <div className="overview-item">
-                <h3>{subTitle}</h3>
-                <p>{description}</p>
+                <img src={image} alt={imageAlt} className="overview-item__img"/>
+                <h3 className="overview-item__subtitle">{subTitle}</h3>
+                <p className="overview-item__description">{description}</p>
 
                 {/* PriceBlock component */}
                 <PriceBlock

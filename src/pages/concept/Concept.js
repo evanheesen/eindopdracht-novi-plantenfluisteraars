@@ -41,7 +41,10 @@ function Concept() {
                 classNameItem="section-item section-item--split"
                 classNameBlock="block block--right block--green"
                 title="Hoe werkt het?"
-                text="1. Vul het formulier in"
+                text={<ul><li>1. Vul het formulier in</li>
+                    <li>test 2</li>
+                </ul>
+                    }
                 buttonClassNameBottom="button button--bottom button--bottom-split"
                 buttonTitleBottom="Vraag een geveltuin aan"
                 linkButton="/aanvragen"
