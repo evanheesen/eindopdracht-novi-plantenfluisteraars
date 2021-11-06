@@ -9,7 +9,6 @@ import ColoredContainer from "../../components/coloredContainer/ColoredContainer
 import ImageContainer from "../../components/imageContainer/ImageContainer";
 import {useHistory} from "react-router-dom";
 import FlexContainer from "../../components/flexContainer/FlexContainer";
-import FlexItem from "../../components/flexItem/FlexItem";
 
 function Concept() {
 
@@ -20,19 +19,17 @@ function Concept() {
             <FlexContainer
                 className="FlexContainer FlexContainer__white-split"
             >
-
-                {/* Het doorgeven als flex item lukt op de een of andere manier niet. Dit */}
-
-                {/*<FlexItem*/}
-                {/*className="flexItem flexItem__split"*/}
-                {/*>*/}
                 <ColoredContainer
-                    classNameItem="section-item section-item--split"
+                    classNameItem="FlexItem FlexItem__split"
                     classNameBlock="block block--left block--red"
                     title="Het concept"
-                    text="Onze ambitie is om Amsterdam een beetje groener en socialer te maken. Daarom matchen wij bewoners die op zoek zijn naar wat meer groen aan huis met onze Plantenfluisteraars. Deze gepassioneerde groene guru's zorgen voor de aanleg van jouw geveltuin."
-                />
-                {/*</FlexItem>*/}
+                >
+                    <p className="text-justified">
+                        Onze ambitie is om Amsterdam een beetje groener en socialer te maken. Daarom matchen wij
+                        bewoners die op zoek zijn naar wat meer groen aan huis met onze Plantenfluisteraars. Deze
+                        gepassioneerde groene guru's zorgen voor de aanleg van jouw geveltuin.
+                    </p>
+                </ColoredContainer>
                 <ImageContainer
                     source={plantCorner}
                     alt="tree"
@@ -50,19 +47,24 @@ function Concept() {
                     alt4="geveltuintje-bloemen"
                 />
                 <ColoredContainer
-                    classNameItem="section-item section-item--split"
+                    classNameItem="FlexItem FlexItem__split"
                     classNameBlock="block block--right block--green"
                     title="Hoe werkt het?"
-                    text={<ul>
-                        <li>1. Vul het formulier in</li>
-                        <li>test 2</li>
-                    </ul>
-                    }
                     buttonClassNameBottom="button button--bottom button--bottom-split"
                     buttonTitleBottom="Vraag een geveltuin aan"
                     linkButton="/aanvragen"
                     buttonTypeBottom="button"
-                />
+                >
+                    <p className="text-justified">
+                        <ol>
+                            <li>Vul het formulier op DEZE PAGINA in</li>
+                            <li>FFWij checken of je voldoet aan de vereisten en verzorgen vervolgens de aanvraag bij de gemeente.</li>
+                            <li>Bij akkoord sturen we de aanvraag door naar de gemeente, die vervolgens het perkje plaatst.</li>
+                            <li>Na plaatsing komt jouw Plantenfluisteraar langs om de geveltuin te beplanten.</li>
+                            <li>Door middel van coaching of vast onderhoud ondersteunen we je om jouw geveltuin in optimale conditie te houden.</li>
+                        </ol>
+                    </p>
+                </ColoredContainer>
             </FlexContainer>
         </>
     );

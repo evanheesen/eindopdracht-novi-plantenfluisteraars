@@ -1,4 +1,5 @@
 import React from 'react';
+import './FlexItem.css';
 
 function FlexItem({className, children}) {
     return (
