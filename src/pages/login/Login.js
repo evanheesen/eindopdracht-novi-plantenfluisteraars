@@ -25,7 +25,7 @@ function Login() {
                 email: data.email,
                 password: data.password,
             });
-            console.log(result.data.accessToken);
+            console.log(result.data);
 
             // geef JWT door aan de context
             logIn(result.data.accessToken);

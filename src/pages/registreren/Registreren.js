@@ -19,7 +19,7 @@ function Registreren() {
         console.log(data)
 
         try {
-            const result = await axios.post('http://localhost:3000/register', {
+            const result = await axios.post('http://localhost:8081/bewoners', {
                 cancelToken: source.token,
                 email: data.email,
                 password: data.password,
@@ -40,7 +40,6 @@ function Registreren() {
 
     return (
         <>
-
             <div className={styles["register-container"]}>
 
                 <FormContainer
