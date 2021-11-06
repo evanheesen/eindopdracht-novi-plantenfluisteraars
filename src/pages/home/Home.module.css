@@ -1,18 +1,18 @@
 /* flex container */
-.home-container {
-    background: url("../../assets/achtergrond-groene-straat.jpg") rgba(0, 0 ,0, 0.4) center no-repeat fixed;
-    background-size: cover;
-    background-blend-mode: multiply;
-    box-sizing: border-box;
-    min-height: calc(100vh - 80px);
-    padding: 100px 10% 100px 10%;
-    display: flex;
-    flex-flow: column wrap;
-    justify-content: center;
-    align-items: flex-start;
-}
+/*.home-container {*/
+/*    background: url("../../assets/achtergrond-groene-straat.jpg") rgba(0, 0 ,0, 0.4) center no-repeat fixed;*/
+/*    background-size: cover;*/
+/*    background-blend-mode: multiply;*/
+/*    box-sizing: border-box;*/
+/*    min-height: calc(100vh - 80px);*/
+/*    padding: 100px 10% 100px 10%;*/
+/*    display: flex;*/
+/*    flex-flow: column wrap;*/
+/*    justify-content: center;*/
+/*    align-items: flex-start;*/
+/*}*/
 
 /* flex item */
-.home-item {
-    flex: 0 1 auto;
-}
+/*.home-item {*/
+/*    flex: 0 1 auto;*/
+/*}*/

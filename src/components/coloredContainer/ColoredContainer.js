@@ -1,6 +1,7 @@
 import './ColoredContainer.css';
 import React from 'react';
 import Button from "../button/Button";
+import FlexItem from "../flexItem/FlexItem";
 
 function ColoredContainer({
                               children,

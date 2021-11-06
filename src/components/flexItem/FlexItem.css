@@ -1,0 +1,25 @@
+.FlexItem {
+    flex: 1 0 40%;    /* flex = grow, shrink en flex-basis */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.FlexItem__home-item {
+    flex: 0 1 auto;
+}
+
+/* Flex items, two per row */
+.FlexItem__split {
+    width: 50%;
+}
+
+.FlexItem__split-top {
+    width: 50%;
+    margin-bottom: auto;
+}
+
+/* Flex items, one per row */
+.FlexItem__center {
+    margin: 0 10% 0 10%;
+}

@@ -8,49 +8,63 @@ import geveltuintje4 from "../../assets/geveltuintje4.jpg";
 import ColoredContainer from "../../components/coloredContainer/ColoredContainer";
 import ImageContainer from "../../components/imageContainer/ImageContainer";
 import {useHistory} from "react-router-dom";
+import FlexContainer from "../../components/flexContainer/FlexContainer";
+import FlexItem from "../../components/flexItem/FlexItem";
 
 function Concept() {
 
     const history = useHistory();
 
     return (
-        <div className="section--split">
-            <ColoredContainer
-                classNameItem="section-item section-item--split"
-                classNameBlock="block block--left block--red"
-                title="Het concept"
-                text="Onze ambitie is om Amsterdam een beetje groener en socialer te maken. Daarom matchen wij bewoners die op zoek zijn naar wat meer groen aan huis met onze Plantenfluisteraars. Deze gepassioneerde groene guru's zorgen voor de aanleg van jouw geveltuin."
-            />
-            <ImageContainer
-                source={plantCorner}
-                alt="tree"
-                classNameImg="image image--top"
-            />
-            <ImageContainer
-                classNameImg="image image--left"
-                source={geveltuintje1}
-                source2={geveltuintje2}
-                source3={geveltuintje3}
-                source4={geveltuintje4}
-                alt="geveltuintje-voorbeeld"
-                alt2="geveltuintje-bloem"
-                alt3="geveltuintje-bedrijf"
-                alt4="geveltuintje-bloemen"
-            />
-            <ColoredContainer
-                classNameItem="section-item section-item--split"
-                classNameBlock="block block--right block--green"
-                title="Hoe werkt het?"
-                text={<ul><li>1. Vul het formulier in</li>
-                    <li>test 2</li>
-                </ul>
+        <>
+            <FlexContainer
+                className="FlexContainer FlexContainer__white-split"
+            >
+
+                {/* Het doorgeven als flex item lukt op de een of andere manier niet. Dit */}
+
+                {/*<FlexItem*/}
+                {/*className="flexItem flexItem__split"*/}
+                {/*>*/}
+                <ColoredContainer
+                    classNameItem="section-item section-item--split"
+                    classNameBlock="block block--left block--red"
+                    title="Het concept"
+                    text="Onze ambitie is om Amsterdam een beetje groener en socialer te maken. Daarom matchen wij bewoners die op zoek zijn naar wat meer groen aan huis met onze Plantenfluisteraars. Deze gepassioneerde groene guru's zorgen voor de aanleg van jouw geveltuin."
+                />
+                {/*</FlexItem>*/}
+                <ImageContainer
+                    source={plantCorner}
+                    alt="tree"
+                    classNameImg="image image--top"
+                />
+                <ImageContainer
+                    classNameImg="image image--left"
+                    source={geveltuintje1}
+                    source2={geveltuintje2}
+                    source3={geveltuintje3}
+                    source4={geveltuintje4}
+                    alt="geveltuintje-voorbeeld"
+                    alt2="geveltuintje-bloem"
+                    alt3="geveltuintje-bedrijf"
+                    alt4="geveltuintje-bloemen"
+                />
+                <ColoredContainer
+                    classNameItem="section-item section-item--split"
+                    classNameBlock="block block--right block--green"
+                    title="Hoe werkt het?"
+                    text={<ul>
+                        <li>1. Vul het formulier in</li>
+                        <li>test 2</li>
+                    </ul>
                     }
-                buttonClassNameBottom="button button--bottom button--bottom-split"
-                buttonTitleBottom="Vraag een geveltuin aan"
-                linkButton="/aanvragen"
-                buttonTypeBottom="button"
-            />
-        </div>
+                    buttonClassNameBottom="button button--bottom button--bottom-split"
+                    buttonTitleBottom="Vraag een geveltuin aan"
+                    linkButton="/aanvragen"
+                    buttonTypeBottom="button"
+                />
+            </FlexContainer>
+        </>
     );
 }
 

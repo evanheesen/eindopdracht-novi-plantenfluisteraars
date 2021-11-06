@@ -36,6 +36,7 @@ function Prijzen() {
             <div className={styles["flex-container"]}>
                 <div className={styles["flex-item"]}>
                     <Description
+                        className="white"
                         title="Prijs aanleg beplanting geveltuin"
                         text="Voor de aanleg van de beplanting kan je kiezen
                     uit drie verschillende pakketten:"
