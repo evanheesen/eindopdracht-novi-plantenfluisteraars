@@ -1,9 +1,9 @@
-.description__centered {
-    text-align: center;
-}
-
 .description {
     text-align: justify;
+}
+
+.description__centered {
+    text-align: center;
 }
 
 .description__title--red {

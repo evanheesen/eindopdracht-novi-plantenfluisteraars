@@ -1,11 +1,12 @@
 import React from 'react';
 import './Description.css';
 
-function Description({title, text, className, colorTitle, colorText}) {
+function Description({title, text, className, classNameTitle, classNameText}) {
+    // const cnTitle = {`"description__title--"${colorTitle}`}
     return (
         <div className={className}>
-            <h2 className={`"description__title--red"`}>{title}</h2>
-            <p className={`"description__text--${colorText}"`}>{text}</p>
+            <h2 className={classNameTitle}>{title}</h2>
+            <p className={classNameText}>{text}</p>
         </div>
     );
 }

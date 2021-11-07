@@ -44,8 +44,8 @@ function Prijzen() {
 
                     <Description
                         className="description__centered"
-                        colorTitle="red"
-                        colorText="dark"
+                        classNameTitle="description__title--white"
+                        classNameText="description--text--white"
                         title="Prijs aanleg beplanting geveltuin"
                         text="Voor de aanleg van de beplanting kan je kiezen
                     uit drie verschillende pakketten:"
@@ -54,7 +54,7 @@ function Prijzen() {
                 </FlexItem>
 
                 <FlexItem className="FlexItem">
-                    <div className={styles["flex-item__overview"]}>
+                    <FlexItem className="FlexItem__overview">
                         <OverviewContainer
                             image={plant}
                             imageAlt="plant-groen"
@@ -85,44 +85,44 @@ function Prijzen() {
                             bullit1="Onderhoudsintensiever"
                             bullit2="Zeer fraaie uitstraling"
                         />
-                    </div>
+                    </FlexItem>
                 </FlexItem>
             </FlexContainer>
 
-            <ColoredContainer
-                classNameItem="section-item section-item--center"
-                classNameBlock="block block--center block--green"
-                buttonClassNameTop="button button--top button--top-centered"
-                buttonTitleTop="Prijs aanleg"
-                title="Prijs aanleg beplanting geveltuin"
-                text="Voor de aanleg van de beplanting kan je kiezen uit drie verschillende pakketten:"
-                classNameColumns="overview-container overview-container--white"
-            >
-                <OverviewContainer
-                    subTitle="Pakket 1"
-                    description="Lage wintergroene beplanting"
-                    priceAmount="25"
-                    unit="/ 30cm breedte"
-                    bullit1="Laag onderhoud"
-                    bullit2="Hele jaar door groen"
-                />
-                <OverviewContainer
-                    subTitle="Pakket 2"
-                    description="Lage kleurrijke beplanting"
-                    priceAmount="30"
-                    unit="/ 30cm breedte"
-                    bullit1="Onderhoudsintensiever"
-                    bullit2="Zeer kleurrijk in de lente en zomer"
-                />
-                <OverviewContainer
-                    subTitle="Pakket 3"
-                    description="Kleurrijke klimbeplanting"
-                    priceAmount="35"
-                    unit="/ 30cm breedte"
-                    bullit1="Onderhoudsintensiever"
-                    bullit2="Zeer fraaie uitstraling"
-                />
-            </ColoredContainer>
+            {/*<ColoredContainer*/}
+            {/*    classNameItem="section-item section-item--center"*/}
+            {/*    classNameBlock="block block--center block--green"*/}
+            {/*    buttonClassNameTop="button button--top button--top-centered"*/}
+            {/*    buttonTitleTop="Prijs aanleg"*/}
+            {/*    title="Prijs aanleg beplanting geveltuin"*/}
+            {/*    text="Voor de aanleg van de beplanting kan je kiezen uit drie verschillende pakketten:"*/}
+            {/*    classNameColumns="overview-container overview-container--white"*/}
+            {/*>*/}
+            {/*    <OverviewContainer*/}
+            {/*        subTitle="Pakket 1"*/}
+            {/*        description="Lage wintergroene beplanting"*/}
+            {/*        priceAmount="25"*/}
+            {/*        unit="/ 30cm breedte"*/}
+            {/*        bullit1="Laag onderhoud"*/}
+            {/*        bullit2="Hele jaar door groen"*/}
+            {/*    />*/}
+            {/*    <OverviewContainer*/}
+            {/*        subTitle="Pakket 2"*/}
+            {/*        description="Lage kleurrijke beplanting"*/}
+            {/*        priceAmount="30"*/}
+            {/*        unit="/ 30cm breedte"*/}
+            {/*        bullit1="Onderhoudsintensiever"*/}
+            {/*        bullit2="Zeer kleurrijk in de lente en zomer"*/}
+            {/*    />*/}
+            {/*    <OverviewContainer*/}
+            {/*        subTitle="Pakket 3"*/}
+            {/*        description="Kleurrijke klimbeplanting"*/}
+            {/*        priceAmount="35"*/}
+            {/*        unit="/ 30cm breedte"*/}
+            {/*        bullit1="Onderhoudsintensiever"*/}
+            {/*        bullit2="Zeer fraaie uitstraling"*/}
+            {/*    />*/}
+            {/*</ColoredContainer>*/}
 
             <ColoredContainer
                 classNameItem="section-item section-item--center"
