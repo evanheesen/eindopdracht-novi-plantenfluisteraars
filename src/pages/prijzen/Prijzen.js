@@ -7,6 +7,8 @@ import ImageContainer from "../../components/imageContainer/ImageContainer";
 import OverviewContainer from "../../components/overviewContainer/OverviewContainer";
 import {useHistory} from "react-router-dom";
 import Description from "../../components/description/Description";
+import FlexContainer from "../../components/flexContainer/FlexContainer";
+import FlexItem from "../../components/flexItem/FlexItem";
 
 function Prijzen() {
 
@@ -14,69 +16,78 @@ function Prijzen() {
 
     return (
         <>
-            <div className="section--center">
+            <FlexContainer className="FlexContainer FlexContainer__white-split">
                 <ColoredContainer
-                    classNameItem="section-item section-item--split"
+                    classNameItem="FlexItem FlexItem__split"
                     classNameBlock="block block--left block--green"
                     title="Prijzen"
-                    text="We maken onderscheid in de aanleg van een geveltuin enerzijds en het onderhoud van een bestaande geveltuin anderzijds. Het afnemen van een onderhoudsplan is verplicht. Er kan bij het onderhoud worden gekozen tussen een vast onderhoudsplan of een coachingsplan."
                     buttonClassNameBottom="button button--bottom button--bottom-split"
                     buttonTitleBottom="Vraag een geveltuin aan"
                     linkButton="/aanvragen"
                     buttonTypeBottom="button"
-                />
+                >
+                    <p className="text-justified">
+                        We maken onderscheid in de aanleg van een geveltuin enerzijds en het onderhoud van een bestaande
+                        geveltuin anderzijds. Het afnemen van een onderhoudsplan is verplicht. Er kan bij het onderhoud
+                        worden gekozen tussen een vast onderhoudsplan of een coachingsplan."
+                    </p>
+                </ColoredContainer>
                 <ImageContainer
                     source={aanlegGeveltuin}
                     alt="aanleg-geveltuin"
                     classNameImg="image image--right"
                 />
-            </div>
+            </FlexContainer>
 
-            {/* apart component voor container maken!! */}
-            <div className={styles["flex-container"]}>
-                <div className={styles["flex-item"]}>
+            <FlexContainer className="FlexContainer__image-container">
+                <FlexItem className="FlexItem">
+
                     <Description
-                        className="white"
+                        className="description__centered"
+                        colorTitle="red"
+                        colorText="dark"
                         title="Prijs aanleg beplanting geveltuin"
                         text="Voor de aanleg van de beplanting kan je kiezen
                     uit drie verschillende pakketten:"
                     />
-                </div>
-                <div className={styles["flex-item"]}>
+
+                </FlexItem>
+
+                <FlexItem className="FlexItem">
                     <div className={styles["flex-item__overview"]}>
-                    <OverviewContainer
-                        image={plant}
-                        imageAlt="plant-groen"
-                        subTitle="PAKKET 1"
-                        description="Lage wintergroene beplanting"
-                        priceAmount="25"
-                        unit="/ 30cm breedte"
-                        bullit1="Laag onderhoud"
-                        bullit2="Hele jaar door groen"
-                    />
-                    <OverviewContainer
-                        image={plant}
-                        imageAlt="plant-groen"
-                        subTitle="Pakket 2"
-                        description="Lage kleurrijke beplanting"
-                        priceAmount="30"
-                        unit="/ 30cm breedte"
-                        bullit1="Onderhoudsintensiever"
-                        bullit2="Zeer kleurrijk in de lente en zomer"
-                    />
-                    <OverviewContainer
-                        image={plant}
-                        imageAlt="plant-groen"
-                        subTitle="Pakket 3"
-                        description="Kleurrijke klimbeplanting"
-                        priceAmount="35"
-                        unit="/ 30cm breedte"
-                        bullit1="Onderhoudsintensiever"
-                        bullit2="Zeer fraaie uitstraling"
-                    />
+                        <OverviewContainer
+                            image={plant}
+                            imageAlt="plant-groen"
+                            subTitle="PAKKET 1"
+                            description="Lage wintergroene beplanting"
+                            priceAmount="25"
+                            unit="/ 30cm breedte"
+                            bullit1="Laag onderhoud"
+                            bullit2="Hele jaar door groen"
+                        />
+                        <OverviewContainer
+                            image={plant}
+                            imageAlt="plant-groen"
+                            subTitle="Pakket 2"
+                            description="Lage kleurrijke beplanting"
+                            priceAmount="30"
+                            unit="/ 30cm breedte"
+                            bullit1="Onderhoudsintensiever"
+                            bullit2="Zeer kleurrijk in de lente en zomer"
+                        />
+                        <OverviewContainer
+                            image={plant}
+                            imageAlt="plant-groen"
+                            subTitle="Pakket 3"
+                            description="Kleurrijke klimbeplanting"
+                            priceAmount="35"
+                            unit="/ 30cm breedte"
+                            bullit1="Onderhoudsintensiever"
+                            bullit2="Zeer fraaie uitstraling"
+                        />
                     </div>
-                </div>
-            </div>
+                </FlexItem>
+            </FlexContainer>
 
             <ColoredContainer
                 classNameItem="section-item section-item--center"

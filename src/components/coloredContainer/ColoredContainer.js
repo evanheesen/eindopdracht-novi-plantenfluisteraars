@@ -23,10 +23,10 @@ function ColoredContainer({
     return (
         // <div className={classNameItem}>
         <>
-            <FlexItem
-                className={classNameItem}
-            >
+            <FlexItem className={classNameItem}>
                 <section className={classNameBlock}>
+
+                    {/* If there's a top button: */}
                     {buttonTitleTop &&
                     <Button
                         className={buttonClassNameTop}
@@ -35,11 +35,9 @@ function ColoredContainer({
                     />}
 
                     {title &&
-                    <h2 className="text-justified">{title}</h2>
-                    }
+                    <h2 className="text-justified">{title}</h2>}
                     {text &&
-                    <p className="text-justified">{text}</p>
-                    }
+                    <p className="text-justified">{text}</p>}
 
                     {children}
 
@@ -50,6 +48,7 @@ function ColoredContainer({
                     {/*</div>*/}
                     {/*}*/}
 
+                    {/* If there's a bottom button: */}
                     {buttonTitleBottom &&
                     <Button
                         className={buttonClassNameBottom}
@@ -58,6 +57,7 @@ function ColoredContainer({
                         type={buttonTypeBottom}
                         link={linkButton}
                     />}
+
                 </section>
             </FlexItem>
         </>

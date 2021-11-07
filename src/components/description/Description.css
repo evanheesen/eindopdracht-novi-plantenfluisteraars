@@ -1,0 +1,24 @@
+.description__centered {
+    text-align: center;
+}
+
+.description {
+    text-align: justify;
+}
+
+.description__title--red {
+    color: #CD5C5C;
+}
+
+.description__text--dark {
+    color: #22333B;
+}
+
+.description__title--white {
+    color: #F1F1EF;
+}
+
+.description__text--white {
+    color: #F1F1EF;
+}
+

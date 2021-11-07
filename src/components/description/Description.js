@@ -1,11 +1,11 @@
 import React from 'react';
-import styles from './Description.module.css';
+import './Description.css';
 
-function Description({title, text, className}) {
+function Description({title, text, className, colorTitle, colorText}) {
     return (
         <div className={className}>
-            <h2 className={styles["title"]}>{title}</h2>
-            <p className={styles["description"]}>{text}</p>
+            <h2 className={`"description__title--red"`}>{title}</h2>
+            <p className={`"description__text--${colorText}"`}>{text}</p>
         </div>
     );
 }

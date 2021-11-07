@@ -14,10 +14,17 @@
     margin-left: auto;
 }
 
-.image--top {
+.image__top {
     max-width: 600px;
     margin-left: auto;
 }
+
+.image__top--no-margin {
+    display: block;
+    margin-top: 0;
+
+}
+
 
 .image--bottom {
     max-height: 600px;

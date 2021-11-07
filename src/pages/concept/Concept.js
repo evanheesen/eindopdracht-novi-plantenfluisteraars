@@ -57,8 +57,8 @@ function Concept() {
                 >
                     <p className="text-justified">
                         <ol>
-                            <li>Vul het formulier op DEZE PAGINA in</li>
-                            <li>FFWij checken of je voldoet aan de vereisten en verzorgen vervolgens de aanvraag bij de gemeente.</li>
+                            <li>Vul het formulier op --DEZE PAGINA-- in</li>
+                            <li>Wij checken of je voldoet aan de vereisten en verzorgen vervolgens de aanvraag bij de gemeente.</li>
                             <li>Bij akkoord sturen we de aanvraag door naar de gemeente, die vervolgens het perkje plaatst.</li>
                             <li>Na plaatsing komt jouw Plantenfluisteraar langs om de geveltuin te beplanten.</li>
                             <li>Door middel van coaching of vast onderhoud ondersteunen we je om jouw geveltuin in optimale conditie te houden.</li>
