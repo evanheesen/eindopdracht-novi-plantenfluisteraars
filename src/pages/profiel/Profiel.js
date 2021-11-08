@@ -65,7 +65,7 @@ function Profiel() {
     return (
         <div className={styles["profile-container"]}>
 
-            {/*{Object.keys(userData).length > 0 &&*/}
+            {Object.keys(user).length > 0 &&
             <>
                 <ColoredContainer
                     classNameItem="section-item section-item--split"
