@@ -59,6 +59,7 @@ function AuthContextProvider({children}) {
                     }
                 });
 
+            console.log("result:")
             console.log(result);
 
             // als userinformatie kan worden opgehaald:
