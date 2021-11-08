@@ -22,7 +22,7 @@ function Profiel() {
             // toggleLoading(true);
 
             try {
-                const result = await axios.get(`http://localhost:8081/plantenfluisteraars`);
+                const result = await axios.get(`http://localhost:8081/users`);
                 console.log(result.data);
                 setUserData(result.data);
             } catch (e) {

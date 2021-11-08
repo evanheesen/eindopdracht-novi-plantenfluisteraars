@@ -4,7 +4,7 @@ import aanlegGeveltuin from "../../assets/aanleg-geveltuin.webp";
 import plant from "../../assets/plant-transparent.png";
 import ColoredContainer from "../../components/coloredContainer/ColoredContainer";
 import ImageContainer from "../../components/imageContainer/ImageContainer";
-import OverviewContainer from "../../components/overviewContainer/OverviewContainer";
+import OverviewItem from "../../components/overviewContainer/overviewItem/OverviewItem";
 import {useHistory} from "react-router-dom";
 import Description from "../../components/description/Description";
 import FlexContainer from "../../components/flexContainer/FlexContainer";
@@ -54,18 +54,23 @@ function Prijzen() {
                 </FlexItem>
 
                 <FlexItem className="FlexItem">
-                    <FlexItem className="FlexItem__overview">
-                        <OverviewContainer
+                    <FlexItem
+                        className="FlexItem__overview"
+                        buttonClassName="button button--bottom button--red button--bottom-centered"
+                        buttonTitle="Vraag een geveltuin aan"
+                        linkButton="/aanvragen"
+                    >
+                        <OverviewItem
                             image={plant}
                             imageAlt="plant-groen"
-                            subTitle="PAKKET 1"
+                            subTitle="Pakket 1"
                             description="Lage wintergroene beplanting"
                             priceAmount="25"
                             unit="/ 30cm breedte"
                             bullit1="Laag onderhoud"
                             bullit2="Hele jaar door groen"
                         />
-                        <OverviewContainer
+                        <OverviewItem
                             image={plant}
                             imageAlt="plant-groen"
                             subTitle="Pakket 2"
@@ -75,7 +80,7 @@ function Prijzen() {
                             bullit1="Onderhoudsintensiever"
                             bullit2="Zeer kleurrijk in de lente en zomer"
                         />
-                        <OverviewContainer
+                        <OverviewItem
                             image={plant}
                             imageAlt="plant-groen"
                             subTitle="Pakket 3"
@@ -98,7 +103,7 @@ function Prijzen() {
             {/*    text="Voor de aanleg van de beplanting kan je kiezen uit drie verschillende pakketten:"*/}
             {/*    classNameColumns="overview-container overview-container--white"*/}
             {/*>*/}
-            {/*    <OverviewContainer*/}
+            {/*    <OverviewItem*/}
             {/*        subTitle="Pakket 1"*/}
             {/*        description="Lage wintergroene beplanting"*/}
             {/*        priceAmount="25"*/}
@@ -106,7 +111,7 @@ function Prijzen() {
             {/*        bullit1="Laag onderhoud"*/}
             {/*        bullit2="Hele jaar door groen"*/}
             {/*    />*/}
-            {/*    <OverviewContainer*/}
+            {/*    <OverviewItem*/}
             {/*        subTitle="Pakket 2"*/}
             {/*        description="Lage kleurrijke beplanting"*/}
             {/*        priceAmount="30"*/}
@@ -114,7 +119,7 @@ function Prijzen() {
             {/*        bullit1="Onderhoudsintensiever"*/}
             {/*        bullit2="Zeer kleurrijk in de lente en zomer"*/}
             {/*    />*/}
-            {/*    <OverviewContainer*/}
+            {/*    <OverviewItem*/}
             {/*        subTitle="Pakket 3"*/}
             {/*        description="Kleurrijke klimbeplanting"*/}
             {/*        priceAmount="35"*/}
@@ -137,7 +142,7 @@ function Prijzen() {
                 buttonTypeBottom="button"
                 classNameColumns="overview-container overview-container--white"
             >
-                <OverviewContainer
+                <OverviewItem
                     subTitle="Coachingsplan"
                     description="Periodieke coaching waarbij je Plantenfluisteraar je helpt om zelf je geveltuin in optimale conditie te houden."
                     priceAmount="5"
@@ -145,7 +150,7 @@ function Prijzen() {
                     bullit1="5 fysieke coachingssessies per jaar"
                     bullit2="Minimale duur 1 jaar"
                 />
-                <OverviewContainer
+                <OverviewItem
                     classNameColumns="test-column"
                     subTitle="Vast plan"
                     description="Vast periodiek onderhoudsplan waarbij je Plantenfluisteraar al het onderhoudswerk uit handen neemt."

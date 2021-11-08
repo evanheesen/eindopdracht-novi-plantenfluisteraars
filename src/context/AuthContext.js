@@ -48,10 +48,10 @@ function AuthContextProvider({children}) {
     }, [])
 
     async function getUserData(token, decodedToken, pushlink) {
-        const idUser = decodedToken.sub; // <--- dit nog aanpassen aan backend!!
+        const idUser = decodedToken.sub;
 
         try {
-            const result = await axios.get(`http://localhost:3000/600/users/${idUser}`,
+            const result = await axios.get(`http://localhost:8081/users/${idUser}`,
                 {
                     headers: {
                         "Content-Type": "application/json",
@@ -66,7 +66,8 @@ function AuthContextProvider({children}) {
                 ...isAuth,
                 isAuth: true,
                 user: {
-                    email: result.data.email,
+                    username: result.data.username,
+                    // email: result.data.email,
                     id: result.data.id,
                     fistName: result.data.firstName,
                     lastName: result.data.lastName,

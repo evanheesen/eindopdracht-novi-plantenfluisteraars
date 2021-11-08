@@ -1,0 +1,62 @@
+/* Flex container overview columns */
+/*.OverviewContainer {*/
+/*    color: black;*/
+/*    padding: 20px 20px 0 20px;*/
+/*    text-align: center;*/
+/*    display: flex;*/
+/*    flex-flow: row wrap;*/
+/*    justify-content: space-evenly;*/
+/*    align-items: flex-start;*/
+/*    align-content: center;*/
+/*    gap: 20px 20px;*/
+/*}*/
+
+.OverviewItem {
+    color: black;
+    text-align: center;
+    flex: 1;
+    /*max-width: 550px;*/
+    min-width: 300px;
+    padding: 20px 20px 20px 10px;
+}
+
+.OverviewItem:hover {
+    background-color: rgba(241, 241, 239, 0.3);
+    border-radius: 50px;
+}
+
+.OverviewItem__subtitle {
+    font-weight: 400;
+}
+
+/* wat te doen met deze 3 ??? */
+.overview-container--white {
+    color: black;
+}
+.overview-container--white h3 {
+    color: #CD5C5C;
+    font-weight: bolder;
+}
+.overview-container--white p {
+    font-style: italic;
+}
+
+
+
+ul.overview-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    /*padding-left: 30px;*/
+    text-align: center;
+}
+
+ul.overview-list li {
+    padding-bottom: 10px;
+}
+
+.OverviewItem__img {
+    width: 200px;
+    margin: 0 auto 0 auto;
+    border-radius: 50%;
+}

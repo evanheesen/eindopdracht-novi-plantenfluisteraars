@@ -20,15 +20,16 @@ function Login() {
         console.log(data);
 
         try {
-            const result = await axios.post('http://localhost:3000/login', {
+            const result = await axios.post('http://localhost:8081/authenticate', {
                 cancelToken: source.token,
-                email: data.email,
+                // email: data.email,
+                username: data.username,
                 password: data.password,
             });
             console.log(result.data);
 
             // geef JWT door aan de context
-            logIn(result.data.accessToken);
+            logIn(result.data.jwt);
 
             return function cleanup() {
                 source.cancel();
@@ -55,7 +56,7 @@ function Login() {
                         errors={errors}
                         register={register}
                         classNameItem="form-item--full"
-                        name="email"
+                        name="username"
                         label="Emailadres"
                         inputType="text"
                         className={styles["inputField"]}

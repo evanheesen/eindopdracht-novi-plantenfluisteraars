@@ -21,7 +21,6 @@ function ColoredContainer({
                           }) {
 
     return (
-        // <div className={classNameItem}>
         <>
             <FlexItem className={classNameItem}>
                 <section className={classNameBlock}>
@@ -61,7 +60,6 @@ function ColoredContainer({
                 </section>
             </FlexItem>
         </>
-        // </div>
     );
 }
 
