@@ -1,5 +1,5 @@
 import React, {useContext, useEffect, useState} from 'react';
-import {Link} from "react-router-dom";
+import {useHistory} from "react-router-dom";
 import {AuthContext} from "../../context/AuthContext";
 import axios from "axios";
 import ColoredContainer from "../../components/coloredContainer/ColoredContainer";
@@ -8,42 +8,57 @@ import profileAnonymous from '../../assets/profile-picture-anonymous.png';
 import ImageContainer from "../../components/imageContainer/ImageContainer";
 import Button from "../../components/button/Button";
 import Description from "../../components/description/Description";
+import jwtDecode from "jwt-decode";
 
 function Profiel() {
 
+    const history = useHistory();
     const {user} = useContext(AuthContext);
+    const {getUserData} = useContext(AuthContext);
     console.log("user data uit context:")
     console.log(user);
 
-    const [userData, setUserData] = useState({});
-    const [error, toggleError] = useState(false);
+
+    // const [userData, setUserData] = useState({});
+    // const [error, toggleError] = useState(false);
     // const [loading, toggleLoading] = useState(false);
 
     useEffect(() => {
+        const token = localStorage.getItem('token');
 
-        async function fetchData() {
-            // toggleError(false);
-            // toggleLoading(true);
-            const token = localStorage.getItem('token')
-            const userId = user.username;
-
-            try {
-                const result = await axios.get(`http://localhost:8081/users/${userId}`, {
-                    headers: {
-                        "Content-Type": "application/json",
-                        Authorization: `Bearer ${token}`,
-                    }
-                });
-                console.log(result.data);
-                setUserData(result.data);
-            } catch (e) {
-                console.error(e);
-                // toggleError(true);
-            }
-            // toggleLoading(false);
+        if(token) {
+        const decodedToken = jwtDecode(token);
+            getUserData(token, decodedToken);
+        } else {
+            console.log("De gebruiker is niet geauthoriseerd")
+            history.push("/login")
         }
 
-        fetchData();
+
+
+        // async function fetchData() {
+        //     // toggleError(false);
+        //     // toggleLoading(true);
+        //     const token = localStorage.getItem('token')
+        //     const userId = user.username;
+        //
+        //     try {
+        //         const result = await axios.get(`http://localhost:8081/users/${userId}`, {
+        //             headers: {
+        //                 "Content-Type": "application/json",
+        //                 Authorization: `Bearer ${token}`,
+        //             }
+        //         });
+        //         console.log(result.data);
+        //         setUserData(result.data);
+        //     } catch (e) {
+        //         console.error(e);
+        //         // toggleError(true);
+        //     }
+        //     // toggleLoading(false);
+        // }
+        //
+        // fetchData();
 
     }, []);
 
@@ -59,8 +74,8 @@ function Profiel() {
                 >
                     {/*<p><strong>Voornaam:</strong> {user.firstName}</p>*/}
                     {/*<p><strong>Achternaam:</strong> {user.lastName}</p>*/}
-                    {/*<p><strong>Username:</strong> {userData[0].username}</p>*/}
-                    <p><strong>Username:</strong> [username]</p>
+                    <p><strong>Username:</strong> {user.username}</p>
+                    {/*<p><strong>Username:</strong> [username]</p>*/}
                     {/*<p><strong>Achternaam:</strong> {userData[0].lastName}</p>*/}
                     {/*<p><strong>Email:</strong> {userData[0].email}</p>*/}
                 </ColoredContainer>

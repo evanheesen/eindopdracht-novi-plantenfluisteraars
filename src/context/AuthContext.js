@@ -123,6 +123,7 @@ function AuthContextProvider({children}) {
         user: isAuth.user,
         logIn: logIn,
         logOut: logOut,
+        getUserData: getUserData,
     }
 
     return (
