@@ -29,6 +29,10 @@
     margin-right: auto;
 }
 
+.block--profile {
+    width: 400px;
+}
+
 .block--white {
     background-color: #F1F1EF;
     border: 5px solid #22333B;

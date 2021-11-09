@@ -27,6 +27,13 @@
     margin-bottom: auto;
 }
 
+.FlexItem__profile {
+    width: 50%;
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: 600px;
+}
+
 /* Flex items, one per row */
 .FlexItem__center {
     margin: 0 10% 0 10%;

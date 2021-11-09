@@ -67,9 +67,9 @@ function AuthContextProvider({children}) {
             if (result.data.employee === null && result.data.customer === null) {
                 userType = "";
             } else if (result.data.employee != null) {
-                userType = "plantenfluisteraar"
+                userType = "employee"
             } else {
-                userType = "bewoner"
+                userType = "customer"
             }
 
             // als userinformatie kan worden opgehaald:

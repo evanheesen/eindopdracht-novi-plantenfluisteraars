@@ -19,18 +19,15 @@ function Profiel() {
     const {user} = useContext(AuthContext);
     const {getUserData} = useContext(AuthContext);
     const userType = user.type;
-    // const image = {};
-    //
-    // {
-    //     if (user.info.employee.dbfile === null) {
-    //         profileAnonymous
+    const data = user.info[userType]
+    // let image = {};
+
+    // if (user.info.employee.dbfile === null) {
+    //         image = {profileAnonymous}
     //     } else {
     //         {user.info.employee.dbfile[0].fileDownloadUri}
     //     }
-    // }
 
-    // vragen hoe deze te combineren tot 1 variable
-    const data = "user.info." + userType
 
     // const [userData, setUserData] = useState({});
     // const [error, toggleError] = useState(false);
@@ -56,8 +53,8 @@ function Profiel() {
             {Object.keys(user).length > 0 &&
             <>
                 <ColoredContainer
-                    classNameItem="FlexItem FlexItem__split-top"
-                    classNameBlock="block block--left block--red"
+                    classNameItem="FlexItem FlexItem__split"
+                    classNameBlock="block block--profile block--green"
                     title="Profiel"
                 >
 
@@ -65,19 +62,19 @@ function Profiel() {
                     <strong>Gebruikersnaam:</strong> {user.info.username}
                     <p><i>Wachtwoord wijzigen</i></p>
                     </InfoSection>
-                    {user.type &&
+                    {userType &&
                     <>
                         {/* Componenten met flex van maken! */}
                         <InfoSection>
-                            <strong>Voornaam:</strong> {user.info.employee.firstName}
-                            <p><strong>Achternaam:</strong> {user.info.employee.lastName}</p>
-                            <p><strong>Email:</strong> {user.info.employee.email}</p>
-                            <p><strong>Telefoonnummer:</strong> {user.info.employee.phone}</p>
+                            <strong>Voornaam:</strong> {data.firstName}
+                            <p><strong>Achternaam:</strong> {data.lastName}</p>
+                            <p><strong>Email:</strong> {data.email}</p>
+                            <p><strong>Telefoonnummer:</strong> {data.phone}</p>
                         </InfoSection>
                         <InfoSection>
-                            <strong>Adres:</strong> {`${user.info.employee.street} ${user.info.employee.houseNumber}`}
-                            <p><strong>Postcode:</strong> {user.info.employee.postalCode}</p>
-                            <p><strong>Woonplaats:</strong> {user.info.employee.city}</p>
+                            <strong>Adres:</strong> {`${data.street} ${data.houseNumber}`}
+                            <p><strong>Postcode:</strong> {data.postalCode}</p>
+                            <p><strong>Woonplaats:</strong> {data.city}</p>
                         </InfoSection>
                     </>}
 
@@ -95,14 +92,14 @@ function Profiel() {
 
                 <Button
                     type="button"
-                    className="button button--dark"
+                    className="button button--red"
                     name="Toon jouw geveltuintjes"
                     /* onClick= wijzigen state naar lijst aanvragen in profiel */
                 />
                 <Button
                     type="button"
                     id="buttonRequests"
-                    className="button button--dark"
+                    className="button button--red"
                     name="Toon open aanvragen"
                     /* onClick= wijzigen state naar lijst aanvragen met open status */
                 />
