@@ -9,15 +9,28 @@ import ImageContainer from "../../components/imageContainer/ImageContainer";
 import Button from "../../components/button/Button";
 import Description from "../../components/description/Description";
 import jwtDecode from "jwt-decode";
+import InfoSection from "../../components/profiel/infoSection/InfoSection";
+import FlexContainer from "../../components/flexContainer/FlexContainer";
+import FileUpload from "../../components/profiel/fileUpload/FileUpload";
 
 function Profiel() {
 
     const history = useHistory();
     const {user} = useContext(AuthContext);
     const {getUserData} = useContext(AuthContext);
-    console.log("user data uit context:")
-    console.log(user);
+    const userType = user.type;
+    // const image = {};
+    //
+    // {
+    //     if (user.info.employee.dbfile === null) {
+    //         profileAnonymous
+    //     } else {
+    //         {user.info.employee.dbfile[0].fileDownloadUri}
+    //     }
+    // }
 
+    // vragen hoe deze te combineren tot 1 variable
+    const data = "user.info." + userType
 
     // const [userData, setUserData] = useState({});
     // const [error, toggleError] = useState(false);
@@ -26,64 +39,59 @@ function Profiel() {
     useEffect(() => {
         const token = localStorage.getItem('token');
 
-        if(token) {
-        const decodedToken = jwtDecode(token);
+        if (token) {
+            const decodedToken = jwtDecode(token);
             getUserData(token, decodedToken);
         } else {
             console.log("De gebruiker is niet geauthoriseerd")
             history.push("/login")
         }
 
-
-
-        // async function fetchData() {
-        //     // toggleError(false);
-        //     // toggleLoading(true);
-        //     const token = localStorage.getItem('token')
-        //     const userId = user.username;
-        //
-        //     try {
-        //         const result = await axios.get(`http://localhost:8081/users/${userId}`, {
-        //             headers: {
-        //                 "Content-Type": "application/json",
-        //                 Authorization: `Bearer ${token}`,
-        //             }
-        //         });
-        //         console.log(result.data);
-        //         setUserData(result.data);
-        //     } catch (e) {
-        //         console.error(e);
-        //         // toggleError(true);
-        //     }
-        //     // toggleLoading(false);
-        // }
-        //
-        // fetchData();
-
     }, []);
 
     return (
-        <div className={styles["profile-container"]}>
+        <>
+            <FlexContainer className="FlexContainer FlexContainer__image-container FlexContainer__image-container--profile">
 
             {Object.keys(user).length > 0 &&
             <>
                 <ColoredContainer
-                    classNameItem="section-item section-item--split"
+                    classNameItem="FlexItem FlexItem__split-top"
                     classNameBlock="block block--left block--red"
                     title="Profiel"
                 >
-                    {/*<p><strong>Voornaam:</strong> {user.firstName}</p>*/}
-                    {/*<p><strong>Achternaam:</strong> {user.lastName}</p>*/}
-                    <p><strong>Username:</strong> {user.username}</p>
-                    {/*<p><strong>Username:</strong> [username]</p>*/}
-                    {/*<p><strong>Achternaam:</strong> {userData[0].lastName}</p>*/}
-                    {/*<p><strong>Email:</strong> {userData[0].email}</p>*/}
+
+                    <InfoSection>
+                    <strong>Gebruikersnaam:</strong> {user.info.username}
+                    <p><i>Wachtwoord wijzigen</i></p>
+                    </InfoSection>
+                    {user.type &&
+                    <>
+                        {/* Componenten met flex van maken! */}
+                        <InfoSection>
+                            <strong>Voornaam:</strong> {user.info.employee.firstName}
+                            <p><strong>Achternaam:</strong> {user.info.employee.lastName}</p>
+                            <p><strong>Email:</strong> {user.info.employee.email}</p>
+                            <p><strong>Telefoonnummer:</strong> {user.info.employee.phone}</p>
+                        </InfoSection>
+                        <InfoSection>
+                            <strong>Adres:</strong> {`${user.info.employee.street} ${user.info.employee.houseNumber}`}
+                            <p><strong>Postcode:</strong> {user.info.employee.postalCode}</p>
+                            <p><strong>Woonplaats:</strong> {user.info.employee.city}</p>
+                        </InfoSection>
+                    </>}
+
                 </ColoredContainer>
+
                 <ImageContainer
+                    className="FlexItem FlexItem__profile"
                     source={profileAnonymous}
                     alt="plantenfluisteraar"
                     classNameImg={styles["image-profile"]}
-                />
+                >
+                    <FileUpload/>
+                {/*  Aanpassen CSS in app.css: naar component verplaatsen */}
+                </ImageContainer>
 
                 <Button
                     type="button"
@@ -93,6 +101,7 @@ function Profiel() {
                 />
                 <Button
                     type="button"
+                    id="buttonRequests"
                     className="button button--dark"
                     name="Toon open aanvragen"
                     /* onClick= wijzigen state naar lijst aanvragen met open status */
@@ -100,7 +109,7 @@ function Profiel() {
 
                 {/* Eigen tuintje(s): if statement gerelateerd aan state aanvragen */}
                 <ColoredContainer
-                    classNameItem="section-item section-item--split"
+                    classNameItem="FlexItem FlexItem--center"
                     classNameBlock="block block--center block--white"
                     title="Jouw geveltuintjes"
                 >
@@ -129,11 +138,10 @@ function Profiel() {
                     <p><strong>Adres:</strong> [adres]</p>
                     <p><strong>Status:</strong> [status]</p>
                 </ColoredContainer>
-
-
             </>
             }
-        </div>
+            </FlexContainer>
+        </>
     );
 }
 

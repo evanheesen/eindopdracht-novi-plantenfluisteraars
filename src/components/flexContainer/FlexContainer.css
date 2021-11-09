@@ -16,6 +16,11 @@
     align-items: flex-start;
 }
 
+.FlexContainer__image-container--profile {
+    flex-flow: row wrap;
+    align-items: center;
+}
+
 /* Flex container split into two items */
 .FlexContainer__white-split {
     justify-content: space-around;

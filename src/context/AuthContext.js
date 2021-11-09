@@ -62,16 +62,23 @@ function AuthContextProvider({children}) {
             console.log("result:")
             console.log(result);
 
+            // check type of user
+            let userType = "";
+            if (result.data.employee === null && result.data.customer === null) {
+                userType = "";
+            } else if (result.data.employee != null) {
+                userType = "plantenfluisteraar"
+            } else {
+                userType = "bewoner"
+            }
+
             // als userinformatie kan worden opgehaald:
             toggleIsAuth({
                 ...isAuth,
                 isAuth: true,
                 user: {
-                    username: result.data.username,
-                    // email: result.data.email,
-                    id: result.data.id,
-                    fistName: result.data.firstName,
-                    lastName: result.data.lastName,
+                    info: result.data,
+                    type: userType,
                 },
                 status: 'done',
             });

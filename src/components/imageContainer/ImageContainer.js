@@ -3,11 +3,11 @@ import '../../App.css';
 import React from 'react';
 import FlexItem from "../flexItem/FlexItem";
 
-function ImageContainer({source, alt, classNameImg, source2, alt2, source3, alt3, source4, alt4}) {
+function ImageContainer({source, alt, className, classNameImg, source2, alt2, source3, alt3, source4, alt4, children}) {
 
     return (
         <>
-            <FlexItem className="FlexItem">
+            <FlexItem className={className}>
 
                 {/* if there's only one image */}
                 {!source2 &&
@@ -17,6 +17,8 @@ function ImageContainer({source, alt, classNameImg, source2, alt2, source3, alt3
                     height="400px"
                     className={classNameImg}
                 />}
+
+                {children}
 
                 {/* if there should be an image gallery on the left side */}
                 {source2 && classNameImg === "image image--left" &&

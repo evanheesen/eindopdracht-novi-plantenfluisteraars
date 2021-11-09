@@ -12,6 +12,11 @@
     flex: 0 1 auto;
 }
 
+.FlexItem__profile {
+    justify-content: center;
+    align-items: center;
+}
+
 /* Flex items, two per row */
 .FlexItem__split {
     width: 50%;
