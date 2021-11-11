@@ -59,7 +59,7 @@ function AuthContextProvider({children}) {
                     }
                 });
 
-            console.log("result:")
+            console.log("User data:")
             console.log(result);
 
             // check type of user

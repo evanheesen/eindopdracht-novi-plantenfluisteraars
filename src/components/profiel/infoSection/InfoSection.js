@@ -1,9 +1,9 @@
 import React from 'react';
 import './InfoSection.css'
 
-function InfoSection({children}) {
+function InfoSection({children, className}) {
     return (
-        <section className="InfoSection">
+        <section className={className}>
             {children}
         </section>
     );

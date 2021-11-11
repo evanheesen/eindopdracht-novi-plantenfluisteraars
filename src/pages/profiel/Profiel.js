@@ -13,6 +13,7 @@ import InfoSection from "../../components/profiel/infoSection/InfoSection";
 import FlexContainer from "../../components/flexContainer/FlexContainer";
 import FileUpload from "../../components/profiel/fileUpload/FileUpload";
 import FlexItem from "../../components/flexItem/FlexItem";
+import GardenItemCustomer from "../../components/profiel/gardenItem/gardenItemCustomer/GardenItemCustomer";
 
 function Profiel() {
 
@@ -20,7 +21,19 @@ function Profiel() {
     const {user} = useContext(AuthContext);
     const {getUserData} = useContext(AuthContext);
     const userType = user.type;
+    const oppositePerson = userType === "customer" ? "Plantenfluisteraar" : "Bewoner";
     const data = user.info[userType]
+    let urlOwnGardens = userType ===  "employee" ? "employees/" + data.id : "customers/" + data.id;
+
+    // if (userType === "employee") {
+    //     urlOwnGardens = "employees/" + data.id
+    // } else if (userType === "customer") {
+    //     urlOwnGardens = "customers/" + data.id
+    // } else {
+    //     urlOwnGardens = ""
+    // }
+
+
     // let image = {};
 
     // if (user.info.employee.dbfile === null) {
@@ -32,9 +45,12 @@ function Profiel() {
 
     // const [gardens, setGardens] = useState({});
     const [overview, setOverview] = useState("");
+    const [gardens, setGardens] = useState({});
+    const [urlString, setUrlString] = useState("");
     const [error, toggleError] = useState(false);
     const [loading, toggleLoading] = useState(false);
     const token = localStorage.getItem('token');
+
 
     useEffect(() => {
         // const token = localStorage.getItem('token');
@@ -58,18 +74,18 @@ function Profiel() {
 
             try {
                 // if(token) {
-                const result = await axios.get(`http://localhost:8081/bewoners`,
+                const result = await axios.get(`http://localhost:8081/gardens/${urlString}`,
                     {
                         headers: {
                             "Content-Type": "application/json",
                             Authorization: `Bearer ${token}`,
                         }
                     });
+
+                console.log("Garden overview data:")
                 console.log(result.data);
-                // setGardens(result.data);
-                // } else{
-                //     console.log("no token")
-                // }
+                setGardens(result.data);
+
             } catch (e) {
                 console.error(e);
                 toggleError(true);
@@ -129,38 +145,56 @@ function Profiel() {
                     </ImageContainer>
 
 
-                    {/* #### deze onclick op de componenten werken niet */}
                     <FlexContainer className="FlexContainer FlexContainer__button-row">
                         <Button
                             type="button"
                             className="button button--red"
                             name="Toon jouw geveltuintjes"
-                            onClick={() => setOverview("eigen")}
+                            onClick={() => setOverview("eigen") && setUrlString(urlOwnGardens)}
                         />
                         {userType === "employee" &&
                         <Button
                             type="button"
                             className="button button--red"
                             name="Toon open aanvragen"
-                            onClick={() => setOverview("open")}
+                            onClick={() => setOverview("open") && setUrlString("status/open")}
                         />}
+                        <p>{urlOwnGardens}</p>
+                        <p>{oppositePerson}</p>
                     </FlexContainer>
 
-                    {overview === "eigen" &&
+                    {overview === "eigen" && userType === "customer" &&
                     <ColoredContainer
                         classNameItem="FlexItem FlexItem--center"
                         classNameBlock="block block--center block--white"
                     >
                         <Description
-                            title="Jouw aanvragen"
+                            title="Jouw geveltuin"
                             className="description__centered"
                             classNameTitle="description__title--red"
                         />
-                        {/* Component van maken met map functie over array aanvragen */}
-                        <p><strong>Datum aanvraag:</strong> [datum]</p>
-                        <p><strong>Naam bewoner:</strong> [naamBewoner]</p>
-                        <p><strong>Adres:</strong> [adres]</p>
-                        <p><strong>Status:</strong> [status]</p>
+
+                        {gardens.map((garden) => {
+                            return <GardenItemCustomer key={garden.id} id={garden.id} oppositePerson={oppositePerson}/>
+                        })}
+
+                    </ColoredContainer>}
+
+                    {overview === "eigen" && userType === "employee" &&
+                    <ColoredContainer
+                        classNameItem="FlexItem FlexItem--center"
+                        classNameBlock="block block--center block--white"
+                    >
+                        <Description
+                            title="Jouw geveltuinen"
+                            className="description__centered"
+                            classNameTitle="description__title--red"
+                        />
+
+                        {gardens.map((garden) => {
+                            return <GardenItemCustomer key={garden.id} id={garden.id} oppositePerson={oppositePerson}/>
+                        })}
+
                     </ColoredContainer>}
 
                     {overview === "open" &&
