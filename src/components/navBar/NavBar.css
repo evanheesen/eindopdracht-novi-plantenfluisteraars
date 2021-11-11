@@ -1,0 +1,62 @@
+.nav-bar {
+    background-color: var(--dark-blue);
+    overflow: hidden;
+    height: var(--nav-height);
+    padding: var(--nav-vert-padding) var(--hor-padding) var(--nav-vert-padding) var(--hor-padding);
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    /*position: fixed;*/
+    /*width: 100%;*/
+    /*top: 0;*/
+}
+
+.nav-bar .icon {
+    display: none;
+}
+
+.logo-container {
+    width: 200px;
+}
+
+@media screen and (max-width: 600px) {
+    .nav-menu {display: none;}
+    #mobile-menu {
+        float: right;
+        display: block;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .nav-menu.responsive {position: relative;}
+    #mobile-menu.responsive {
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+    /*.nav-menu.responsive {*/
+    /*    float: none;*/
+    /*    display: block;*/
+    /*    text-align: left;*/
+    /*}*/
+}
+
+
+/* make position navbar only fixed when scrolling with this function: */
+
+/*<script>*/
+/* window.onscroll = function() {myFunction()};*/
+
+/*var header = document.getElementById("myHeader");*/
+/*var sticky = header.offsetTop;*/
+
+/*function myFunction() {*/
+/*if (window.pageYOffset > sticky) {*/
+/*    header.classList.add("sticky");*/
+/*} else {*/
+/*      header.classList.remove("sticky");*/
+/*  }*/
+/*}*/
+/*</script>*/
