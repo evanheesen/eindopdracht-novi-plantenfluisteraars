@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import axios from "axios";
 import InfoSection from "../../infoSection/InfoSection";
 
-function GardenItemCustomer({id, oppositePerson}) {
+function GardenItemCustomer({id}) {
 
     const [garden, setGarden] = useState(null);
 
@@ -27,12 +27,15 @@ function GardenItemCustomer({id, oppositePerson}) {
             {garden &&
             <>
                 <p><strong>Datum aanvraag: </strong>{garden.submissionDate}</p>
-
-                {/* nog dynamisch maken employee/customer */}
-                <p><strong>Naam {oppositePerson}: </strong>{garden.employee.firstName} {garden.employee.lastName}</p>
-                    {/*// {garden.employee.firstName} {garden.employee.lastName}*/}
-                <p><strong>Adres: </strong>{garden.street}</p>
-                <p><strong>Datum aanvraag: </strong>{garden.status}</p>
+                <p><strong>Adres: </strong>{garden.street} {garden.houseNumber}, {garden.city}</p>
+                {garden.status &&
+                    <>
+                <p><strong>Naam Plantenfluisteraar: </strong>{garden.employee.firstName} {garden.employee.lastName}</p>
+                    <p><strong>Telefoon Plantenfluisteraar: </strong>{garden.employee.phone}</p>
+                    </>
+                }
+                {/* classname wordt niet gepakt voor status !!! */}
+                <p><strong>Status aanvraag: </strong><span className="status-active">{garden.status}</span></p>
             </>
             }
 

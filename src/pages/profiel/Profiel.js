@@ -113,7 +113,6 @@ function Profiel() {
                         <InfoSection>
                             <strong>Gebruikersnaam:</strong> {user.info.username}
                             <p><strong>Email:</strong> {user.info.email}</p>
-                            <p><i>Wachtwoord wijzigen</i></p>
                             <p>{userType}</p>
                         </InfoSection>
                         {userType &&
@@ -159,8 +158,6 @@ function Profiel() {
                             name="Toon open aanvragen"
                             onClick={() => setOverview("open") && setUrlString("status/open")}
                         />}
-                        <p>{urlOwnGardens}</p>
-                        <p>{oppositePerson}</p>
                     </FlexContainer>
 
                     {overview === "eigen" && userType === "customer" &&
@@ -173,11 +170,7 @@ function Profiel() {
                             className="description__centered"
                             classNameTitle="description__title--red"
                         />
-
-                        {gardens.map((garden) => {
-                            return <GardenItemCustomer key={garden.id} id={garden.id} oppositePerson={oppositePerson}/>
-                        })}
-
+                        <GardenItemCustomer id={gardens[0].id} oppositePerson={oppositePerson}/>
                     </ColoredContainer>}
 
                     {overview === "eigen" && userType === "employee" &&
@@ -190,11 +183,9 @@ function Profiel() {
                             className="description__centered"
                             classNameTitle="description__title--red"
                         />
-
                         {gardens.map((garden) => {
                             return <GardenItemCustomer key={garden.id} id={garden.id} oppositePerson={oppositePerson}/>
                         })}
-
                     </ColoredContainer>}
 
                     {overview === "open" &&
