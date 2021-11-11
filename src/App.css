@@ -17,9 +17,13 @@
     --nav-hor-padding: 15px;
     /* padding and margins */
     --vert-padding: 100px;
+    --padding-garden-item: 40px;
     --padding-block: 60px;
+    --padding-button: 25px;
+    --border-radius: 20px;
     --block-radius: 100px;
     --gap-items: 50px;
+    --gap-garden-items: 10px;
     /* flex containers and items */
     --max-width: 1100px;
     --width-split-item: 450px;
@@ -57,6 +61,15 @@ h3 {
     font-weight: 600;
     font-size: 1.67rem;
     text-transform: capitalize;
+}
+
+h4 {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 600;
+    text-transform: capitalize;
+    color: var(--green);
+    font-size: 1.2rem;
+    margin-bottom: 5px;
 }
 
 /* zet deze in styling van component!! */

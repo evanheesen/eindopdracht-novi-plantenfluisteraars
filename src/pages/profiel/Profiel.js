@@ -14,6 +14,7 @@ import FlexContainer from "../../components/flexContainer/FlexContainer";
 import FileUpload from "../../components/profiel/fileUpload/FileUpload";
 import FlexItem from "../../components/flexItem/FlexItem";
 import GardenItemCustomer from "../../components/profiel/gardenItem/gardenItemCustomer/GardenItemCustomer";
+import GardenItemEmployee from "../../components/profiel/gardenItem/gardenItemEmployee/GardenItemEmployee";
 
 function Profiel() {
 
@@ -25,14 +26,17 @@ function Profiel() {
     const data = user.info[userType]
     let urlOwnGardens = userType ===  "employee" ? "employees/" + data.id : "customers/" + data.id;
 
-    // if (userType === "employee") {
-    //     urlOwnGardens = "employees/" + data.id
-    // } else if (userType === "customer") {
-    //     urlOwnGardens = "customers/" + data.id
-    // } else {
-    //     urlOwnGardens = ""
-    // }
+    // Show own gardens
+    function showOwn() {
+        setOverview("eigen");
+        setUrlString(urlOwnGardens);
+    }
 
+    // Show open requests
+    function showOpen() {
+       setOverview("open");
+       setUrlString("status/open");
+   }
 
     // let image = {};
 
@@ -71,6 +75,9 @@ function Profiel() {
         async function getGardens(token) {
             toggleError(false);
             toggleLoading(true);
+
+            console.log("urlOwnGarden: " + urlOwnGardens);
+            console.log("urlString: " + urlString);
 
             try {
                 // if(token) {
@@ -117,7 +124,6 @@ function Profiel() {
                         </InfoSection>
                         {userType &&
                         <>
-                            {/* Componenten met flex van maken! */}
                             <InfoSection>
                                 <strong>Voornaam:</strong> {data.firstName}
                                 <p><strong>Achternaam:</strong> {data.lastName}</p>
@@ -149,14 +155,14 @@ function Profiel() {
                             type="button"
                             className="button button--red"
                             name="Toon jouw geveltuintjes"
-                            onClick={() => setOverview("eigen") && setUrlString(urlOwnGardens)}
+                            onClick={showOwn}
                         />
                         {userType === "employee" &&
                         <Button
                             type="button"
                             className="button button--red"
                             name="Toon open aanvragen"
-                            onClick={() => setOverview("open") && setUrlString("status/open")}
+                            onClick={showOpen}
                         />}
                     </FlexContainer>
 
@@ -183,9 +189,11 @@ function Profiel() {
                             className="description__centered"
                             classNameTitle="description__title--red"
                         />
+                        <InfoSection className="gardens-overview">
                         {gardens.map((garden) => {
-                            return <GardenItemCustomer key={garden.id} id={garden.id} oppositePerson={oppositePerson}/>
+                            return <GardenItemEmployee key={garden.id} id={garden.id} oppositePerson={oppositePerson}/>
                         })}
+                        </InfoSection>
                     </ColoredContainer>}
 
                     {overview === "open" &&
@@ -201,11 +209,11 @@ function Profiel() {
                             classNameTitle="description__title--red"
                             classNameText="description__text--dark"
                         />
-                        {/* Component van maken met map functie over array aanvragen */}
-                        <p><strong>Datum aanvraag:</strong> [datum]</p>
-                        <p><strong>Naam bewoner:</strong> [naamBewoner]</p>
-                        <p><strong>Adres:</strong> [adres]</p>
-                        <p><strong>Status:</strong> [status]</p>
+                        <InfoSection className="gardens-overview">
+                            {gardens.map((garden) => {
+                                return <GardenItemEmployee key={garden.id} id={garden.id} oppositePerson={oppositePerson}/>
+                            })}
+                        </InfoSection>
                     </ColoredContainer>}
                 </FlexContainer>
             </>}

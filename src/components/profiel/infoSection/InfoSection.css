@@ -4,4 +4,10 @@
 
 .gardens-overview {
     color: #22333B;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    /*gap: 0;*/
+    gap: var(--gap-garden-items);
 }

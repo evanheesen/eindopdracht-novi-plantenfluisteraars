@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import axios from "axios";
 import InfoSection from "../../infoSection/InfoSection";
 
-function GardenItemCustomer({id}) {
+function GardenItemCustomer({id, }) {
 
     const [garden, setGarden] = useState(null);
 
@@ -23,12 +23,12 @@ function GardenItemCustomer({id}) {
     }, [id]);
 
     return (
-        <InfoSection className="gardens-overview">
+        <section className="garden-item">
             {garden &&
             <>
                 <p><strong>Datum aanvraag: </strong>{garden.submissionDate}</p>
                 <p><strong>Adres: </strong>{garden.street} {garden.houseNumber}, {garden.city}</p>
-                {garden.status &&
+                {garden.status != "Open" &&
                     <>
                 <p><strong>Naam Plantenfluisteraar: </strong>{garden.employee.firstName} {garden.employee.lastName}</p>
                     <p><strong>Telefoon Plantenfluisteraar: </strong>{garden.employee.phone}</p>
@@ -39,7 +39,7 @@ function GardenItemCustomer({id}) {
             </>
             }
 
-        </InfoSection>
+        </section>
     );
 }
 
