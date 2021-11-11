@@ -13,6 +13,7 @@ function NavButton({ name, link }) {
                 className={styles["nav-button"]}
                 type="button"
                 onClick={() => history.push(`${link}`)}
+                id={styles["nav-button"]}
             >
                 {name}
             </button>

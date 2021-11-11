@@ -22,11 +22,6 @@ function Home() {
                     />
                 </FlexItem>
 
-                <Description
-                    className="white"
-                    title="Test"
-                    text="text test"
-                />
             </FlexContainer>
         </>
     );

@@ -3,7 +3,7 @@ import styles from './NavIcon.module.css';
 
 import {Link} from "react-router-dom";
 
-function NavIcon({ name, link, icon, sublabel1, sublink1, sublabel2, sublink2 }) {
+function NavIcon({ name, link, icon, id, sublabel1, sublink1, sublabel2, sublink2 }) {
 
     // --> When the user clicks on the button, toggle between hiding and showing the dropdown content
 
@@ -35,6 +35,7 @@ function NavIcon({ name, link, icon, sublabel1, sublink1, sublabel2, sublink2 })
                 className={styles["nav-button"]}
                 type="button"
                 onClick={link}
+                id={id}
             >
                 <img src={icon} alt={name} className={styles["nav-icon"]}/>
             </button>

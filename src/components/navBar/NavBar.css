@@ -1,8 +1,9 @@
 .nav-bar {
     background-color: var(--dark-blue);
-    overflow: hidden;
+    box-sizing: border-box;
+    /*overflow: hidden;*/
     height: var(--nav-height);
-    padding: var(--nav-vert-padding) var(--hor-padding) var(--nav-vert-padding) var(--hor-padding);
+    padding: 0 var(--nav-hor-padding) 0 var(--nav-hor-padding);
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -31,16 +32,16 @@
 
 @media screen and (max-width: 600px) {
     .nav-menu.responsive {position: relative;}
-    #mobile-menu.responsive {
+    .menu-icon.responsive {
         position: absolute;
         right: 0;
         top: 0;
     }
-    /*.nav-menu.responsive {*/
-    /*    float: none;*/
-    /*    display: block;*/
-    /*    text-align: left;*/
-    /*}*/
+    .nav-menu.responsive {
+        float: none;
+        display: block;
+        text-align: left;
+    }
 }
 
 

@@ -6,7 +6,7 @@ function Button({ register, id, disabled, link, onClick, name, className, type, 
 
     return (
         <>
-            <Link to={link}>
+            {/*<Link to={link}>*/}
         <button
             type={type}
             id={id}
@@ -17,7 +17,7 @@ function Button({ register, id, disabled, link, onClick, name, className, type, 
         >
             {name}
         </button>
-            </Link>
+            {/*</Link>*/}
         </>
     );
 }

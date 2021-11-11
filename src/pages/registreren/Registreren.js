@@ -19,7 +19,7 @@ function Registreren() {
         console.log(data)
 
         try {
-            const result = await axios.post('http://localhost:8081/bewoners', {
+            const result = await axios.post('http://localhost:8081/plantenfluisteraars', {
                 cancelToken: source.token,
                 email: data.email,
                 password: data.password,

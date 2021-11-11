@@ -1,8 +1,9 @@
-import styles from './NavBar.module.css';
-import React, {useContext} from 'react';
+import './NavBar.css';
+import React, {useContext, useRef, useState} from 'react';
 import logo from '../../assets/logo-plantenfluisteraars-white.png';
 import userIcon from '../../assets/user-icon.png';
 import logoutIcon from '../../assets/logout-icon.png';
+import menu from '../../assets/hamburger-menu.png';
 import {Link, useHistory} from "react-router-dom";
 import NavButton from "./navButton/NavButton";
 import NavIcon from "./navIcon/NavIcon";
@@ -13,14 +14,14 @@ function NavBar() {
     const {isAuth, logOut, user} = useContext(AuthContext);
     const history = useHistory();
 
-
     return (
-        <nav className={styles["nav-bar"]}>
+        <nav className="nav-bar">
+
             <Link to="/">
-                <img className={styles["logo-container"]} src={logo} alt="logo-plantenfluisteraars"/>
+                <img className="logo-container" src={logo} alt="logo-plantenfluisteraars"/>
             </Link>
 
-            <menu>
+            <menu className="nav-menu" id="topnav">
                 <NavButton
                     link="/concept"
                     name="Concept"
@@ -58,16 +59,11 @@ function NavBar() {
                             name="Log-uit"
                             icon={logoutIcon}
                         />
-
-                        {/* hier voornaam weergeven user: */}
-
-                        {/*/!*<span className={styles["nav-button"]}>*!/*/}
-                        {/*/!*    {user.firstName}*!/*/}
-                        {/*/!*</span>*!/*/}
-
                     </>
                     : ""}
+
             </menu>
+
         </nav>
     );
 }
