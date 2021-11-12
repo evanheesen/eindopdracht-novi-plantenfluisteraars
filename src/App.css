@@ -72,9 +72,13 @@ h4 {
     margin-bottom: 5px;
 }
 
+a {
+    color: var(--red);
+}
+
 /* zet deze in styling van component!! */
-Link, a {
-    /*color: #CD5C5C;*/
+a:hover {
+    color: var(--lightgrey);
 }
 
 /* styling bullits numbered list */

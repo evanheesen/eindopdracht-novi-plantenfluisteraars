@@ -38,6 +38,7 @@ function Profiel() {
        setUrlString("status/open");
    }
 
+    // ######## Afbeelding nog kunnen laden ########
     // let image = {};
 
     // if (user.info.employee.dbfile === null) {
