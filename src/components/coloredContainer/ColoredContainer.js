@@ -1,6 +1,6 @@
 import './ColoredContainer.css';
 import React from 'react';
-import Button from "../button/Button";
+import Button from "../buttons/button/Button";
 import FlexItem from "../flexItem/FlexItem";
 import Description from "../description/Description";
 

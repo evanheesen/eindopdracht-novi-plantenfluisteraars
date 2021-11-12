@@ -13,6 +13,8 @@ export const AuthContext = createContext({});
 
 function AuthContextProvider({children}) {
 
+    // const [userType, setUserType] = useState();
+    let userType = "";
     const [isAuth, toggleIsAuth] = useState({
         isAuth: false,
         user: null,
@@ -63,14 +65,8 @@ function AuthContextProvider({children}) {
             console.log(result);
 
             // check type of user
-            let userType = "";
-            if (result.data.employee === null && result.data.customer === null) {
-                userType = "";
-            } else if (result.data.employee != null) {
-                userType = "employee"
-            } else {
-                userType = "customer"
-            }
+            const checkAdmin = result.data.authorities.some(authority => (authority.authority === "ROLE_ADMIN"));
+            userType = checkAdmin === true ? "admin" : (result.data.employee != null ? "employee" : "customer");
 
             // als userinformatie kan worden opgehaald:
             toggleIsAuth({
@@ -84,12 +80,11 @@ function AuthContextProvider({children}) {
             });
 
             if (pushlink) {
-                history.push(pushlink);
+                history.push(userType === "admin" ? "/admin" : pushlink);
             }
 
         } catch (e) {
-            console.error(e.response.data);
-            // console.error(e);
+            console.error(e);
             // als er iets mis is gegaan, geen data in state:
             toggleIsAuth({
                 isAuth: false,
@@ -109,7 +104,7 @@ function AuthContextProvider({children}) {
             user: null,
         });
 
-        history.push("/")
+        history.push("/");
     }
 
     function logIn(token) {

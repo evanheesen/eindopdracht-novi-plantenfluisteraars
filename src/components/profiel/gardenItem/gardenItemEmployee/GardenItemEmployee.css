@@ -6,16 +6,16 @@
     box-shadow: 3px 5px rgba(34, 51, 59, 0.25);
 }
 
-.dropdown-status {
-    border: none;
-    background-color: var(--dark-blue);
-    color: var(--white);
-    font-size: 18px;
-}
+/*.dropdown-status {*/
+/*    border: none;*/
+/*    background-color: var(--dark-blue);*/
+/*    color: var(--white);*/
+/*    font-size: 18px;*/
+/*}*/
 
-.dropdown-status:focus {
-    border: none;
-    background-color: var(--dark-blue);
-    box-shadow: none;
-    outline: none;
-}
+/*.dropdown-status:focus {*/
+/*    border: none;*/
+/*    background-color: var(--dark-blue);*/
+/*    box-shadow: none;*/
+/*    outline: none;*/
+/*}*/

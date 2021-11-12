@@ -12,6 +12,7 @@ import Aanvragen from "./pages/aanvragen/Aanvragen";
 import Login from "./pages/login/Login";
 import Registreren from "./pages/registreren/Registreren";
 import Profiel from "./pages/profiel/Profiel";
+import Admin from "./pages/admin/Admin";
 
 function App() {
 
@@ -26,6 +27,9 @@ function App() {
                 </Route>
                 <PrivateRoute path="/profiel" isAuth={isAuth}>
                     <Profiel/>
+                </PrivateRoute>
+                <PrivateRoute path="/admin" isAuth={isAuth}>
+                    <Admin/>
                 </PrivateRoute>
                 <Route path="/concept">
                     <Concept/>

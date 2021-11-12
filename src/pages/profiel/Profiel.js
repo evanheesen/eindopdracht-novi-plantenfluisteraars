@@ -6,7 +6,7 @@ import ColoredContainer from "../../components/coloredContainer/ColoredContainer
 import styles from './Profiel.module.css';
 import profileAnonymous from '../../assets/profile-picture-anonymous.png';
 import ImageContainer from "../../components/imageContainer/ImageContainer";
-import Button from "../../components/button/Button";
+import Button from "../../components/buttons/button/Button";
 import Description from "../../components/description/Description";
 import jwtDecode from "jwt-decode";
 import InfoSection from "../../components/profiel/infoSection/InfoSection";
@@ -58,7 +58,6 @@ function Profiel() {
 
 
     useEffect(() => {
-        // const token = localStorage.getItem('token');
         if (token) {
             const decodedToken = jwtDecode(token);
             getUserData(token, decodedToken);
@@ -68,8 +67,6 @@ function Profiel() {
         }
 
     }, []);
-
-    // ###### Dit werkt niet: krijg 403 error
 
     useEffect(() => {
 
@@ -81,7 +78,6 @@ function Profiel() {
             console.log("urlString: " + urlString);
 
             try {
-                // if(token) {
                 const result = await axios.get(`http://localhost:8081/gardens/${urlString}`,
                     {
                         headers: {
@@ -179,6 +175,8 @@ function Profiel() {
                         />
                         <GardenItemCustomer id={gardens[0].id} oppositePerson={oppositePerson}/>
                     </ColoredContainer>}
+
+                    {/* ###### Deze twee nog samenvoegen?? */}
 
                     {overview === "eigen" && userType === "employee" &&
                     <ColoredContainer

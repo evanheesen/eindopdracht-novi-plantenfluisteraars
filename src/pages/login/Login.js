@@ -22,7 +22,6 @@ function Login() {
         try {
             const result = await axios.post('http://localhost:8081/authenticate', {
                 cancelToken: source.token,
-                // email: data.email,
                 username: data.username,
                 password: data.password,
             });
@@ -50,6 +49,8 @@ function Login() {
                     classNameBlock={styles["block-login"]}
                     classNameContainer={styles["form--container"]}
                     title="Inloggen"
+                    buttonTitle="Login"
+                    buttonClassName="button button--dark"
                     onSubmit={handleSubmit(onSubmit)}
                 >
                     <InputElement
@@ -57,12 +58,12 @@ function Login() {
                         register={register}
                         classNameItem="form-item--full"
                         name="username"
-                        label="Emailadres"
+                        label="Gebruikersnaam"
                         inputType="text"
                         className={styles["inputField"]}
                         // value={email}
                         validationRules={{
-                            required: "Emailadres is verplicht",
+                            required: "Gebruikersnaam is verplicht",
                         }}
                     />
                     <InputElement
@@ -78,18 +79,11 @@ function Login() {
                             required: "Wachtwoord is verplicht",
                         }}
                     />
-
-                    <button
-                        type="submit"
-                        className="button button--dark"
-                    >
-                        Login
-                    </button>
                 </FormContainer>
 
                 <div className={styles["section-item"]}>
                     <img src={arrow} className={styles["arrow"]}/>
-                    <p className={styles["register"]}>Heb je nog geen account? Registreer je <Link
+                    <p className={styles["register"]}>Ben je Plantenfluisteraar en heb je nog geen account? Registreer je <Link
                         to="/registreren">hier</Link> dan eerst.</p>
                 </div>
 

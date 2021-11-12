@@ -13,7 +13,7 @@ function Registreren() {
     const {register, handleSubmit, formState: {errors}} = useForm();
     const history = useHistory();
     const [employeeLink, setEmployeeLink] = useState("");
-    const [file, setFile] = useState({});
+    const [file, setFile] = useState();
     let employeeId = "";
     const source = axios.CancelToken.source();
     // let fileValue = "";
@@ -38,6 +38,7 @@ function Registreren() {
     async function onSubmit(data) {
         console.log("form data: ")
         console.log(data)
+        setFile(data.dbFile[0]);
         console.log(data.dbFile[0]);
         // const fileInfo = data.push('file',data.dbFile[0]);
         // setFile(fileInfo);
@@ -65,7 +66,7 @@ function Registreren() {
             });
 
             employeeId = result.data.replace('http://localhost:8081/employees/', "");
-            // fileUpload();
+            fileUpload();
             history.push("/login");
 
             return function cleanup() {
@@ -79,10 +80,15 @@ function Registreren() {
 
     async function fileUpload() {
 
+        let formData = new FormData();
+        formData.append("dbFile",file)
+
         try {
-            const result = await axios.post(`http://localhost:8081/employees/${employeeId}/upload-file`, {
-                cancelToken: source.token,
-                dbFile: file,
+            const result = await axios.post(`http://localhost:8081/employees/${employeeId}/upload-file`, formData,{
+                headers: {
+                    "Content-type" : "multipart/form-data",
+                },
+                file : formData,
             });
             console.log(result)
 
@@ -91,7 +97,7 @@ function Registreren() {
             }
 
         } catch (e) {
-            console.error(e.response.data);
+            console.error(e);
         }
     }
 

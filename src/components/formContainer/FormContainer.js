@@ -1,6 +1,6 @@
 import React from 'react';
 import './FormContainer.css';
-import Button from "../button/Button";
+import Button from "../buttons/button/Button";
 
 // CSS can be found in ColoredContainer.CSS
 
