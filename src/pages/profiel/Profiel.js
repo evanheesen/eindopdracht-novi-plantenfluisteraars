@@ -24,7 +24,14 @@ function Profiel() {
     const userType = user.type;
     const oppositePerson = userType === "customer" ? "Plantenfluisteraar" : "Bewoner";
     const data = user.info[userType]
-    let urlOwnGardens = userType ===  "employee" ? "employees/" + data.id : "customers/" + data.id;
+    const userId = data.id;
+    let urlOwnGardens = userType ===  "employee" ? "employees/" + userId : "customers/" + userId;
+    const [overview, setOverview] = useState("");
+    const [gardens, setGardens] = useState({});
+    const [urlString, setUrlString] = useState("");
+    const [error, toggleError] = useState(false);
+    const [loading, toggleLoading] = useState(false);
+    const token = localStorage.getItem('token');
 
     // Show own gardens
     function showOwn() {
@@ -46,16 +53,6 @@ function Profiel() {
     //     } else {
     //         {user.info.employee.dbfile[0].fileDownloadUri}
     //     }
-
-
-    // const [gardens, setGardens] = useState({});
-    const [overview, setOverview] = useState("");
-    const [gardens, setGardens] = useState({});
-    const [urlString, setUrlString] = useState("");
-    const [error, toggleError] = useState(false);
-    const [loading, toggleLoading] = useState(false);
-    const token = localStorage.getItem('token');
-
 
     useEffect(() => {
         if (token) {
@@ -97,7 +94,10 @@ function Profiel() {
             toggleLoading(false);
         }
 
+        if(overview) {
         getGardens(token);
+        }
+
     }, [overview])
 
     return (
@@ -203,14 +203,12 @@ function Profiel() {
                     >
                         <Description
                             title="Open aanvragen"
-                            text="Hier kun je alle open aanvragen zien."
                             className="description__centered"
                             classNameTitle="description__title--red"
-                            classNameText="description__text--dark"
                         />
                         <InfoSection className="gardens-overview">
                             {gardens.map((garden) => {
-                                return <GardenItemEmployee key={garden.id} id={garden.id} oppositePerson={oppositePerson}/>
+                                return <GardenItemEmployee key={garden.id} id={garden.id} oppositePerson={oppositePerson} employeeId={userId}/>
                             })}
                         </InfoSection>
                     </ColoredContainer>}

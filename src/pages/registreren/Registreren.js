@@ -84,12 +84,21 @@ function Registreren() {
         formData.append("dbFile",file)
 
         try {
-            const result = await axios.post(`http://localhost:8081/employees/${employeeId}/upload-file`, formData,{
+            const result = await axios.post(`http://localhost:8081/employees/${employeeId}/upload-file`, {
+                file: formData,
+            }, {
                 headers: {
                     "Content-type" : "multipart/form-data",
                 },
-                file : formData,
-            });
+        });
+
+            // const result = await axios.post(`http://localhost:8081/employees/${employeeId}/upload-file`, formData,{
+            //     headers: {
+            //         "Content-type" : "multipart/form-data",
+            //     },
+            //     file : formData,
+            // });
+
             console.log(result)
 
             return function cleanup() {
