@@ -64,10 +64,6 @@ function GardenItemEmployee({id, employeeId}) {
 
     }, [gardenStatus]);
 
-
-
-
-
     return (
         <section className="garden-item">
             {garden &&
@@ -86,11 +82,9 @@ function GardenItemEmployee({id, employeeId}) {
                 >
                     <option value={garden.status}>{garden.status}</option>
                     {garden.status === "Open" &&
-                    <option value="Actief">Accepteer</option>
-                    }
+                    <option value="Actief">Accepteer</option>}
                     {garden.status === "Actief" &&
-                    <option value="Afgerond">Afgerond</option>
-                    }
+                    <option value="Afgerond">Afgerond</option>}
                 </DropdownButton>
             </>
             }

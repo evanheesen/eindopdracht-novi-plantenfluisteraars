@@ -17,21 +17,19 @@ function Admin() {
     const {getUserData} = useContext(AuthContext);
     const token = localStorage.getItem('token');
 
-    const [overview, setOverview] = useState("closed");
+    const [overview, setOverview] = useState("");
     const [gardens, setGardens] = useState({});
     const [urlString, setUrlString] = useState("");
     const [error, toggleError] = useState(false);
     const [loading, toggleLoading] = useState(false);
 
-    // let url
+    // function showOverview(url) {
+    //     setOverview(url === "alles" ? "" : url);
+    // }
 
-    function showOverview(url) {
-        setOverview(url);
-        console.log(overview);
 
-        // setUrlString(overview === "alles" ? "test" : (overview === "actief" ? "/active" : "/open"))
-        // console.log(urlString);
-    }
+    //  #### Mee bezig: endpoints + service inrichten in backend maken voor status /all, /open, /active
+
 
     useEffect(() => {
         if (token) {
@@ -45,7 +43,6 @@ function Admin() {
 
     useEffect(() => {
 
-        if (overview != "closed") {
             async function getGardens(token) {
                 toggleError(false);
                 toggleLoading(true);
@@ -54,7 +51,7 @@ function Admin() {
                 console.log("urlString: " + urlString);
 
                 try {
-                    const result = await axios.get(`http://localhost:8081/gardens/${overview}`,
+                    const result = await axios.get(`http://localhost:8081/gardens/status/${overview}`,
                         {
                             headers: {
                                 "Content-Type": "application/json",
@@ -76,7 +73,7 @@ function Admin() {
             if(overview){
             getGardens(token);
             }
-        }
+
     }, [overview])
 
     return (
@@ -113,19 +110,19 @@ function Admin() {
                             type="button"
                             className="button button--red"
                             name="Toon alle geveltuintjes"
-                            onClick={() => showOverview("")}
+                            onClick={() => setOverview("all")}
                         />
                         <Button
                             type="button"
                             className="button button--red"
                             name="Toon open aanvragen"
-                            onClick={() => showOverview("open")}
+                            onClick={() => setOverview("open")}
                         />
                         <Button
                             type="button"
                             className="button button--red"
                             name="Toon actieve aanvragen"
-                            onClick={() => showOverview("active")}
+                            onClick={() => setOverview("active")}
                         />
                     </FlexContainer>
 

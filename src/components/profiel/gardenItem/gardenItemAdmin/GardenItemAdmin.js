@@ -30,7 +30,10 @@ function GardenItemAdmin({id}) {
                 console.error(e);
             }
         }
+        if(id) {
         fetchData();
+        }
+
     },[id]);
 
     return (
@@ -40,40 +43,13 @@ function GardenItemAdmin({id}) {
                 <h4>{garden.street} {garden.houseNumber}, {garden.city}</h4>
                 <p><strong>Datum aanvraag: </strong>{garden.submissionDate}</p>
                 <p><strong>Adres: </strong>{garden.street} {garden.houseNumber}, {garden.city}</p>
-
-                {/*<DropdownButton*/}
-                {/*    classNameButton="button__status"*/}
-                {/*    classNameSelect="dropdown-status"*/}
-                {/*    nameSelect="status"*/}
-                {/*    idSelect="dropdown-status"*/}
-                {/*    onChange={changeStatus}*/}
-                {/*>*/}
-                {/*    <option value={garden.status}>{garden.status}</option>*/}
-                {/*    *!/*/}
-                {/*    {garden.status === "Open" &&*/}
-                {/*    <option value="Actief">Accepteer</option>*/}
-                {/*    }*/}
-                {/*    {garden.status === "Actief" &&*/}
-                {/*    <option value="Afgerond">Afgerond</option>*/}
-                {/*    }*/}
-                {/*</DropdownButton>*/}
-
+                <p><strong>Pakket beplanting: </strong>{garden.packagePlants}</p>
 
                 <Button
                     type="button"
                     className="button__status"
                     name={garden.status}
-                >
-                    {/*<select className="dropdown-status" name="status" id="dropdown-status" onChange={changeStatus}>*/}
-                    {/*    <option value={garden.status}>{garden.status}</option>*/}
-                    {/*    {garden.status === "Open" &&*/}
-                    {/*    <option value="Actief">Accepteer</option>*/}
-                    {/*    }*/}
-                    {/*    {garden.status === "Actief" &&*/}
-                    {/*    <option value="Afgerond">Afgerond</option>*/}
-                    {/*    }*/}
-                    {/*</select>*/}
-                </Button>
+                />
             </>
             }
 
