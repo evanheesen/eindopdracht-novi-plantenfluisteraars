@@ -41,7 +41,8 @@ function GardenItemAdmin({id}) {
             fetchData();
         }
 
-    }, [id]);
+    //    Hier id weggehaald al dependency!!!!!
+    }, []);
 
     return (
         <div className="garden-item">
@@ -49,12 +50,14 @@ function GardenItemAdmin({id}) {
             <>
                 <h4>{garden.street} {garden.houseNumber}, {garden.city}</h4>
                 <p><strong>Datum aanvraag: </strong>{garden.submissionDate}</p>
-                <p><strong>Adres: </strong>{garden.street} {garden.houseNumber}, {garden.city}</p>
                 <p><strong>Pakket beplanting: </strong>{garden.packagePlants}</p>
+                {garden.status === "Actief" &&
+                <p><strong>Plantenfluisteraar: </strong>{garden.employee.firstName} {garden.employee.lastName}</p>
+                }
 
                 <Button
                     type="button"
-                    className="button__status"
+                    className={`button__status button__status--${garden.status}`}
                     name={garden.status}
                 />
             </>

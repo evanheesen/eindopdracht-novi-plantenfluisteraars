@@ -45,8 +45,9 @@
 .FlexContainer__button-overview {
     width: var(--full-width);
     flex-flow: column wrap;
-    align-items: center;
+    align-items: flex-start;
     justify-content: flex-start;
     gap: 0 var(--gap-items);
+    margin-top: var(--space-medium);
     /*padding: var(--gap-items) 0 var(--gap-items) 0;*/
 }

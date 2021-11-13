@@ -12,13 +12,17 @@
     --green: #73956F;
     --white: #F1F1EF;
     --lightgrey: #E5E5E5;
+    --yellow: #FFBA08;
     /* navigation bar */
     --nav-height: 80px;
     --nav-hor-padding: 15px;
     /* padding and margins */
     --vert-padding: 100px;
+    --space-large: 60px;
+    --space-medium: 40px;
+    --space-small: 20px;
     --padding-garden-item: 40px;
-    --padding-block: 60px;
+    /*--padding-block: 60px;*/
     --padding-button: 25px;
     --gap-items: 50px;
     --gap-garden-items: 10px;

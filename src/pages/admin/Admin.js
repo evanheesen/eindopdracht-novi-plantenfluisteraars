@@ -135,7 +135,7 @@ function Admin() {
                     className="FlexContainer FlexContainer__image-container FlexContainer__image-container--profile">
 
                     <ColoredContainer
-                        classNameItem="FlexItem FlexItem__split"
+                        classNameItem="FlexItem"
                         classNameBlock="block block--profile block--green"
                         title="Dashboard admin"
                     >
@@ -143,12 +143,6 @@ function Admin() {
                             <strong>Gebruikersnaam:</strong> {user.info.username}
                             <p><strong>Email:</strong> {user.info.email}</p>
                         </InfoSection>
-                    </ColoredContainer>
-
-                    <ColoredContainer
-                        classNameItem="FlexItem FlexItem__split"
-                        classNameBlock="block block--profile"
-                    >
                         <FlexContainer className="FlexContainer FlexContainer__button-overview">
                             <Button
                                 type="button"
@@ -164,6 +158,26 @@ function Admin() {
                             />
                         </FlexContainer>
                     </ColoredContainer>
+
+                    {/*<ColoredContainer*/}
+                    {/*    classNameItem="FlexItem FlexItem__split"*/}
+                    {/*    classNameBlock="block block--profile"*/}
+                    {/*>*/}
+                    {/*    <FlexContainer className="FlexContainer FlexContainer__button-overview">*/}
+                    {/*        <Button*/}
+                    {/*            type="button"*/}
+                    {/*            className="button button--dark button--admin"*/}
+                    {/*            name="Geveltuintjes"*/}
+                    {/*            onClick={() => setMainOverview("gardens")}*/}
+                    {/*        />*/}
+                    {/*        <Button*/}
+                    {/*            type="button"*/}
+                    {/*            className="button button--dark button--admin"*/}
+                    {/*            name="Plantenfluisteraars"*/}
+                    {/*            onClick={() => setMainOverview("employees")}*/}
+                    {/*        />*/}
+                    {/*    </FlexContainer>*/}
+                    {/*</ColoredContainer>*/}
 
                     {mainOverview === "gardens" &&
                     <FlexContainer className="FlexContainer FlexContainer__button-row">

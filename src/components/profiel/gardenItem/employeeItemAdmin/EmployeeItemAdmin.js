@@ -38,7 +38,8 @@ function EmployeeItemAdmin({id}) {
             fetchData();
         }
 
-    },[id]);
+    //    hier id weggehaald!!
+    },[]);
 
     return (
         <div className="garden-item">
@@ -50,7 +51,7 @@ function EmployeeItemAdmin({id}) {
 
                 <Button
                     type="button"
-                    className="button__status"
+                    className={`button__status button__status--${employee.status}`}
                     name={employee.status}
                 />
             </>

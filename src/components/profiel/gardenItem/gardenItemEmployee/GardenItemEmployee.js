@@ -91,7 +91,7 @@ function GardenItemEmployee({id}) {
 
                 <DropdownButton
                     classNameButton="button__status"
-                    classNameSelect="dropdown-status"
+                    classNameSelect={`button__status button__status--${garden.status}`}
                     nameSelect="status"
                     idSelect="dropdown-status"
                     onChange={changeStatus}

@@ -8,7 +8,7 @@
     padding: 25px 25px 25px 25px;
     font-size: 20px;
     box-shadow: var(--box-shadow);
-    border: var(--border-small);
+    /*border: var(--border-small);*/
 }
 
 .button--top {
@@ -76,6 +76,23 @@
     margin-top: 10px;
     color: var(--white);
     font-size: 1rem;
+}
+
+.button__status--Open {
+    background-color: var(--yellow);
+    color: black;
+}
+
+.button__status--Actief {
+    background-color: var(--green);
+}
+
+.button__status--Inactief {
+    background-color: var(--red);
+}
+
+.button__status--Afgerond {
+    background-color: var(--dark-blue);
 }
 
 .button--admin {

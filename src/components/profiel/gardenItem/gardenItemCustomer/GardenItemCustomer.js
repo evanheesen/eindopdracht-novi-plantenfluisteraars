@@ -62,7 +62,7 @@ function GardenItemCustomer({id}) {
                 {/*}*/}
                 <Button
                     type="button"
-                    className="button__status"
+                    className={`button__status button__status--${garden.status}`}
                     name={garden.status}
                 />
             </>
