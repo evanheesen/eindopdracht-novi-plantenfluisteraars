@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import axios from "axios";
 import './EmployeeItemAdmin.css';
-import Button from "../../../buttons/submitButton/Button";
+import Button from "../../../buttons/button/Button";
 
 function EmployeeItemAdmin({id}) {
 

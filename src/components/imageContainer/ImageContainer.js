@@ -21,33 +21,7 @@ function ImageContainer({source, alt, className, classNameImg, source2, alt2, so
                 {children}
 
                 {/* if there should be an image gallery on the left side */}
-                {source2 && classNameImg === "image image--left" &&
-                <div className={classNameImg}>
-                    <div className="image image--gallery">
-                        <img
-                            src={source}
-                            alt={alt}
-                        />
-                        <img
-                            src={source2}
-                            alt={alt2}
-                        />
-                        <img
-                            src={source3}
-                            alt={alt3}
-                            className="image-gallery-top-right"
-                        />
-                        <img
-                            src={source4}
-                            alt={alt4}
-                            className="image-gallery-bottom-right"
-                        />
-                    </div>
-                </div>
-                }
-
-                {/* if there should be an image gallery on the right side */}
-                {source2 && classNameImg === "image image--right" &&
+                {source2 &&
                 <div className={classNameImg}>
                     <div className="image image--gallery">
                         <img
@@ -63,10 +37,12 @@ function ImageContainer({source, alt, className, classNameImg, source2, alt2, so
                         <img
                             src={source3}
                             alt={alt3}
+                            className="image-gallery-top-right"
                         />
                         <img
                             src={source4}
                             alt={alt4}
+                            className="image-gallery-bottom-right"
                         />
                     </div>
                 </div>

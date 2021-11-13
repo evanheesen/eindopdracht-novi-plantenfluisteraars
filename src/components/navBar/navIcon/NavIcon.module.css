@@ -7,7 +7,7 @@
     margin: 5px 10px 5px 10px
 }
 
-/* styling navigation icon submitButton */
+/* styling navigation icon button */
 .nav-icon {
     width: 20px;
     position: relative;
@@ -37,7 +37,7 @@ display: none;
     text-align: left;
 }
 
-/*.dropdown:hover, .nav-submitButton {*/
+/*.dropdown:hover, .nav-button {*/
 /*    color: #CD5C5C;*/
 /*}*/
 
@@ -45,7 +45,7 @@ display: none;
     color: #CD5C5C;
 }
 
-/* styling dropdown submitButton */
+/* styling dropdown button */
 .dropdown:hover .dropdown-content {
 display: block;
 }

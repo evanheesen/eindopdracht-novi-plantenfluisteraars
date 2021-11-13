@@ -2,7 +2,7 @@ import "./OverviewItem.css";
 import React from "react";
 import PriceBlock from "../priceBlock/PriceBlock";
 import FlexItem from "../../flexItem/FlexItem";
-import Button from "../../buttons/submitButton/Button";
+import Button from "../../buttons/button/Button";
 
 function OverviewItem({
                                image,

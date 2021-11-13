@@ -9,6 +9,8 @@ import {useHistory} from "react-router-dom";
 import Description from "../../components/description/Description";
 import FlexContainer from "../../components/flexContainer/FlexContainer";
 import FlexItem from "../../components/flexItem/FlexItem";
+import PageContainer from "../../components/pageContainer/PageContainer";
+import Button from "../../components/buttons/button/Button";
 
 function Prijzen() {
 
@@ -16,150 +18,96 @@ function Prijzen() {
 
     return (
         <>
-            <FlexContainer className="FlexContainer FlexContainer__white-split">
-                <ColoredContainer
-                    classNameItem="FlexItem FlexItem__split"
-                    classNameBlock="block block--left block--green"
-                    title="Prijzen"
-                    buttonClassNameBottom="button button--bottom button--bottom-split"
-                    buttonTitleBottom="Vraag een geveltuin aan"
-                    linkButton="/aanvragen"
-                    buttonTypeBottom="button"
-                >
-                    <p className="text-justified">
-                        We maken onderscheid in de aanleg van een geveltuin enerzijds en het onderhoud van een bestaande
-                        geveltuin anderzijds. Het afnemen van een onderhoudsplan is verplicht. Er kan bij het onderhoud
-                        worden gekozen tussen een vast onderhoudsplan of een coachingsplan."
-                    </p>
-                </ColoredContainer>
-                <ImageContainer
-                    source={aanlegGeveltuin}
-                    alt="aanleg-geveltuin"
-                    classNameImg="image image--right"
-                />
-            </FlexContainer>
-
-            <FlexContainer className="FlexContainer__image-container">
-                <FlexItem className="FlexItem">
-
-                    <Description
-                        className="description__centered"
-                        classNameTitle="description__title--white"
-                        classNameText="description--text--white"
-                        title="Prijs aanleg beplanting geveltuin"
-                        text="Voor de aanleg van de beplanting kan je kiezen
-                    uit drie verschillende pakketten:"
-                    />
-
-                </FlexItem>
-
-                <FlexItem className="FlexItem">
-                    <FlexItem
-                        className="FlexItem__overview"
-                        buttonClassName="button button--bottom button--red button--bottom-centered"
-                        buttonTitle="Vraag een geveltuin aan"
+            <PageContainer className="PageContainer">
+                <FlexContainer className="FlexContainer FlexContainer__white-split">
+                    <ColoredContainer
+                        classNameItem="FlexItem FlexItem__split-top"
+                        classNameBlock="block block--left block--green"
+                        title="Prijzen"
+                        buttonClassNameBottom="button button--bottom button--bottom-split"
+                        buttonTitleBottom="Vraag een geveltuin aan"
                         linkButton="/aanvragen"
+                        buttonTypeBottom="button"
                     >
-                        <OverviewItem
-                            image={plant}
-                            imageAlt="plant-groen"
-                            subTitle="Pakket 1"
-                            description="Lage wintergroene beplanting"
-                            priceAmount="25"
-                            unit="/ 30cm breedte"
-                            bullit1="Laag onderhoud"
-                            bullit2="Hele jaar door groen"
+                        <p className="text-justified">
+                            We maken onderscheid in de aanleg van een geveltuin enerzijds en het onderhoud van een
+                            bestaande
+                            geveltuin anderzijds. Het afnemen van een onderhoudsplan is verplicht. Er kan bij het
+                            onderhoud
+                            worden gekozen tussen een vast onderhoudsplan of een coachingsplan."
+                        </p>
+                    </ColoredContainer>
+                    <ImageContainer
+                        source={aanlegGeveltuin}
+                        alt="aanleg-geveltuin"
+                        classNameImg="image image--right"
+                    />
+                </FlexContainer>
+            </PageContainer>
+
+            <PageContainer className="PageContainer PageContainer--image PageContainer--split">
+                <FlexContainer className="FlexContainer FlexContainer__white-centered">
+                    <FlexItem className="FlexItem FlexItem__center">
+
+                        <Description
+                            className="description__centered"
+                            classNameTitle="description__title--white"
+                            classNameText="description--text--white"
+                            title="Prijs aanleg beplanting geveltuin"
+                            text="Voor de aanleg van de beplanting kan je kiezen
+                    uit drie verschillende pakketten:"
                         />
-                        <OverviewItem
-                            image={plant}
-                            imageAlt="plant-groen"
-                            subTitle="Pakket 2"
-                            description="Lage kleurrijke beplanting"
-                            priceAmount="30"
-                            unit="/ 30cm breedte"
-                            bullit1="Onderhoudsintensiever"
-                            bullit2="Zeer kleurrijk in de lente en zomer"
-                        />
-                        <OverviewItem
-                            image={plant}
-                            imageAlt="plant-groen"
-                            subTitle="Pakket 3"
-                            description="Kleurrijke klimbeplanting"
-                            priceAmount="35"
-                            unit="/ 30cm breedte"
-                            bullit1="Onderhoudsintensiever"
-                            bullit2="Zeer fraaie uitstraling"
-                        />
+
                     </FlexItem>
-                </FlexItem>
-            </FlexContainer>
 
-            {/*<ColoredContainer*/}
-            {/*    classNameItem="section-item section-item--center"*/}
-            {/*    classNameBlock="block block--center block--green"*/}
-            {/*    buttonClassNameTop="submitButton submitButton--top submitButton--top-centered"*/}
-            {/*    buttonTitleTop="Prijs aanleg"*/}
-            {/*    title="Prijs aanleg beplanting geveltuin"*/}
-            {/*    text="Voor de aanleg van de beplanting kan je kiezen uit drie verschillende pakketten:"*/}
-            {/*    classNameColumns="overview-container overview-container--white"*/}
-            {/*>*/}
-            {/*    <OverviewItem*/}
-            {/*        subTitle="Pakket 1"*/}
-            {/*        description="Lage wintergroene beplanting"*/}
-            {/*        priceAmount="25"*/}
-            {/*        unit="/ 30cm breedte"*/}
-            {/*        bullit1="Laag onderhoud"*/}
-            {/*        bullit2="Hele jaar door groen"*/}
-            {/*    />*/}
-            {/*    <OverviewItem*/}
-            {/*        subTitle="Pakket 2"*/}
-            {/*        description="Lage kleurrijke beplanting"*/}
-            {/*        priceAmount="30"*/}
-            {/*        unit="/ 30cm breedte"*/}
-            {/*        bullit1="Onderhoudsintensiever"*/}
-            {/*        bullit2="Zeer kleurrijk in de lente en zomer"*/}
-            {/*    />*/}
-            {/*    <OverviewItem*/}
-            {/*        subTitle="Pakket 3"*/}
-            {/*        description="Kleurrijke klimbeplanting"*/}
-            {/*        priceAmount="35"*/}
-            {/*        unit="/ 30cm breedte"*/}
-            {/*        bullit1="Onderhoudsintensiever"*/}
-            {/*        bullit2="Zeer fraaie uitstraling"*/}
-            {/*    />*/}
-            {/*</ColoredContainer>*/}
+                    <FlexItem className="section--center">
+                        <FlexItem
+                            className="FlexItem__overview"
+                            // buttonClassName="button button--bottom button--red button--bottom-centered"
+                            // buttonTitle="Vraag een geveltuin aan"
+                            // linkButton="/aanvragen"
+                        >
+                            <OverviewItem
+                                image={plant}
+                                imageAlt="plant-groen"
+                                subTitle="Pakket 1"
+                                description="Lage wintergroene beplanting"
+                                priceAmount="25"
+                                unit="/ 30cm breedte"
+                                bullit1="Laag onderhoud"
+                                bullit2="Hele jaar door groen"
+                            />
+                            <OverviewItem
+                                image={plant}
+                                imageAlt="plant-groen"
+                                subTitle="Pakket 2"
+                                description="Lage kleurrijke beplanting"
+                                priceAmount="30"
+                                unit="/ 30cm breedte"
+                                bullit1="Onderhoudsintensiever"
+                                bullit2="Zeer kleurrijk in de lente en zomer"
+                            />
+                            <OverviewItem
+                                image={plant}
+                                imageAlt="plant-groen"
+                                subTitle="Pakket 3"
+                                description="Kleurrijke klimbeplanting"
+                                priceAmount="35"
+                                unit="/ 30cm breedte"
+                                bullit1="Onderhoudsintensiever"
+                                bullit2="Zeer fraaie uitstraling"
+                            />
+                            <Button
+                                link="/aanvragen"
+                                type="button"
+                                className="button button--red"
+                                name="Vraag een geveltuin aan"
+                            ></Button>
+                        </FlexItem>
+                    </FlexItem>
+                </FlexContainer>
+            </PageContainer>
 
-            <ColoredContainer
-                classNameItem="section-item section-item--center"
-                classNameBlock="block block--center block--green"
-                buttonClassNameTop="button button--top button--top-centered"
-                buttonTitleTop="+ Prijs onderhoud"
-                title="Pakketten voor onderhoud geveltuin"
-                text="Voor het onderhoud van je geveltuin kan je kiezen uit twee verschillende pakketten:"
-                buttonClassNameBottom="button button--bottom button--bottom-centered"
-                buttonTitleBottom="Vraag een geveltuin aan"
-                linkButton="/aanvragen"
-                buttonTypeBottom="button"
-                classNameColumns="overview-container overview-container--white"
-            >
-                <OverviewItem
-                    subTitle="Coachingsplan"
-                    description="Periodieke coaching waarbij je Plantenfluisteraar je helpt om zelf je geveltuin in optimale conditie te houden."
-                    priceAmount="5"
-                    unit="/ maand"
-                    bullit1="5 fysieke coachingssessies per jaar"
-                    bullit2="Minimale duur 1 jaar"
-                />
-                <OverviewItem
-                    classNameColumns="test-column"
-                    subTitle="Vast plan"
-                    description="Vast periodiek onderhoudsplan waarbij je Plantenfluisteraar al het onderhoudswerk uit handen neemt."
-                    priceAmount="29"
-                    unit="/ maand"
-                    bullit1="Minimaal 12x onderhoud per jaar"
-                    bullit2="Minimale duur 1 jaar"
-                />
-            </ColoredContainer>
         </>
     );
 }

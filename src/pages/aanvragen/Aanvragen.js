@@ -11,7 +11,7 @@ import FileUploadElement from "../../components/formComponents/fileUploadElement
 import {useForm} from "react-hook-form";
 import {useHistory} from "react-router-dom";
 import FormContainer from "../../components/formContainer/FormContainer";
-import Button from "../../components/buttons/submitButton/Button";
+import Button from "../../components/buttons/button/Button";
 
 
 function Aanvragen() {
@@ -278,12 +278,12 @@ function Aanvragen() {
                         name="Verzend aanvraag"
                         />
 
-                    {/*<submitButton*/}
+                    {/*<button*/}
                     {/*    type="submit"*/}
-                    {/*    className="submitButton submitButton--dark"*/}
+                    {/*    className="button button--dark"*/}
                     {/*>*/}
                     {/*    Verzend aanvraag*/}
-                    {/*</submitButton>*/}
+                    {/*</button>*/}
 
                 {/*</FormContainer>*/}
                     </fieldset>

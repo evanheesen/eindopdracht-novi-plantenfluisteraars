@@ -1,6 +1,6 @@
 import styles from "./Home.module.css";
 import React from "react";
-import Button from "../../components/buttons/submitButton/Button";
+import Button from "../../components/buttons/button/Button";
 import FlexContainer from "../../components/flexContainer/FlexContainer";
 import FlexItem from "../../components/flexItem/FlexItem";
 import PageContainer from "../../components/pageContainer/PageContainer";

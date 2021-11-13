@@ -1,5 +1,6 @@
 div.PageContainer {
  width: var(--fullvw-width);
+ /*padding: var(--vert-padding) 0 var(--vert-padding) 0;*/
 }
 
 div.PageContainer--image {
@@ -8,4 +9,9 @@ div.PageContainer--image {
  background-blend-mode: multiply;
  box-sizing: border-box;
  min-height: var(--full-height);
+}
+
+div.PageContainer--split {
+ padding-top: var(--gap-items);
+ padding-bottom: var(--gap-items);
 }

@@ -34,7 +34,7 @@
     --fullvw-width: 100vw;
     --fullvh-height: 100vh;
     --full-height: calc(var(--fullvh-height) - var(--nav-height));
-    --max-width: 1150px;
+    --max-width: 1350px;
     --width-split-item: 450px;
     --width-center-item: 600px;
     --width-form-half: calc(50% - 30px);
@@ -42,6 +42,7 @@
     --box-shadow: 3px 5px rgba(34, 51, 59, 0.25);
     --border-small: 1px solid black;
     --border-radius: 20px;
+    --border-radius-img: 50px;
     --block-radius: 100px;
 }
 
@@ -50,7 +51,7 @@ body, html {
     font-size: 18px;
     font-weight: var(--reg-font-weight);
     color: var(--white);
-    background-color: var(--dark-blue);
+    background-color: var(--white);
     width: var(--fullvw-width);
     height: var(--full-height);
     line-height: 1.5;
@@ -67,7 +68,7 @@ h1 {
 
 h2 {
     font-family: 'Loved by the King', cursive;
-    font-size: 2.2rem;
+    font-size: 2.8rem;
     margin-bottom: 10px;
 }
 
@@ -258,6 +259,25 @@ input[type=file]::file-selector-button {
 input[type=file]::file-selector-button:hover {
     background-color: #ececec;
     border: 2px solid black;
+}
+
+.flex-item1 {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 50%;
+    /*height: 400px;*/
+}
+
+.flex-item1--blauw {
+    background-color: blue;
+    color: white;
+}
+
+.flex-item1--rood {
+    background-color: red;
+    color: white;
 }
 
 

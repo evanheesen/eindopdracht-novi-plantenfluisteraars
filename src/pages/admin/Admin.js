@@ -5,7 +5,7 @@ import {useHistory} from "react-router-dom";
 import FlexContainer from "../../components/flexContainer/FlexContainer";
 import ColoredContainer from "../../components/coloredContainer/ColoredContainer";
 import InfoSection from "../../components/profiel/infoSection/InfoSection";
-import Button from "../../components/buttons/submitButton/Button";
+import Button from "../../components/buttons/button/Button";
 import Description from "../../components/description/Description";
 import axios from "axios";
 import GardenItemAdmin from "../../components/profiel/gardenItem/gardenItemAdmin/GardenItemAdmin";
@@ -165,14 +165,14 @@ function Admin() {
                     {/*>*/}
                     {/*    <FlexContainer className="FlexContainer FlexContainer__button-overview">*/}
                     {/*        <Button*/}
-                    {/*            type="submitButton"*/}
-                    {/*            className="submitButton submitButton--dark submitButton--admin"*/}
+                    {/*            type="button"*/}
+                    {/*            className="button button--dark button--admin"*/}
                     {/*            name="Geveltuintjes"*/}
                     {/*            onClick={() => setMainOverview("gardens")}*/}
                     {/*        />*/}
                     {/*        <Button*/}
-                    {/*            type="submitButton"*/}
-                    {/*            className="submitButton submitButton--dark submitButton--admin"*/}
+                    {/*            type="button"*/}
+                    {/*            className="button button--dark button--admin"*/}
                     {/*            name="Plantenfluisteraars"*/}
                     {/*            onClick={() => setMainOverview("employees")}*/}
                     {/*        />*/}
@@ -217,7 +217,7 @@ function Admin() {
                         />
                     </FlexContainer>}
 
-                    {/*/* If submitButton Aanvragen is clicked, show: */}
+                    {/*/* If button Aanvragen is clicked, show: */}
                     {mainOverview === "gardens" && overviewGardens != "" &&
                     <ColoredContainer
                         classNameItem="FlexItem FlexItem__center"
@@ -236,7 +236,7 @@ function Admin() {
                     </ColoredContainer>
                     }
 
-                    {/*/* If submitButton Plantenfluisteraars is clicked, show: */}
+                    {/*/* If button Plantenfluisteraars is clicked, show: */}
                     {mainOverview === "employees" && overviewEmployees != "" &&
                     <ColoredContainer
                         classNameItem="FlexItem FlexItem__center"

@@ -1,17 +1,19 @@
 .image {
     height: auto;
     border: none;
+    /*border-radius: 50px;*/
 }
 
 .image--left {
     max-width: 500px;
-    border-radius: 0 50px 50px 0;
+    border-radius: var(--border-radius-img);
 }
 
 .image--right {
     max-width: 500px;
-    border-radius: 50px 0 0 50px;
+    border-radius: var(--border-radius-img);
     margin-left: auto;
+    /*max-height: 300px;*/
 }
 
 .image__top {

@@ -3,6 +3,8 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+    flex-flow: row wrap;
+    align-items: center;
 }
 
 .FlexItem__home-item {
@@ -17,6 +19,7 @@
 /* Flex items, two per row */
 .FlexItem__split {
     width: 50%;
+    justify-content: center;
 }
 
 .FlexItem__split-top {
@@ -33,7 +36,11 @@
 
 /* Flex items, one per row */
 .FlexItem__center {
-    margin: 0 10% 0 10%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 0 50px;
 }
 
 /* Flex items overview */

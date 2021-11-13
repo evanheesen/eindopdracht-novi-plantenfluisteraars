@@ -7,7 +7,7 @@ import arrow from "../../assets/white-arrow.png";
 import FormContainer from "../../components/formContainer/FormContainer";
 import InputElement from "../../components/formComponents/inputElement/InputElement";
 import FileUploadElement from "../../components/formComponents/fileUploadElement/FileUploadElement";
-import Button from "../../components/buttons/submitButton/Button";
+import Button from "../../components/buttons/button/Button";
 
 function Registreren() {
 
@@ -272,14 +272,14 @@ function Registreren() {
                         name="Verzend aanvraag"
                     />
 
-                    {/*<submitButton*/}
+                    {/*<button*/}
                     {/*    type="submit"*/}
                     {/*    // value={true}*/}
-                    {/*    className="submitButton submitButton--dark"*/}
+                    {/*    className="button button--dark"*/}
                     {/*    /*{...register("isAuth")}*/}
                     {/*>*/}
                     {/*    Registreren*/}
-                    {/*</submitButton>*/}
+                    {/*</button>*/}
                 </FormContainer>
 
                 {/*<h2>file: {fileValue}</h2>*/}

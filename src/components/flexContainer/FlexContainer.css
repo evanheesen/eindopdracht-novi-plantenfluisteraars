@@ -2,17 +2,26 @@
     max-width: var(--max-width);
     padding: var(--padding-container);
     box-sizing: border-box;
-    height: var(--full-height);
-    margin-left: auto;
-    margin-right: auto;
+    margin: var(--gap-items) auto var(--gap-items) auto;
+    /*margin-right: auto;*/
     display: flex;
-    align-items: center;
+    align-items: flex-start;
+    justify-content: space-between;
     flex-flow: row wrap;
+    /*margin-top: var(--gap-items);*/
+    /*margin-bottom: var(--gap-items);*/
+}
+
+.FlexContainer--margin {
+    margin: 100px;
 }
 
 .FlexContainer__home {
     align-items: center;
     justify-content: flex-start;
+    height: var(--full-height);
+    margin-top: 0;
+    margin-bottom: 0;
 }
 
 .FlexContainer__image-container--profile {
@@ -23,7 +32,8 @@
 
 /* Flex container split into two items */
 .FlexContainer__white-split {
-    justify-content: space-around;
+    justify-content: space-between;
+    align-items: center;
     gap: 0 var(--gap-items);
 }
 
