@@ -1,12 +1,11 @@
 import React, {useEffect, useState} from 'react';
-import './GardenItemAdmin.css';
 import axios from "axios";
+import './EmployeeItemAdmin.css';
 import Button from "../../../buttons/button/Button";
 
-function GardenItemAdmin({id}) {
+function EmployeeItemAdmin({id}) {
 
-    const [garden, setGarden] = useState(null);
-    // const [gardenStatus, setGardenStatus] = useState("");
+    const [employee, setEmployee] = useState(null);
     const token = localStorage.getItem('token');
     const source = axios.CancelToken.source();
 
@@ -15,7 +14,7 @@ function GardenItemAdmin({id}) {
 
         async function fetchData() {
             try {
-                const result = await axios.get(`http://localhost:8081/gardens/${id}`, {
+                const result = await axios.get(`http://localhost:8081/employees/${id}`, {
                         cancelToken: source.token,
                     },
                     {
@@ -24,38 +23,35 @@ function GardenItemAdmin({id}) {
                             Authorization: `Bearer ${token}`,
                         }
                     });
-                setGarden(result.data);
-                console.log("gardenItem result");
+                setEmployee(result.data);
+                console.log("employeeItem result");
                 console.log(result.data);
 
                 return function cleanup() {
                     source.cancel();
                 }
-
             } catch (e) {
                 console.error(e);
             }
         }
-
-        if (id) {
+        if(id) {
             fetchData();
         }
 
-    }, [id]);
+    },[id]);
 
     return (
         <div className="garden-item">
-            {garden &&
+            {employee &&
             <>
-                <h4>{garden.street} {garden.houseNumber}, {garden.city}</h4>
-                <p><strong>Datum aanvraag: </strong>{garden.submissionDate}</p>
-                <p><strong>Adres: </strong>{garden.street} {garden.houseNumber}, {garden.city}</p>
-                <p><strong>Pakket beplanting: </strong>{garden.packagePlants}</p>
+                <h4>{employee.firstName} {employee.lastName}</h4>
+                <p><strong>Adres: </strong>{employee.street} {employee.houseNumber}, {employee.city}</p>
+                <p><strong>Telefoonnummer: </strong>{employee.phone}</p>
 
                 <Button
                     type="button"
                     className="button__status"
-                    name={garden.status}
+                    name={employee.status}
                 />
             </>
             }
@@ -64,4 +60,4 @@ function GardenItemAdmin({id}) {
     );
 }
 
-export default GardenItemAdmin;
+export default EmployeeItemAdmin;

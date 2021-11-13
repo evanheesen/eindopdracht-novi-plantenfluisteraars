@@ -9,6 +9,7 @@ import Button from "../../components/buttons/button/Button";
 import Description from "../../components/description/Description";
 import axios from "axios";
 import GardenItemAdmin from "../../components/profiel/gardenItem/gardenItemAdmin/GardenItemAdmin";
+import EmployeeItemAdmin from "../../components/profiel/gardenItem/employeeItemAdmin/EmployeeItemAdmin";
 
 function Admin() {
 
@@ -16,12 +17,17 @@ function Admin() {
     const {user} = useContext(AuthContext);
     const {getUserData} = useContext(AuthContext);
     const token = localStorage.getItem('token');
+    const source = axios.CancelToken.source();
 
-    const [overview, setOverview] = useState("");
-    const [gardens, setGardens] = useState({});
-    const [urlString, setUrlString] = useState("");
+    const [mainOverview, setMainOverview] = useState("");
+    const [overviewEmployees, setOverviewEmployees] = useState("");
+    const [overviewGardens, setOverviewGardens] = useState("");
+    const [gardens, setGardens] = useState([]);
+    const [employees, setEmployees] = useState([]);
     const [error, toggleError] = useState(false);
     const [loading, toggleLoading] = useState(false);
+    const titleStatus = overviewGardens === "all" ? "Alle" : (overviewGardens === "open" ? "Open" : "Actieve");
+    const titleEmployees = overviewEmployees === "all" ? "Alle" : "Actieve";
 
     // function showOverview(url) {
     //     setOverview(url === "alles" ? "" : url);
@@ -42,39 +48,84 @@ function Admin() {
     }, []);
 
     useEffect(() => {
+        const urlString = overviewGardens === "all" ? "" : "status/" + overviewGardens;
+        console.log(urlString);
 
-            async function getGardens(token) {
-                toggleError(false);
-                toggleLoading(true);
+        async function getGardens(token) {
+            toggleError(false);
+            toggleLoading(true);
 
-                console.log("overview type: " + overview);
-                console.log("urlString: " + urlString);
+            try {
+                const result = await axios.get(`http://localhost:8081/gardens/${urlString}`, {
+                        cancelToken: source.token,
+                    },
+                    {
+                        headers: {
+                            "Content-Type": "application/json",
+                            Authorization: `Bearer ${token}`,
+                        }
+                    });
 
-                try {
-                    const result = await axios.get(`http://localhost:8081/gardens/status/${overview}`,
-                        {
-                            headers: {
-                                "Content-Type": "application/json",
-                                Authorization: `Bearer ${token}`,
-                            }
-                        });
+                setGardens(result.data);
+                console.log("result gardens: ")
+                console.log(result.data);
 
-                    console.log("Garden overview data:")
-                    console.log(result.data);
-                    setGardens(result.data);
-
-                } catch (e) {
-                    console.error(e);
-                    toggleError(true);
+                return function cleanup() {
+                    source.cancel();
                 }
-                toggleLoading(false);
-            }
 
-            if(overview){
+            } catch (e) {
+                console.error(e);
+                toggleError(true);
+            }
+            toggleLoading(false);
+        }
+
+        if (overviewGardens) {
             getGardens(token);
-            }
+        }
 
-    }, [overview])
+    }, [overviewGardens])
+
+    useEffect(() => {
+        const urlString = overviewEmployees === "all" ? "" : "status/" + overviewEmployees;
+        console.log(urlString);
+
+        async function getGardens(token) {
+            toggleError(false);
+            toggleLoading(true);
+
+            try {
+                const result = await axios.get(`http://localhost:8081/employees/${urlString}`, {
+                        cancelToken: source.token,
+                    },
+                    {
+                        headers: {
+                            "Content-Type": "application/json",
+                            Authorization: `Bearer ${token}`,
+                        }
+                    });
+
+                setEmployees(result.data);
+                console.log("result employees: ");
+                console.log(result.data);
+
+                return function cleanup() {
+                    source.cancel();
+                }
+
+            } catch (e) {
+                console.error(e);
+                toggleError(true);
+            }
+            toggleLoading(false);
+        }
+
+        if (overviewEmployees) {
+            getGardens(token);
+        }
+
+    }, [overviewEmployees])
 
     return (
         <>
@@ -96,51 +147,95 @@ function Admin() {
 
                     <ColoredContainer
                         classNameItem="FlexItem FlexItem__split"
-                        classNameBlock="block block--profile block--red"
-                        title="Aanpassen"
+                        classNameBlock="block block--profile"
                     >
-                        <InfoSection>
-                            <strong>Gebruikersnaam:</strong> {user.info.username}
-                            <p><strong>Email:</strong> {user.info.email}</p>
-                        </InfoSection>
+                        <FlexContainer className="FlexContainer FlexContainer__button-overview">
+                            <Button
+                                type="button"
+                                className="button button--dark button--admin"
+                                name="Geveltuintjes"
+                                onClick={() => setMainOverview("gardens")}
+                            />
+                            <Button
+                                type="button"
+                                className="button button--dark button--admin"
+                                name="Plantenfluisteraars"
+                                onClick={() => setMainOverview("employees")}
+                            />
+                        </FlexContainer>
                     </ColoredContainer>
 
+                    {mainOverview === "gardens" &&
                     <FlexContainer className="FlexContainer FlexContainer__button-row">
                         <Button
                             type="button"
-                            className="button button--red"
+                            className="button button--red button--profile"
                             name="Toon alle geveltuintjes"
-                            onClick={() => setOverview("all")}
+                            onClick={() => setOverviewGardens("all")}
                         />
                         <Button
                             type="button"
-                            className="button button--red"
+                            className="button button--red button--profile"
                             name="Toon open aanvragen"
-                            onClick={() => setOverview("open")}
+                            onClick={() => setOverviewGardens("open")}
                         />
                         <Button
                             type="button"
-                            className="button button--red"
+                            className="button button--red button--profile"
                             name="Toon actieve aanvragen"
-                            onClick={() => setOverview("active")}
+                            onClick={() => setOverviewGardens("actief")}
                         />
-                    </FlexContainer>
+                    </FlexContainer>}
 
-                    {overview != "closed" &&
+                    {mainOverview === "employees" &&
+                    <FlexContainer className="FlexContainer FlexContainer__button-row">
+                        <Button
+                            type="button"
+                            className="button button--red button--profile"
+                            name="Toon alle Plantenfluisteraars"
+                            onClick={() => setOverviewEmployees("all")}
+                        />
+                        <Button
+                            type="button"
+                            className="button button--red button--profile"
+                            name="Toon actieve Plantenfluisteraars"
+                            onClick={() => setOverviewEmployees("actief")}
+                        />
+                    </FlexContainer>}
+
+                    {/*/* If button Aanvragen is clicked, show: */}
+                    {mainOverview === "gardens" && overviewGardens != "" &&
                     <ColoredContainer
                         classNameItem="FlexItem FlexItem__center"
                         classNameBlock="block block--center block--white"
                     >
                         <Description
-                            title="Open aanvragen"
-                            text="Hier kun je alle open aanvragen zien."
+                            title={`${titleStatus} aanvragen`}
                             className="description__centered"
                             classNameTitle="description__title--red"
-                            classNameText="description__text--dark"
                         />
                         <InfoSection className="gardens-overview">
                             {gardens.map((garden) => {
                                 return <GardenItemAdmin key={garden.id} id={garden.id}/>
+                            })}
+                        </InfoSection>
+                    </ColoredContainer>
+                    }
+
+                    {/*/* If button Plantenfluisteraars is clicked, show: */}
+                    {mainOverview === "employees" && overviewEmployees != "" &&
+                    <ColoredContainer
+                        classNameItem="FlexItem FlexItem__center"
+                        classNameBlock="block block--center block--white"
+                    >
+                        <Description
+                            title={`${titleEmployees} Plantenfluisteraars`}
+                            className="description__centered"
+                            classNameTitle="description__title--red"
+                        />
+                        <InfoSection className="gardens-overview">
+                            {employees.map((employee) => {
+                                return <EmployeeItemAdmin key={employee.id} id={employee.id}/>
                             })}
                         </InfoSection>
                     </ColoredContainer>

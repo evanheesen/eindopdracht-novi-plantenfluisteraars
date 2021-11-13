@@ -11,3 +11,7 @@
     /*gap: 0;*/
     gap: var(--gap-garden-items);
 }
+
+.InfoSection__user-details {
+    margin-top: var(--gap-garden-items);
+}

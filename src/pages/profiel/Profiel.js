@@ -27,11 +27,12 @@ function Profiel() {
     const userId = data.id;
     let urlOwnGardens = userType ===  "employee" ? "employees/" + userId : "customers/" + userId;
     const [overview, setOverview] = useState("");
-    const [gardens, setGardens] = useState({});
+    const [gardens, setGardens] = useState([]);
     const [urlString, setUrlString] = useState("");
     const [error, toggleError] = useState(false);
     const [loading, toggleLoading] = useState(false);
     const token = localStorage.getItem('token');
+    const source = axios.CancelToken.source();
 
     // Show own gardens
     function showOwn() {
@@ -78,6 +79,7 @@ function Profiel() {
                 const result = await axios.get(`http://localhost:8081/gardens/${urlString}`,
                     {
                         headers: {
+                            cancelToken: source.token,
                             "Content-Type": "application/json",
                             Authorization: `Bearer ${token}`,
                         }
@@ -86,6 +88,10 @@ function Profiel() {
                 console.log("Garden overview data:")
                 console.log(result.data);
                 setGardens(result.data);
+
+                return function cleanup() {
+                    source.cancel();
+                }
 
             } catch (e) {
                 console.error(e);
@@ -109,16 +115,11 @@ function Profiel() {
 
 
                     <ColoredContainer
-                        classNameItem="FlexItem FlexItem__split"
+                        classNameItem= {userType === "employee" ? "FlexItem FlexItem__split" : "FlexItem FlexItem__profile"}
                         classNameBlock="block block--profile block--green"
-                        title="Profiel"
+                        title= {userType === "employee" ? "Profiel Plantenfluisteraar" : "Profiel bewoner"}
                     >
 
-                        <InfoSection>
-                            <strong>Gebruikersnaam:</strong> {user.info.username}
-                            <p><strong>Email:</strong> {user.info.email}</p>
-                            <p>{userType}</p>
-                        </InfoSection>
                         {userType &&
                         <>
                             <InfoSection>
@@ -127,37 +128,38 @@ function Profiel() {
                                 <p><strong>Telefoonnummer:</strong> {data.phone}</p>
                             </InfoSection>
                             {userType === "employee" &&
-                            <InfoSection>
+                            <InfoSection className="InfoSection__user-details">
                                 <strong>Adres:</strong> {`${data.street} ${data.houseNumber}`}
                                 <p><strong>Postcode:</strong> {data.postalCode}</p>
                                 <p><strong>Woonplaats:</strong> {data.city}</p>
                             </InfoSection>}
                         </>}
+                        <InfoSection className="InfoSection__user-details">
+                            <strong>Gebruikersnaam:</strong> {user.info.username}
+                            <p><strong>Email:</strong> {user.info.email}</p>
+                        </InfoSection>
 
                     </ColoredContainer>
 
+                    {userType === "employee" &&
                     <ImageContainer
                         className="FlexItem FlexItem__profile"
                         source={profileAnonymous}
                         alt="plantenfluisteraar"
                         classNameImg={styles["image-profile"]}
-                    >
-                        <FileUpload/>
-                        {/*  Aanpassen CSS in app.css: naar component verplaatsen */}
-                    </ImageContainer>
-
+                    />}
 
                     <FlexContainer className="FlexContainer FlexContainer__button-row">
                         <Button
                             type="button"
-                            className="button button--red"
+                            className="button button--red button--profile"
                             name="Toon jouw geveltuintjes"
                             onClick={showOwn}
                         />
                         {userType === "employee" &&
                         <Button
                             type="button"
-                            className="button button--red"
+                            className="button button--red button--profile"
                             name="Toon open aanvragen"
                             onClick={showOpen}
                         />}
@@ -173,7 +175,10 @@ function Profiel() {
                             className="description__centered"
                             classNameTitle="description__title--red"
                         />
-                        <GardenItemCustomer id={gardens[0].id} oppositePerson={oppositePerson}/>
+                        {gardens.map((garden) => {
+                            return <GardenItemCustomer key={garden.id} id={garden.id} oppositePerson={oppositePerson}/>
+                        })}
+                        {/*<GardenItemCustomer id={gardens[0].id} oppositePerson={oppositePerson}/>*/}
                     </ColoredContainer>}
 
                     {/* ###### Deze twee nog samenvoegen?? */}
@@ -208,7 +213,7 @@ function Profiel() {
                         />
                         <InfoSection className="gardens-overview">
                             {gardens.map((garden) => {
-                                return <GardenItemEmployee key={garden.id} id={garden.id} oppositePerson={oppositePerson} employeeId={userId}/>
+                                return <GardenItemEmployee key={garden.id} id={garden.id} oppositePerson={oppositePerson}/>
                             })}
                         </InfoSection>
                     </ColoredContainer>}

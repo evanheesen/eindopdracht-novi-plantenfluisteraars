@@ -19,7 +19,8 @@
 
 .FlexContainer__image-container--profile {
     flex-flow: row wrap;
-    align-items: center;
+    align-items: flex-start;
+    justify-content: center;
 }
 
 /* Flex container split into two items */
@@ -35,8 +36,17 @@
 }
 
 .FlexContainer__button-row {
-    width: 100%;
+    width: var(--full-width);
     justify-content: center;
     gap: 0 var(--gap-items);
     padding: var(--gap-items) 0 var(--gap-items) 0;
+}
+
+.FlexContainer__button-overview {
+    width: var(--full-width);
+    flex-flow: column wrap;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0 var(--gap-items);
+    /*padding: var(--gap-items) 0 var(--gap-items) 0;*/
 }

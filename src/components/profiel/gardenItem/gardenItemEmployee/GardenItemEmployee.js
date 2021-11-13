@@ -1,29 +1,39 @@
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import axios from "axios";
 import './GardenItemEmployee.css';
 import DropdownButton from "../../../buttons/dropdownButton/DropdownButton";
+import {AuthContext} from "../../../../context/AuthContext";
 
-function GardenItemEmployee({id, employeeId}) {
+function GardenItemEmployee({id}) {
 
+    const {user} = useContext(AuthContext);
+    const employeeId = user.info.employee.id;
     const [garden, setGarden] = useState(null);
     const [gardenStatus, setGardenStatus] = useState("");
     const token = localStorage.getItem('token');
+    const source = axios.CancelToken.source();
 
     useEffect(() => {
+
         console.log(id);
 
         async function fetchData() {
             try {
-                const result = await axios.get(`http://localhost:8081/gardens/${id}`,
-                    {
-                        headers: {
-                            "Content-Type": "application/json",
-                            Authorization: `Bearer ${token}`,
-                        }
-                    });
+                const result = await axios.get(`http://localhost:8081/gardens/${id}`, {
+                    cancelToken: source.token,
+                }, {
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${token}`,
+                    },
+                });
                 setGarden(result.data);
                 console.log("gardenItem result");
                 console.log(result.data);
+
+                return function cleanup() {
+                    source.cancel();
+                }
             } catch (e) {
                 console.error(e);
             }
@@ -38,6 +48,7 @@ function GardenItemEmployee({id, employeeId}) {
     function changeStatus() {
         const status = document.getElementById("dropdown-status").value;
         console.log("status button: " + status);
+        console.log("employee id: " + employeeId);
         setGardenStatus(status);
     }
 
@@ -50,9 +61,14 @@ function GardenItemEmployee({id, employeeId}) {
                         status: gardenStatus,
                     },
                     {
+                        cancelToken: source.token,
                         'Content-type': 'application/json',
                         Authorization: `Bearer ${token}`,
                     });
+
+                return function cleanup() {
+                    source.cancel();
+                }
             } catch (e) {
                 console.error(e);
             }

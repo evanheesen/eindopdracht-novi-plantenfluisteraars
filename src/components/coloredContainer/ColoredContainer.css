@@ -33,6 +33,12 @@
     width: 400px;
 }
 
+/*.block--admin {*/
+/*    width: 400px;*/
+/*    display: flex;*/
+/*    align-items: flex-start;*/
+/*}*/
+
 .block--white {
     background-color: #F1F1EF;
     color: var(--dark-blue);
