@@ -7,6 +7,7 @@ import arrow from "../../assets/white-arrow.png";
 import FormContainer from "../../components/formContainer/FormContainer";
 import InputElement from "../../components/formComponents/inputElement/InputElement";
 import FileUploadElement from "../../components/formComponents/fileUploadElement/FileUploadElement";
+import Button from "../../components/buttons/button/Button";
 
 function Registreren() {
 
@@ -52,7 +53,6 @@ function Registreren() {
 
         try {
             const result = await axios.post('http://localhost:8081/employees', {
-                cancelToken: source.token,
                 email: data.email,
                 password: data.password,
                 username: data.username,
@@ -63,6 +63,13 @@ function Registreren() {
                 houseNumber: data.houseNumber,
                 postalCode: data.postalCode,
                 city: data.city,
+            }, {
+                cancelToken: source.token,
+            },
+                {
+                    headers: {
+                        "Content-Type": "application/json",
+                    }
             });
 
             employeeId = result.data.replace('http://localhost:8081/employees/', "");
@@ -259,14 +266,20 @@ function Registreren() {
                         // onChange={fileValue("l")}
                     />
 
-                    <button
+                    <Button
                         type="submit"
-                        // value={true}
                         className="button button--dark"
-                        /*{...register("isAuth")}*/
-                    >
-                        Registreren
-                    </button>
+                        name="Verzend aanvraag"
+                    />
+
+                    {/*<button*/}
+                    {/*    type="submit"*/}
+                    {/*    // value={true}*/}
+                    {/*    className="button button--dark"*/}
+                    {/*    /*{...register("isAuth")}*/}
+                    {/*>*/}
+                    {/*    Registreren*/}
+                    {/*</button>*/}
                 </FormContainer>
 
                 {/*<h2>file: {fileValue}</h2>*/}

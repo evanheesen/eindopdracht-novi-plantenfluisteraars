@@ -1,0 +1,11 @@
+.form-item--conditions {
+    width: 100%;
+    margin-top: var(--space-small);
+}
+
+/* form checkbox field styling */
+input.checkbox {
+    width: 50px;
+    height: 20px;
+    padding: 25px;
+}

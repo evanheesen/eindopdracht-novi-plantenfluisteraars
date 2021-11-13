@@ -31,6 +31,7 @@
     --max-width: 1100px;
     --width-split-item: 450px;
     --width-center-item: 600px;
+    --width-form-half: calc(50% - 30px);
     /* decoration */
     --box-shadow: 3px 5px rgba(34, 51, 59, 0.25);
     --border-small: 1px solid black;
@@ -188,10 +189,6 @@ ol li:before {
     width: calc(50% - 30px);
 }
 
-.form-item--full {
-    width: 100%;
-}
-
 /* form label styling */
 label {
     display: block;
@@ -212,44 +209,23 @@ label {
 }
 
 /* form radio buttons label styling*/
-.label--singleSelect {
-    margin-top: 2px;
-}
 
-.value--singleSelect {
-    font-weight: 400;
-    display: flex;
-    align-items: center;
-}
 
 /* form general input field styling */
-.inputField {
-    margin-top: 2px;
-    padding: 5px 15px 5px 15px;
-    border: 1px solid black;
-    border-radius: 5px;
-    width: 100%;
-    background-color: white;
-    color: #22333B;
-    font-size: 16px;
-}
+/*.inputField {*/
+/*    margin-top: 2px;*/
+/*    padding: 5px 15px 5px 15px;*/
+/*    border: 1px solid black;*/
+/*    border-radius: 5px;*/
+/*    width: 100%;*/
+/*    background-color: white;*/
+/*    color: #22333B;*/
+/*    font-size: 16px;*/
+/*}*/
 
-.inputField--half {
-    width: calc(50% - 30px);
-}
 
-/* form checkbox field styling */
-input.checkbox {
-    width: 50px;
-    height: 20px;
-    padding: 25px;
-}
 
-input.radioField {
-    width: 50px;
-    height: 20px;
-    padding: 25px;
-}
+
 
 /* form file upload field styling */
 input.fileUpload {
@@ -278,12 +254,6 @@ input[type=file]::file-selector-button:hover {
     border: 2px solid black;
 }
 
-/* form subtitle styling */
-.h3--form {
-    color: #CD5C5C;
-    margin: 30px 0 10px 0;
-    font-size: 24px;
-}
 
 /* Media Queries: Tablet Landscape */
 @media screen and (max-width: 1060px) {

@@ -1,0 +1,33 @@
+/*.inputField {*/
+/*    background-color: white;*/
+/*    border: 2px solid black;*/
+/*    border-radius: 5px;*/
+/*    width: 100%;*/
+/*    color: #22333B;*/
+/*    text-align: left;*/
+/*}*/
+
+.inputField--half {
+    width: 50%;
+}
+
+.form-item--full {
+    width: var(--full-width)
+}
+
+.form__label {
+    font-weight: bolder;
+    color: black;
+}
+
+.value--singleSelect {
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+}
+
+input.radioField {
+    width: 50px;
+    height: 20px;
+    padding: 25px;
+}

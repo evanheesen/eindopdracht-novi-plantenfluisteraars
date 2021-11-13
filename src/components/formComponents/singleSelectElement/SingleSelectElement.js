@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './SingleSelectElement.module.css';
+import './SingleSelectElement.css';
 
 function SingleSelectElement({ register, name, value, label, className, validationRules }) {
     return (

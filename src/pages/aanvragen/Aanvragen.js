@@ -10,6 +10,8 @@ import MultiSelectElement from "../../components/formComponents/multiSelectEleme
 import FileUploadElement from "../../components/formComponents/fileUploadElement/FileUploadElement";
 import {useForm} from "react-hook-form";
 import {useHistory} from "react-router-dom";
+import FormContainer from "../../components/formContainer/FormContainer";
+import Button from "../../components/buttons/button/Button";
 
 
 function Aanvragen() {
@@ -24,10 +26,26 @@ function Aanvragen() {
 
         try {
             const result = await axios.post('http://localhost:3000/register', {
-                cancelToken: source.token,
-                email: data.email,
-                password: data.password,
-            });
+                    email: data.email,
+                    password: data.password,
+                    username: data.username,
+                    firstName: data.firstname,
+                    lastName: data.lastname,
+                    phone: data.phone,
+                    street: data.street,
+                    houseNumber: data.housenumber,
+                    postalCode: data.postalcode,
+                    city: data.city,
+                    packagePlants: data.packageplants,
+                }, {
+                    cancelToken: source.token,
+                },
+                {
+                    headers: {
+                        "Content-Type": "application/json",
+                    }
+                });
+
             console.log(result);
             history.push('/login');
 
@@ -36,7 +54,6 @@ function Aanvragen() {
             }
         } catch (e) {
             console.error(e);
-            console.log(e.response.data);
         }
 
     }
@@ -66,252 +83,209 @@ function Aanvragen() {
                 >
                     <h2 className={styles["h2--form"]} id="aanvraagformulier">Aanvraagformulier</h2>
                     <fieldset className="form--container">
-                        <InputElement
-                            errors={errors}
-                            register={register}
-                            classNameItem="form-item--half"
-                            name="firstname"
-                            label="Voornaam"
-                            inputType="text"
-                            className="inputField"
-                            validationRules={{
-                                required: "Voornaam is verplicht",
-                            }}
-                        />
-                        <InputElement
-                            errors={errors}
-                            register={register}
-                            classNameItem="form-item--half"
-                            name="lastname"
-                            label="Achternaam"
-                            inputType="text"
-                            className="inputField"
-                            validationRules={{
-                                required: "Achternaam is verplicht",
-                            }}
-                        />
-                        <InputElement
-                            errors={errors}
-                            register={register}
-                            classNameItem="form-item--full"
-                            name="email"
-                            label="Emailadres"
-                            inputType="text"
-                            className="inputField"
-                            validationRules={{
-                                required: "Emailadres is verplicht",
-                                minLength: {
-                                    value: 6,
-                                    message: "Het emailadres moet minimaal minstens 6 tekens bevatten",
-                                }
-                            }}
-                        />
-                        <InputElement
-                            errors={errors}
-                            register={register}
-                            classNameItem="form-item--full"
-                            name="password"
-                            label="Wachtwoord"
-                            inputType="password"
-                            className="inputField"
-                            validationRules={{
-                                required: "Wachtwoord is verplicht",
-                                minLength: {
-                                    value: 6,
-                                    message: "Het wachtwoord moet minimaal minstens 6 tekens bevatten",
-                                }
-                            }}
-                        />
-                        <InputElement
-                            errors={errors}
-                            register={register}
-                            classNameItem="form-item--half"
-                            name="phonenumber"
-                            label="Telefoonnummer"
-                            inputType="tel"
-                            className="inputField"
-                            placeholder="06-12345678"
-                            validationRules={{
-                                required: "Telefoonnummer is verplicht",
-                            }}
-                        />
-                        <InputElement
-                            errors={errors}
-                            register={register}
-                            classNameItem="form-item--full"
-                            name="address"
-                            label="Straat en huisnummer"
-                            inputType="text"
-                            className="inputField"
-                            validationRules={{
-                                required: "Adres is verplicht",
-                            }}
-                        />
-                        <InputElement
-                            errors={errors}
-                            register={register}
-                            classNameItem="form-item--half"
-                            name="postalcode"
-                            label="Postcode"
-                            inputType="text"
-                            className="inputField"
-                            validationRules={{
-                                required: "Postcode is verplicht",
-                                pattern: {
-                                    value: /^[0-9]{4}[a-zA-Z]{2}$/,
-                                    message: "Ongeldige postcode",
-                                }
-                            }}
-                        />
-                        <InputElement
-                            errors={errors}
-                            register={register}
-                            classNameItem="form-item--half"
-                            name="city"
-                            label="Woonplaats"
-                            inputType="text"
-                            className="inputField"
-                            validationRules={{
-                                required: "Woonplaats is verplicht",
-                            }}
-                        />
 
-                        <h3 className="h3--form">Woningsituatie</h3>
-                        <MultiSelectElement
-                            errors={errors}
-                            register={register}
-                            classNameItem="form-item--full"
-                            name="floorlevel"
-                            label="Ik woon in een woning op de begane grond"
-                            selectType="checkbox"
-                            className="checkbox"
-                            validationRules={{
-                                required: "Je kan alleen een geveltuin aanvragen als je op de begane grond woont",
-                            }}
-                        />
-                        <div className="form-item--full">
-                            <p className="label--singleSelect">Wat is jouw woningsituatie?</p>
-                            <SingleSelectElement
-                                errors={errors}
-                                register={register}
-                                className="radioField"
-                                name="ownership"
-                                value="eigenaar"
-                                label="Ik ben eigenaar van de woning"
-                            />
-                            <SingleSelectElement
-                                errors={errors}
-                                register={register}
-                                className="radioField"
-                                name="ownership"
-                                value="huurder"
-                                label="Ik ben huurder van de woning"
-                            />
-                        </div>
-
-                        <FileUploadElement
+                {/*<FormContainer*/}
+                {/*    classNameItem={styles["section-item"]}*/}
+                {/*    classNameBlock={styles["block-register"]}*/}
+                {/*    classNameContainer={styles["form--container"]}*/}
+                {/*    title="Aanvraagformulier"*/}
+                {/*    onSubmit={handleSubmit(onSubmit)}*/}
+                {/*>*/}
+                    <InputElement
+                        errors={errors}
+                        register={register}
+                        classNameItem="form-item--half"
+                        name="firstname"
+                        label="Voornaam"
+                        inputType="text"
+                        className="inputField"
+                        validationRules={{
+                            required: "Voornaam is verplicht",
+                        }}
+                    />
+                    <InputElement
+                        errors={errors}
+                        register={register}
+                        classNameItem="form-item--half"
+                        name="lastname"
+                        label="Achternaam"
+                        inputType="text"
+                        className="inputField"
+                        validationRules={{
+                            required: "Achternaam is verplicht",
+                        }}
+                    />
+                    <InputElement
                         errors={errors}
                         register={register}
                         classNameItem="form-item--full"
-                        name="permission-owner"
-                        className="fileUpload"
-                        label="Upload toestemming van de woningeigenaar"
-                        />
-                        <FileUploadElement
-                            errors={errors}
-                            register={register}
-                            classNameItem="form-item--full"
-                            name="situation-drawing"
-                            className="fileUpload"
-                            label="Upload situatieschets"
-                        />
-
+                        name="email"
+                        label="Emailadres"
+                        inputType="text"
+                        className="inputField"
+                        validationRules={{
+                            required: "Emailadres is verplicht",
+                            minLength: {
+                                value: 6,
+                                message: "Het emailadres moet minimaal minstens 6 tekens bevatten",
+                            }
+                        }}
+                    />
                         <InputElement
                             errors={errors}
                             register={register}
-                            classNameItem="form-item--full"
-                            name="width-garden"
-                            label="Wat wordt de breedte van de geveltuin (in cm)?"
-                            inputType="number"
-                            className="inputField inputField--half"
+                            classNameItem="form-item--half"
+                            name="username"
+                            label="Gebruikersnaam"
+                            inputType="text"
+                            className="inputField"
                             validationRules={{
-                                required: "Woonplaats is verplicht",
+                                required: "Gebruikersnaam is verplicht",
+                                minLength: {
+                                    value: 6,
+                                    message: "De gebruikersnaam moet minimaal minstens 6 tekens bevatten",
+                                }
                             }}
                         />
-
-                        <h3 className="h3--form">Aanleg en Onderhoud</h3>
-                        <div className="form-item--full">
-                            <p className="label--singleSelect">Welk pakket beplanting wil je?</p>
-                            <SingleSelectElement
-                                errors={errors}
-                                register={register}
-                                className="radioField"
-                                name="packageplants"
-                                value="pakket1"
-                                label="Pakket 1 - € 25,00 per 30cm"
-                            />
-                            <SingleSelectElement
-                                errors={errors}
-                                register={register}
-                                className="radioField"
-                                name="packageplants"
-                                value="pakket2"
-                                label="Pakket 2 - € 30,00 per 30cm"
-                            />
-                            <SingleSelectElement
-                                errors={errors}
-                                register={register}
-                                className="radioField"
-                                name="packageplants"
-                                value="pakket3"
-                                label="Pakket 3 - € 35,00 per 30cm"
-                            />
-                        </div>
-
-                        <div className="form-item--full">
-                            <p className="label--singleSelect">Welk onderhoudsplan wil je?</p>
-                            <SingleSelectElement
-                                errors={errors}
-                                register={register}
-                                className="radioField"
-                                name="packageplants"
-                                value="coaching"
-                                label="Coachingsplan - € 5,00 per maand"
-                            />
-                            <SingleSelectElement
-                                errors={errors}
-                                register={register}
-                                className="radioField"
-                                name="packageplants"
-                                value="fixed-maintenance"
-                                label="Vast onderhoudsplan - € 29,00 per maand"
-                            />
-                        </div>
-
-                        {/* toevoegen total price veld met calculatie pakket * breedte geveltuin */}
-
-                        <br/>
-                        <MultiSelectElement
+                    <InputElement
+                        errors={errors}
+                        register={register}
+                        classNameItem="form-item--half"
+                        name="password"
+                        label="Wachtwoord"
+                        inputType="password"
+                        className="inputField"
+                        validationRules={{
+                            required: "Wachtwoord is verplicht",
+                            minLength: {
+                                value: 6,
+                                message: "Het wachtwoord moet minimaal minstens 6 tekens bevatten",
+                            }
+                        }}
+                    />
+                    <InputElement
+                        errors={errors}
+                        register={register}
+                        classNameItem="form-item--half"
+                        name="phonenumber"
+                        label="Telefoonnummer"
+                        inputType="tel"
+                        className="inputField"
+                        placeholder="06-12345678"
+                        validationRules={{
+                            required: "Telefoonnummer is verplicht",
+                        }}
+                    />
+                    <InputElement
+                        errors={errors}
+                        register={register}
+                        classNameItem="form-item--half"
+                        name="street"
+                        label="Straat"
+                        inputType="text"
+                        className="inputField"
+                        validationRules={{
+                            required: "Straat is verplicht",
+                        }}
+                    />
+                        <InputElement
                             errors={errors}
                             register={register}
-                            classNameItem="form-item--full"
-                            name="terms-and-conditions"
-                            label="Ik ga akkoord met de algemene voorwaarden"
-                            selectType="checkbox"
-                            className="checkbox"
+                            classNameItem="form-item--half"
+                            name="housenumber"
+                            label="Huisnummer"
+                            inputType="text"
+                            className="inputField"
                             validationRules={{
-                                required: "Je bent vergeten akkoord te gaan met de algemene voorwaarden",
+                                required: "Huisnummer is verplicht",
                             }}
-                        >
-                        </MultiSelectElement>
-                        <button
-                            type="submit"
-                            value={true}
-                            className="button button--dark"
-                            {...register("isAuth")}
-                        >
-                            Verzend aanvraag
-                        </button>
+                        />
+                    <InputElement
+                        errors={errors}
+                        register={register}
+                        classNameItem="form-item--half"
+                        name="postalcode"
+                        label="Postcode"
+                        inputType="text"
+                        className="inputField"
+                        validationRules={{
+                            required: "Postcode is verplicht",
+                            pattern: {
+                                value: /^[0-9]{4}[a-zA-Z]{2}$/,
+                                message: "Ongeldige postcode",
+                            }
+                        }}
+                    />
+                    <InputElement
+                        errors={errors}
+                        register={register}
+                        classNameItem="form-item--half"
+                        name="city"
+                        label="Woonplaats"
+                        inputType="text"
+                        className="inputField"
+                        validationRules={{
+                            required: "Woonplaats is verplicht",
+                        }}
+                    />
+
+                    <h3 className="h3--form">Aanleg en Onderhoud</h3>
+                    <div className="form-item--full">
+                        <p className={styles["label--singleSelect"]}>Welk pakket beplanting wil je?</p>
+                        <SingleSelectElement
+                            errors={errors}
+                            register={register}
+                            className="radioField"
+                            name="packageplants"
+                            value="pakket1"
+                            label="Pakket 1 - Wintergroen"
+                        />
+                        <SingleSelectElement
+                            errors={errors}
+                            register={register}
+                            className="radioField"
+                            name="packageplants"
+                            value="pakket2"
+                            label="Pakket 2 - Kleurrijk Laag"
+                        />
+                        <SingleSelectElement
+                            errors={errors}
+                            register={register}
+                            className="radioField"
+                            name="packageplants"
+                            value="pakket3"
+                            label="Pakket 3 - Kleurrijk Hoog"
+                        />
+                    </div>
+
+                    <MultiSelectElement
+                        errors={errors}
+                        register={register}
+                        classNameItem="form-item--conditions"
+                        name="terms-and-conditions"
+                        label="Ik ga akkoord met de algemene voorwaarden"
+                        selectType="checkbox"
+                        className="checkbox"
+                        validationRules={{
+                            required: "Je bent vergeten akkoord te gaan met de algemene voorwaarden",
+                        }}
+                    >
+                    </MultiSelectElement>
+
+                        <Button
+                        type="submit"
+                        className="button button--dark"
+                        name="Verzend aanvraag"
+                        />
+
+                    {/*<button*/}
+                    {/*    type="submit"*/}
+                    {/*    className="button button--dark"*/}
+                    {/*>*/}
+                    {/*    Verzend aanvraag*/}
+                    {/*</button>*/}
+
+                {/*</FormContainer>*/}
                     </fieldset>
                 </form>
 

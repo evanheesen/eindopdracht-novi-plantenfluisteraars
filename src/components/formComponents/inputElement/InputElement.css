@@ -1,0 +1,25 @@
+.inputField {
+    margin-top: 2px;
+    padding: 5px 15px 5px 15px;
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 100%;
+    background-color: white;
+    color: #22333B;
+    font-size: 16px;
+}
+
+.error-message {
+    font-weight: 200;
+    font-style: italic;
+    color: var(--red);
+    font-size: 0.8rem;
+}
+
+.form-item--half {
+    width: var(--width-form-half)
+}
+
+.form-item--full {
+    width: var(--full-width)
+}
