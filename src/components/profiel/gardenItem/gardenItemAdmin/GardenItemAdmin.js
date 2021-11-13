@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import './GardenItemAdmin.css';
 import axios from "axios";
-import Button from "../../../buttons/button/Button";
+import Button from "../../../buttons/submitButton/Button";
 
 function GardenItemAdmin({id}) {
 

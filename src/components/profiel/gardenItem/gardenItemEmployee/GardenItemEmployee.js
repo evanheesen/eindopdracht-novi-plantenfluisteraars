@@ -47,7 +47,7 @@ function GardenItemEmployee({id}) {
 
     function changeStatus() {
         const status = document.getElementById("dropdown-status").value;
-        console.log("status button: " + status);
+        console.log("status submitButton: " + status);
         console.log("employee id: " + employeeId);
         setGardenStatus(status);
     }

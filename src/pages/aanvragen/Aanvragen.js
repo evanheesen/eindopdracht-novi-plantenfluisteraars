@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from "axios";
-import styles from "./Aanvragen.module.css";
+import "./Aanvragen.css";
 import aanlegGeveltuin from "../../assets/aanleg-geveltuin.webp";
 import ColoredContainer from "../../components/coloredContainer/ColoredContainer";
 import ImageContainer from "../../components/imageContainer/ImageContainer";
@@ -11,7 +11,7 @@ import FileUploadElement from "../../components/formComponents/fileUploadElement
 import {useForm} from "react-hook-form";
 import {useHistory} from "react-router-dom";
 import FormContainer from "../../components/formContainer/FormContainer";
-import Button from "../../components/buttons/button/Button";
+import Button from "../../components/buttons/submitButton/Button";
 
 
 function Aanvragen() {
@@ -25,7 +25,7 @@ function Aanvragen() {
         console.log(data);
 
         try {
-            const result = await axios.post('http://localhost:3000/register', {
+            const result = await axios.post('http://localhost:8081/customers', {
                     email: data.email,
                     password: data.password,
                     username: data.username,
@@ -81,7 +81,7 @@ function Aanvragen() {
                     onSubmit={handleSubmit(onSubmit)}
                     className="section-item section-item--split"
                 >
-                    <h2 className={styles["h2--form"]} id="aanvraagformulier">Aanvraagformulier</h2>
+                    <h2 className="h2--form" id="aanvraagformulier">Aanvraagformulier</h2>
                     <fieldset className="form--container">
 
                 {/*<FormContainer*/}
@@ -118,7 +118,7 @@ function Aanvragen() {
                     <InputElement
                         errors={errors}
                         register={register}
-                        classNameItem="form-item--full"
+                        classNameItem="form-item--half"
                         name="email"
                         label="Emailadres"
                         inputType="text"
@@ -131,6 +131,19 @@ function Aanvragen() {
                             }
                         }}
                     />
+                        <InputElement
+                            errors={errors}
+                            register={register}
+                            classNameItem="form-item--half"
+                            name="phone"
+                            label="Telefoonnummer"
+                            inputType="tel"
+                            className="inputField"
+                            placeholder="06-12345678"
+                            validationRules={{
+                                required: "Telefoonnummer is verplicht",
+                            }}
+                        />
                         <InputElement
                             errors={errors}
                             register={register}
@@ -161,19 +174,6 @@ function Aanvragen() {
                                 value: 6,
                                 message: "Het wachtwoord moet minimaal minstens 6 tekens bevatten",
                             }
-                        }}
-                    />
-                    <InputElement
-                        errors={errors}
-                        register={register}
-                        classNameItem="form-item--half"
-                        name="phonenumber"
-                        label="Telefoonnummer"
-                        inputType="tel"
-                        className="inputField"
-                        placeholder="06-12345678"
-                        validationRules={{
-                            required: "Telefoonnummer is verplicht",
                         }}
                     />
                     <InputElement
@@ -231,13 +231,13 @@ function Aanvragen() {
 
                     <h3 className="h3--form">Aanleg en Onderhoud</h3>
                     <div className="form-item--full">
-                        <p className={styles["label--singleSelect"]}>Welk pakket beplanting wil je?</p>
+                        <p className="label--singleSelect">Welk pakket beplanting wil je?</p>
                         <SingleSelectElement
                             errors={errors}
                             register={register}
                             className="radioField"
                             name="packageplants"
-                            value="pakket1"
+                            value="Pakket 1 - Wintergroen"
                             label="Pakket 1 - Wintergroen"
                         />
                         <SingleSelectElement
@@ -245,7 +245,7 @@ function Aanvragen() {
                             register={register}
                             className="radioField"
                             name="packageplants"
-                            value="pakket2"
+                            value="Pakket 2 - Kleurrijk Laag"
                             label="Pakket 2 - Kleurrijk Laag"
                         />
                         <SingleSelectElement
@@ -253,7 +253,7 @@ function Aanvragen() {
                             register={register}
                             className="radioField"
                             name="packageplants"
-                            value="pakket3"
+                            value="Pakket 3 - Kleurrijk Hoog"
                             label="Pakket 3 - Kleurrijk Hoog"
                         />
                     </div>
@@ -278,12 +278,12 @@ function Aanvragen() {
                         name="Verzend aanvraag"
                         />
 
-                    {/*<button*/}
+                    {/*<submitButton*/}
                     {/*    type="submit"*/}
-                    {/*    className="button button--dark"*/}
+                    {/*    className="submitButton submitButton--dark"*/}
                     {/*>*/}
                     {/*    Verzend aanvraag*/}
-                    {/*</button>*/}
+                    {/*</submitButton>*/}
 
                 {/*</FormContainer>*/}
                     </fieldset>

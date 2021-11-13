@@ -1,15 +1,12 @@
 .FlexItem {
-    /*flex: 1 0 40%;    !* flex = grow, shrink en flex-basis *!*/
-    flex-grow: 1;
-    flex-shrink: 0;
-    flex-basis: 40%;
+    flex: 1 0 auto;    /* flex = grow, shrink en flex-basis */
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
 }
 
 .FlexItem__home-item {
-    flex: 0 1 auto;
+    /*flex: 0 1 auto;*/
 }
 
 .FlexItem__profile {
@@ -52,9 +49,9 @@
     margin-top: 50px;
 }
 
-.Button-row {
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: center;
-    flex-direction: row;
-}
+/*.Button-row {*/
+/*    display: flex;*/
+/*    flex-flow: row wrap;*/
+/*    justify-content: center;*/
+/*    flex-direction: row;*/
+/*}*/

@@ -1,6 +1,6 @@
 import './ColoredContainer.css';
 import React from 'react';
-import Button from "../buttons/button/Button";
+import Button from "../buttons/submitButton/Button";
 import FlexItem from "../flexItem/FlexItem";
 import Description from "../description/Description";
 
@@ -25,7 +25,7 @@ function ColoredContainer({
             <FlexItem className={classNameItem}>
                 <section className={classNameBlock}>
 
-                    {/* If there's a top button: */}
+                    {/* If there's a top submitButton: */}
                     {buttonTitleTop &&
                     <Button
                         className={buttonClassNameTop}
@@ -47,7 +47,7 @@ function ColoredContainer({
                     {/*</div>*/}
                     {/*}*/}
 
-                    {/* If there's a bottom button: */}
+                    {/* If there's a bottom submitButton: */}
                     {buttonTitleBottom &&
                     <Button
                         className={buttonClassNameBottom}

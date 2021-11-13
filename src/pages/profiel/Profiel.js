@@ -6,7 +6,7 @@ import ColoredContainer from "../../components/coloredContainer/ColoredContainer
 import styles from './Profiel.module.css';
 import profileAnonymous from '../../assets/profile-picture-anonymous.png';
 import ImageContainer from "../../components/imageContainer/ImageContainer";
-import Button from "../../components/buttons/button/Button";
+import Button from "../../components/buttons/submitButton/Button";
 import Description from "../../components/description/Description";
 import jwtDecode from "jwt-decode";
 import InfoSection from "../../components/profiel/infoSection/InfoSection";

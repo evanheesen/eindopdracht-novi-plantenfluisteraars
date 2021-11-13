@@ -97,7 +97,7 @@ function Prijzen() {
             {/*<ColoredContainer*/}
             {/*    classNameItem="section-item section-item--center"*/}
             {/*    classNameBlock="block block--center block--green"*/}
-            {/*    buttonClassNameTop="button button--top button--top-centered"*/}
+            {/*    buttonClassNameTop="submitButton submitButton--top submitButton--top-centered"*/}
             {/*    buttonTitleTop="Prijs aanleg"*/}
             {/*    title="Prijs aanleg beplanting geveltuin"*/}
             {/*    text="Voor de aanleg van de beplanting kan je kiezen uit drie verschillende pakketten:"*/}

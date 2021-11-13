@@ -1,7 +1,7 @@
 import React, {useContext, useEffect, useState} from 'react';
 import axios from "axios";
 import InfoSection from "../../infoSection/InfoSection";
-import Button from "../../../buttons/button/Button";
+import Button from "../../../buttons/submitButton/Button";
 import {AuthContext} from "../../../../context/AuthContext";
 
 function GardenItemCustomer({id}) {

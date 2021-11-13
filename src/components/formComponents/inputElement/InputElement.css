@@ -9,7 +9,7 @@
     font-size: 16px;
 }
 
-.error-message {
+.input-error-message {
     font-weight: 200;
     font-style: italic;
     color: var(--red);

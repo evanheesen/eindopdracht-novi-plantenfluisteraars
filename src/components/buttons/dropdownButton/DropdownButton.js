@@ -1,5 +1,5 @@
 import React from 'react';
-import Button from "../button/Button";
+import Button from "../submitButton/Button";
 import './DropdownButton.css';
 
 function DropdownButton({classNameButton, classNameSelect, nameSelect, idSelect, onChange, children}) {

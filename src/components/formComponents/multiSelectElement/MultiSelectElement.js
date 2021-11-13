@@ -15,7 +15,7 @@ function MultiSelectElement({ errors, register, classNameItem, name, label, clas
                 {label}
             </label>
 
-            {errors[name] && <p>{errors[name].message}</p>}
+            {errors[name] && <p className="input-error-message">{errors[name].message}</p>}
         </div>
     );
 }

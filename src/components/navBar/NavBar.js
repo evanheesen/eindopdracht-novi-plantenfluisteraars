@@ -14,6 +14,7 @@ function NavBar() {
     const {isAuth, logOut, user} = useContext(AuthContext);
     const history = useHistory();
 
+
     return (
         <nav className="nav-bar">
 
@@ -54,6 +55,7 @@ function NavBar() {
                             name="Profiel"
                             icon={userIcon}
                         />
+
                         <NavIcon
                             link={logOut}
                             name="Log-uit"
@@ -61,6 +63,8 @@ function NavBar() {
                         />
                     </>
                     : ""}
+
+
 
             </menu>
 

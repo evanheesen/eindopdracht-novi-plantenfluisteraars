@@ -13,6 +13,8 @@
     --white: #F1F1EF;
     --lightgrey: #E5E5E5;
     --yellow: #FFBA08;
+    /* fonts */
+    --reg-font-weight: 400;
     /* navigation bar */
     --nav-height: 80px;
     --nav-hor-padding: 15px;
@@ -23,12 +25,16 @@
     --space-small: 20px;
     --padding-garden-item: 40px;
     /*--padding-block: 60px;*/
+    --padding-container: 0 20px 0 20px;
     --padding-button: 25px;
     --gap-items: 50px;
     --gap-garden-items: 10px;
     --full-width: 100%;
     /* flex containers and items */
-    --max-width: 1100px;
+    --fullvw-width: 100vw;
+    --fullvh-height: 100vh;
+    --full-height: calc(var(--fullvh-height) - var(--nav-height));
+    --max-width: 1150px;
     --width-split-item: 450px;
     --width-center-item: 600px;
     --width-form-half: calc(50% - 30px);
@@ -42,11 +48,11 @@
 body, html {
     font-family: 'Raleway', sans-serif;
     font-size: 18px;
-    font-weight: 400;
-    color: #F1F1EF;
-    background-color: #F1F1EF;
-    width: 100vw;
-    height: 100vh;
+    font-weight: var(--reg-font-weight);
+    color: var(--white);
+    background-color: var(--dark-blue);
+    width: var(--fullvw-width);
+    height: var(--full-height);
     line-height: 1.5;
     box-sizing: border-box;
     /*margin: 2rem;*/

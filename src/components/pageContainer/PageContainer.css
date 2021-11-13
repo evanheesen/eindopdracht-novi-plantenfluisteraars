@@ -1,0 +1,11 @@
+div.PageContainer {
+ width: var(--fullvw-width);
+}
+
+div.PageContainer--image {
+ background: url("../../assets/achtergrond-groene-straat.jpg") rgba(0, 0 ,0, 0.4) center no-repeat fixed;
+ background-size: cover;
+ background-blend-mode: multiply;
+ box-sizing: border-box;
+ min-height: var(--full-height);
+}

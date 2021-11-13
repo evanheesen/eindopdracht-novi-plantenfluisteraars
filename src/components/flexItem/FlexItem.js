@@ -1,6 +1,6 @@
 import React from 'react';
 import './FlexItem.css';
-import Button from "../buttons/button/Button";
+import Button from "../buttons/submitButton/Button";
 
 function FlexItem({className, children, buttonClassName, onClickButton, buttonTitle, linkButton}) {
     return (

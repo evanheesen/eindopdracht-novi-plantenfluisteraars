@@ -1,20 +1,18 @@
 .FlexContainer {
+    max-width: var(--max-width);
+    padding: var(--padding-container);
+    box-sizing: border-box;
+    height: var(--full-height);
+    margin-left: auto;
+    margin-right: auto;
     display: flex;
     align-items: center;
     flex-flow: row wrap;
 }
 
-.FlexContainer__image-container {
-    background: url("../../assets/achtergrond-groene-straat.jpg") rgba(0, 0 ,0, 0.4) center no-repeat fixed;
-    background-size: cover;
-    background-blend-mode: multiply;
-    box-sizing: border-box;
-    min-height: calc(100vh - 80px);
-    padding: var(--vert-padding) 0 var(--vert-padding) 0;
-    /*padding: 100px 10% 100px 10%;*/
-    flex-flow: column wrap;
-    justify-content: center;
-    align-items: flex-start;
+.FlexContainer__home {
+    align-items: center;
+    justify-content: flex-start;
 }
 
 .FlexContainer__image-container--profile {
