@@ -1,8 +1,8 @@
 .button {
     min-width: 300px;
     max-width: 400px;
-    background-color: #22333B;
-    color: #F1F1EF;
+    background-color: var(--dark-blue);
+    color: var(--white);
     border: none;
     border-radius: 30px;
     padding: 25px 25px 25px 25px;
@@ -14,23 +14,23 @@
 .button--top {
     margin-left: auto;
     margin-right: auto;
-    background-color: #CD5C5C;
+    background-color: var(--red);
 }
 
 .button--bottom {
     margin-left: auto;
     margin-right: auto;
-    background-color: #22333B;
+    background-color: var(--dark-blue);
 }
 
 .button--red {
-    background-color: #CD5C5C;
+    background-color: var(--red);
     margin-top: 10px;
     padding: 15px 15px 15px 15px;
 }
 
 .button--dark {
-    background-color: #22333B;
+    background-color: var(--dark-blue);
     margin-top: 10px;
     padding: 15px 15px 15px 15px;
 }
@@ -71,9 +71,9 @@
     border: none;
     border-radius: var(--border-radius);
     padding: 15px;
-    background-color: var(--dark-blue);
+    background-color: var(--lightgrey);
     width: 200px;
-    margin-top: 10px;
+    margin-top: 5px;
     color: var(--white);
     font-size: 1rem;
 }
@@ -109,4 +109,8 @@
 .button--profile {
     font-size: 0.9rem;
     padding: 15px;
+}
+
+.button--profile:active {
+    background-color: #37525E;
 }

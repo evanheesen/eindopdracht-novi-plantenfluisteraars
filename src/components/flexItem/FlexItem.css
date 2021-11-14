@@ -14,11 +14,19 @@
 .FlexItem__profile {
     justify-content: center;
     align-items: center;
+    padding-top: var(--gap-items);
+}
+
+.FlexItem__admin {
+    justify-content: center;
+    align-items: center;
+    padding-top: var(--gap-items);
 }
 
 /* Flex items, two per row */
 .FlexItem__split {
-    width: 50%;
+    min-width: 350px;
+    width: 40%;
     justify-content: center;
 }
 
@@ -29,7 +37,7 @@
 }
 
 .FlexItem__profile {
-    width: 50%;
+    max-width: 40%;
     flex-grow: 0;
     flex-shrink: 0;
     flex-basis: 600px;
@@ -56,6 +64,7 @@
     padding: 50px 10px 50px 10px;
     margin-top: 50px;
 }
+
 
 /*.Button-row {*/
 /*    display: flex;*/

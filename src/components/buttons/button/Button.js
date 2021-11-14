@@ -6,9 +6,6 @@ function Button({register, id, disabled, link, onClick, onChange, name, classNam
 
     return (
         <>
-            {{link} &&
-            <>
-            <Link to={link}>
                 <button
                     type={type}
                     id={id}
@@ -21,24 +18,6 @@ function Button({register, id, disabled, link, onClick, onChange, name, classNam
                     {name}
                     {children}
                 </button>
-            </Link>
-            </>
-            }
-
-            {!{link} &&
-                <button
-                    type={type}
-                    id={id}
-                    onChange={onChange}
-                    onClick={onClick}
-                    className={className}
-                    disabled={disabled}
-                    value={value}
-                >
-                    {name}
-                    {children}
-                </button>
-            }
             </>
                 );
             }

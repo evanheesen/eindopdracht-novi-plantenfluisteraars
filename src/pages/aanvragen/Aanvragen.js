@@ -81,12 +81,19 @@ function Aanvragen() {
 
             <PageContainer>
                 <FlexContainer className="FlexContainer FlexContainer__white-split">
-            <form
-                onSubmit={handleSubmit(onSubmit)}
-                className="section-item section-item--split"
-            >
+                    <FormContainer
+                    onSubmit={handleSubmit(onSubmit)}
+                    classNameContainer="form--container"
+                    classNameBlock="FlexItem FlexItem--split"
+                    >
+
+
+            {/*<form*/}
+            {/*    onSubmit={handleSubmit(onSubmit)}*/}
+            {/*    className="section-item section-item--split"*/}
+            {/*>*/}
                 <h2 className="h2--form" id="aanvraagformulier">Aanvraagformulier</h2>
-                <fieldset className="form--container">
+                {/*<fieldset className="form--container">*/}
 
                     <InputElement
                         errors={errors}
@@ -269,13 +276,13 @@ function Aanvragen() {
                     >
                     </MultiSelectElement>
 
-                    <Button
+                    <button
                         type="submit"
                         className="button button--dark button--form"
-                        name="Verzend aanvraag"
-                    />
-                </fieldset>
-            </form>
+                    >
+                        Verzend aanvraag
+                    </button>
+                </FormContainer>
 
             <ColoredContainer
                 classNameItem="FlexItem FlexItem__split-top"

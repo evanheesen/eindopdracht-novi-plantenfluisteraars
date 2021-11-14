@@ -15,7 +15,6 @@ function FormContainer({
                            buttonClassName,
                            buttonTitle,
                            buttonValue,
-                           buttonRegister,
                            onClickButton,
                        }) {
 
@@ -36,14 +35,13 @@ function FormContainer({
                         {children}
 
                         {buttonTitle &&
-                        <Button
+                        <button
                             className={buttonClassName}
                             onClick={onClickButton}
-                            name={buttonTitle}
                             type="submit"
-                            value={buttonValue}
-                            // registreren={buttonRegister}
-                        />}
+                        >
+                            {buttonTitle}
+                        </button>}
                     </fieldset>
                 </form>
 

@@ -28,7 +28,6 @@ function Registreren() {
     // }
 
 
-
     // let fileValue = document.getElementById("dbFile-field").value === null ? "" : document.getElementById("dbFile-field").value;
 
     // function getFileValue() {
@@ -53,24 +52,24 @@ function Registreren() {
 
         try {
             const result = await axios.post('http://localhost:8081/employees', {
-                email: data.email,
-                password: data.password,
-                username: data.username,
-                firstName: data.firstName,
-                lastName: data.lastName,
-                phone: data.phone,
-                street: data.street,
-                houseNumber: data.houseNumber,
-                postalCode: data.postalCode,
-                city: data.city,
-            }, {
-                cancelToken: source.token,
-            },
+                    email: data.email,
+                    password: data.password,
+                    username: data.username,
+                    firstName: data.firstName,
+                    lastName: data.lastName,
+                    phone: data.phone,
+                    street: data.street,
+                    houseNumber: data.houseNumber,
+                    postalCode: data.postalCode,
+                    city: data.city,
+                }, {
+                    cancelToken: source.token,
+                },
                 {
                     headers: {
                         "Content-Type": "application/json",
                     }
-            });
+                });
 
             employeeId = result.data.replace('http://localhost:8081/employees/', "");
             fileUpload();
@@ -88,16 +87,16 @@ function Registreren() {
     async function fileUpload() {
 
         let formData = new FormData();
-        formData.append("dbFile",file)
+        formData.append("dbFile", file)
 
         try {
             const result = await axios.post(`http://localhost:8081/employees/${employeeId}/upload-file`, {
                 file: formData,
             }, {
                 headers: {
-                    "Content-type" : "multipart/form-data",
+                    "Content-type": "multipart/form-data",
                 },
-        });
+            });
 
             // const result = await axios.post(`http://localhost:8081/employees/${employeeId}/upload-file`, formData,{
             //     headers: {
@@ -267,27 +266,21 @@ function Registreren() {
                         // onChange={fileValue("l")}
                     />
 
-                    <Button
+                    <button
                         type="submit"
                         className="button button--dark"
-                        name="Verzend aanvraag"
-                    />
+                    >
+                        Registreren
+                    </button>
 
-                    {/*<button*/}
-                    {/*    type="submit"*/}
-                    {/*    // value={true}*/}
-                    {/*    className="button button--dark"*/}
-                    {/*    /*{...register("isAuth")}*/}
-                    {/*>*/}
-                    {/*    Registreren*/}
-                    {/*</button>*/}
                 </FormContainer>
 
                 {/*<h2>file: {fileValue}</h2>*/}
 
                 <div className={styles["section-item"]}>
                     <img src={arrow} className={styles["arrow"]}/>
-                    <p className={styles["register"]}>Heb je al een account? Log dan <Link to="/login">hier</Link> in.</p>
+                    <p className={styles["register"]}>Heb je al een account? Log dan <Link to="/login">hier</Link> in.
+                    </p>
                 </div>
 
 

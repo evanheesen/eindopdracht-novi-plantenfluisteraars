@@ -10,6 +10,7 @@ import Description from "../../components/description/Description";
 import axios from "axios";
 import GardenItemAdmin from "../../components/profiel/gardenItem/gardenItemAdmin/GardenItemAdmin";
 import EmployeeItemAdmin from "../../components/profiel/gardenItem/employeeItemAdmin/EmployeeItemAdmin";
+import PageContainer from "../../components/pageContainer/PageContainer";
 
 function Admin() {
 
@@ -129,13 +130,12 @@ function Admin() {
 
     return (
         <>
-            {Object.keys(user).length > 0 &&
-            <>
-                <FlexContainer
-                    className="FlexContainer FlexContainer__image-container FlexContainer__image-container--profile">
-
+            <PageContainer className="PageContainer PageContainer--image FlexContainer__image-container--profile">
+                {Object.keys(user).length > 0 &&
+                <>
+                <FlexContainer className="FlexContainer FlexContainer__white-centered FlexContainer__admin">
                     <ColoredContainer
-                        classNameItem="FlexItem"
+                        classNameItem="FlexItem FlexItem__admin"
                         classNameBlock="block block--profile block--green"
                         title="Dashboard admin"
                     >
@@ -143,79 +143,59 @@ function Admin() {
                             <strong>Gebruikersnaam:</strong> {user.info.username}
                             <p><strong>Email:</strong> {user.info.email}</p>
                         </InfoSection>
-                        <FlexContainer className="FlexContainer FlexContainer__button-overview">
-                            <Button
+                        <FlexContainer className="FlexContainer FlexContainer__button-admin">
+                            <button
                                 type="button"
                                 className="button button--dark button--admin"
-                                name="Geveltuintjes"
                                 onClick={() => setMainOverview("gardens")}
-                            />
-                            <Button
+                            >
+                                Geveltuintjes
+                            </button>
+                            <button
                                 type="button"
                                 className="button button--dark button--admin"
-                                name="Plantenfluisteraars"
                                 onClick={() => setMainOverview("employees")}
-                            />
+                            >
+                                Plantenfluisteraars
+                            </button>
+                            {mainOverview === "gardens" &&
+                                <>
+                                    <Button
+                                        type="button"
+                                        className="button button--dark button--profile"
+                                        name="Toon alle geveltuintjes"
+                                        onClick={() => setOverviewGardens("all")}
+                                    />
+                                    <Button
+                                        type="button"
+                                        className="button button--dark button--profile"
+                                        name="Toon open aanvragen"
+                                        onClick={() => setOverviewGardens("open")}
+                                    />
+                                    <Button
+                                        type="button"
+                                        className="button button--dark button--profile"
+                                        name="Toon actieve aanvragen"
+                                        onClick={() => setOverviewGardens("actief")}
+                                    />
+                                </>}
+                            {mainOverview === "employees" &&
+                                <>
+                                    <Button
+                                        type="button"
+                                        className="button button--dark button--profile"
+                                        name="Toon alle Plantenfluisteraars"
+                                        onClick={() => setOverviewEmployees("all")}
+                                    />
+                                    <Button
+                                        type="button"
+                                        className="button button--dark button--profile"
+                                        name="Toon actieve Plantenfluisteraars"
+                                        onClick={() => setOverviewEmployees("actief")}
+                                    />
+                                </>}
                         </FlexContainer>
                     </ColoredContainer>
-
-                    {/*<ColoredContainer*/}
-                    {/*    classNameItem="FlexItem FlexItem__split"*/}
-                    {/*    classNameBlock="block block--profile"*/}
-                    {/*>*/}
-                    {/*    <FlexContainer className="FlexContainer FlexContainer__button-overview">*/}
-                    {/*        <Button*/}
-                    {/*            type="button"*/}
-                    {/*            className="button button--dark button--admin"*/}
-                    {/*            name="Geveltuintjes"*/}
-                    {/*            onClick={() => setMainOverview("gardens")}*/}
-                    {/*        />*/}
-                    {/*        <Button*/}
-                    {/*            type="button"*/}
-                    {/*            className="button button--dark button--admin"*/}
-                    {/*            name="Plantenfluisteraars"*/}
-                    {/*            onClick={() => setMainOverview("employees")}*/}
-                    {/*        />*/}
-                    {/*    </FlexContainer>*/}
-                    {/*</ColoredContainer>*/}
-
-                    {mainOverview === "gardens" &&
-                    <FlexContainer className="FlexContainer FlexContainer__button-row">
-                        <Button
-                            type="button"
-                            className="button button--red button--profile"
-                            name="Toon alle geveltuintjes"
-                            onClick={() => setOverviewGardens("all")}
-                        />
-                        <Button
-                            type="button"
-                            className="button button--red button--profile"
-                            name="Toon open aanvragen"
-                            onClick={() => setOverviewGardens("open")}
-                        />
-                        <Button
-                            type="button"
-                            className="button button--red button--profile"
-                            name="Toon actieve aanvragen"
-                            onClick={() => setOverviewGardens("actief")}
-                        />
-                    </FlexContainer>}
-
-                    {mainOverview === "employees" &&
-                    <FlexContainer className="FlexContainer FlexContainer__button-row">
-                        <Button
-                            type="button"
-                            className="button button--red button--profile"
-                            name="Toon alle Plantenfluisteraars"
-                            onClick={() => setOverviewEmployees("all")}
-                        />
-                        <Button
-                            type="button"
-                            className="button button--red button--profile"
-                            name="Toon actieve Plantenfluisteraars"
-                            onClick={() => setOverviewEmployees("actief")}
-                        />
-                    </FlexContainer>}
 
                     {/*/* If button Aanvragen is clicked, show: */}
                     {mainOverview === "gardens" && overviewGardens != "" &&
@@ -254,12 +234,12 @@ function Admin() {
                         </InfoSection>
                     </ColoredContainer>
                     }
-
                 </FlexContainer>
-            </>}
+                </>}
 
-            {error && <span>Er is iets misgegaan bij het laden van het dashboard. Probeer het opnieuw.</span>}
-            {loading && <span>Loading...</span>}
+                {error && <span>Er is iets misgegaan bij het laden van het dashboard. Probeer het opnieuw.</span>}
+                {loading && <span>Loading...</span>}
+            </PageContainer>
 
         </>
     );

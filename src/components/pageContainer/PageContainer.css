@@ -1,9 +1,8 @@
-div.PageContainer {
+.PageContainer {
  width: var(--fullvw-width);
- /*padding: var(--vert-padding) 0 var(--vert-padding) 0;*/
 }
 
-div.PageContainer--image {
+.PageContainer--image {
  background: url("../../assets/achtergrond-groene-straat.jpg") rgba(0, 0 ,0, 0.4) center no-repeat fixed;
  background-size: cover;
  background-blend-mode: multiply;
@@ -11,7 +10,7 @@ div.PageContainer--image {
  min-height: var(--full-height);
 }
 
-div.PageContainer--split {
+.PageContainer--split {
  padding-top: var(--gap-items);
  padding-bottom: var(--gap-items);
 }

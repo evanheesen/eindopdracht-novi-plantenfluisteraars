@@ -15,6 +15,7 @@ import FileUpload from "../../components/profiel/fileUpload/FileUpload";
 import FlexItem from "../../components/flexItem/FlexItem";
 import GardenItemCustomer from "../../components/profiel/gardenItem/gardenItemCustomer/GardenItemCustomer";
 import GardenItemEmployee from "../../components/profiel/gardenItem/gardenItemEmployee/GardenItemEmployee";
+import PageContainer from "../../components/pageContainer/PageContainer";
 
 function Profiel() {
 
@@ -108,14 +109,15 @@ function Profiel() {
 
     return (
         <>
+            <PageContainer className="PageContainer PageContainer--image FlexContainer__image-container--profile">
             {Object.keys(user).length > 0 &&
             <>
                 <FlexContainer
-                    className="FlexContainer FlexContainer__image-container FlexContainer__image-container--profile">
+                    className= {userType === "employee" ? "FlexContainer FlexContainer__white-split FlexContainer__admin" : "FlexContainer FlexContainer__admin"}>
 
 
                     <ColoredContainer
-                        classNameItem= {userType === "employee" ? "FlexItem FlexItem__split" : "FlexItem FlexItem__profile"}
+                        classNameItem= {userType === "employee" ? "FlexItem FlexItem__profile" : "FlexItem FlexItem__profile"}
                         classNameBlock="block block--profile block--green"
                         title= {userType === "employee" ? "Profiel Plantenfluisteraar" : "Profiel bewoner"}
                     >
@@ -139,6 +141,22 @@ function Profiel() {
                             <p><strong>Email:</strong> {user.info.email}</p>
                         </InfoSection>
 
+                        <FlexContainer className="FlexContainer FlexContainer__button-admin">
+                            <Button
+                                type="button"
+                                className="button button--red button--admin"
+                                name="Toon jouw geveltuintjes"
+                                onClick={showOwn}
+                            />
+                            {userType === "employee" &&
+                            <Button
+                                type="button"
+                                className="button button--red button--admin"
+                                name="Toon open aanvragen"
+                                onClick={showOpen}
+                            />}
+                        </FlexContainer>
+
                     </ColoredContainer>
 
                     {userType === "employee" &&
@@ -148,22 +166,6 @@ function Profiel() {
                         alt="plantenfluisteraar"
                         classNameImg={styles["image-profile"]}
                     />}
-
-                    <FlexContainer className="FlexContainer FlexContainer__button-row">
-                        <Button
-                            type="button"
-                            className="button button--red button--profile"
-                            name="Toon jouw geveltuintjes"
-                            onClick={showOwn}
-                        />
-                        {userType === "employee" &&
-                        <Button
-                            type="button"
-                            className="button button--red button--profile"
-                            name="Toon open aanvragen"
-                            onClick={showOpen}
-                        />}
-                    </FlexContainer>
 
                     {overview === "eigen" && userType === "customer" &&
                     <ColoredContainer
@@ -222,7 +224,7 @@ function Profiel() {
 
             {error && <span>Er is iets misgegaan bij het laden van het profiel. Probeer het opnieuw.</span>}
             {loading && <span>Loading...</span>}
-
+            </PageContainer>
         </>
     );
 }
