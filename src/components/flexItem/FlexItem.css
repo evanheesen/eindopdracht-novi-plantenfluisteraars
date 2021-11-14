@@ -17,11 +17,17 @@
     padding-top: var(--gap-items);
 }
 
-.FlexItem__admin {
+.FlexItem__side {
     justify-content: center;
     align-items: center;
     padding-top: var(--gap-items);
 }
+
+/*.FlexItem__admin {*/
+/*    justify-content: center;*/
+/*    align-items: center;*/
+/*    padding-top: var(--gap-items);*/
+/*}*/
 
 /* Flex items, two per row */
 .FlexItem__split {
@@ -51,6 +57,10 @@
     align-items: center;
     gap: 0 50px;
 }
+
+/*.FlexItem__customer {*/
+/*    width: 100%;*/
+/*}*/
 
 /* Flex items overview */
 .FlexItem__overview {

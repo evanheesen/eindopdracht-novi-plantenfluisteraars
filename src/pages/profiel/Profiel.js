@@ -206,7 +206,7 @@ function Profiel() {
 
                     {overview === "eigen" && userType === "customer" &&
                     <ColoredContainer
-                        classNameItem="FlexItem FlexItem--center"
+                        classNameItem="FlexItem FlexItem--center FlexItem__side"
                         classNameBlock="block block--center block--white"
                     >
                         <Description
@@ -257,10 +257,10 @@ function Profiel() {
                         </InfoSection>
                     </ColoredContainer>}
                 </FlexContainer>
+                {/*{error && <span>Er is iets misgegaan bij het laden van het profiel. Probeer het opnieuw.</span>}*/}
+                {/*{loading && <span>Loading...</span>}*/}
             </>}
 
-            {error && <span>Er is iets misgegaan bij het laden van het profiel. Probeer het opnieuw.</span>}
-            {loading && <span>Loading...</span>}
             </PageContainer>
         </>
     );

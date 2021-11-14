@@ -135,7 +135,7 @@ function Admin() {
                 <>
                 <FlexContainer className="FlexContainer FlexContainer__white-centered FlexContainer__admin">
                     <ColoredContainer
-                        classNameItem="FlexItem FlexItem__admin"
+                        classNameItem="FlexItem FlexItem__side"
                         classNameBlock="block block--profile block--green"
                         title="Dashboard admin"
                     >
@@ -200,7 +200,7 @@ function Admin() {
                     {/*/* If button Aanvragen is clicked, show: */}
                     {mainOverview === "gardens" && overviewGardens != "" &&
                     <ColoredContainer
-                        classNameItem="FlexItem FlexItem__center"
+                        classNameItem="FlexItem FlexItem__center FlexItem__side"
                         classNameBlock="block block--center block--white"
                     >
                         <Description
@@ -219,7 +219,7 @@ function Admin() {
                     {/*/* If button Plantenfluisteraars is clicked, show: */}
                     {mainOverview === "employees" && overviewEmployees != "" &&
                     <ColoredContainer
-                        classNameItem="FlexItem FlexItem__center"
+                        classNameItem="FlexItem FlexItem__center FlexItem__side"
                         classNameBlock="block block--center block--white"
                     >
                         <Description
