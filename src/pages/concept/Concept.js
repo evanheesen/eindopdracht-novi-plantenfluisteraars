@@ -12,6 +12,7 @@ import PageContainer from "../../components/pageContainer/PageContainer";
 import FlexItem from "../../components/flexItem/FlexItem";
 import aanlegGeveltuin from "../../assets/aanleg-geveltuin.webp";
 import Button from "../../components/buttons/button/Button";
+import NummeredList from "../../components/nummeredList/NummeredList";
 
 function Concept() {
 
@@ -58,8 +59,7 @@ function Concept() {
                         linkButton="/aanvragen"
                         buttonTypeBottom="button"
                     >
-                        <p>
-                            <ol>
+                        <NummeredList>
                                 <li>Vul het aanvraagformulier op de aanvraagpagina in.</li>
                                 <li>Wij checken of je voldoet aan de vereisten en verzorgen vervolgens de aanvraag bij
                                     de gemeente.
@@ -71,8 +71,7 @@ function Concept() {
                                 <li>Door middel van coaching of vast onderhoud ondersteunen we je om jouw geveltuin in
                                     optimale conditie te houden.
                                 </li>
-                            </ol>
-                        </p>
+                        </NummeredList>
                     </ColoredContainer>
                 </FlexContainer>
 

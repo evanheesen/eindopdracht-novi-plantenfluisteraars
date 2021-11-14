@@ -126,9 +126,10 @@ function Registreren() {
                     classNameItem={styles["section-item"]}
                     classNameBlock={styles["block-register"]}
                     classNameContainer={styles["form--container"]}
-                    title="Registreren als Plantenfluisteraar"
+                    // title="Registreren als Plantenfluisteraar"
                     onSubmit={handleSubmit(onSubmit)}
                 >
+                    <h2 className={styles.title}>Registreren als Plantenfluisteraar</h2>
                     <InputElement
                         errors={errors}
                         register={register}

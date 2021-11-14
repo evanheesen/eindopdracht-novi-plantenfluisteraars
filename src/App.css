@@ -97,31 +97,7 @@ a:hover {
     color: var(--lightgrey);
 }
 
-/* styling bullits numbered list */
-ol {
-    list-style: none;
-    counter-reset: my-counter;
-    /*max-width: 350px;*/
-    padding: 0 20px 0 20px;
-    display: flex;
-    flex-wrap: wrap;
-}
 
-ol li {
-    counter-increment: my-counter;
-    margin: 0 0 1rem 0;
-    position: relative;
-    display: flex;
-}
-
-ol li:before {
-    content: counter(my-counter) ". ";
-    color: #22333B;
-    font-weight: bold;
-    font-size: 25px;
-    position: relative;
-    margin-right: 20px;
-}
 
 /* Flex container split into two items *
 .section--split {
@@ -133,39 +109,39 @@ ol li:before {
 }
 
 /* Flex container centered */
-.section--center {
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: center;
-    align-items: center;
-    gap: 0 50px;
-}
+/*.section--center {*/
+/*    display: flex;*/
+/*    flex-flow: row wrap;*/
+/*    justify-content: center;*/
+/*    align-items: center;*/
+/*    gap: 0 50px;*/
+/*}*/
 
 /* Flex items general settings */
-.section-item {
-    /*min-height: 400px;*/
-    flex-grow: 1;
-    flex-shrink: 0;
-    flex-basis: 40%;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-}
+/*.section-item {*/
+/*    !*min-height: 400px;*!*/
+/*    flex-grow: 1;*/
+/*    flex-shrink: 0;*/
+/*    flex-basis: 40%;*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    justify-content: flex-start;*/
+/*}*/
 
 /* Flex items, two per row */
-.section-item--split {
-    width: 50%;
-}
+/*.section-item--split {*/
+/*    width: 50%;*/
+/*}*/
 
-.section-item--split-top {
-    width: 50%;
-    margin-bottom: auto;
-}
+/*.section-item--split-top {*/
+/*    width: 50%;*/
+/*    margin-bottom: auto;*/
+/*}*/
 
-/* Flex items, one per row */
-.section-item--center {
-    margin: 0 10% 0 10%;
-}
+/*!* Flex items, one per row *!*/
+/*.section-item--center {*/
+/*    margin: 0 10% 0 10%;*/
+/*}*/
 
 /* form styling */
 

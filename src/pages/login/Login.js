@@ -7,6 +7,7 @@ import FormContainer from "../../components/formContainer/FormContainer";
 import InputElement from "../../components/formComponents/inputElement/InputElement";
 import {useForm} from "react-hook-form";
 import {Link} from "react-router-dom";
+import FlexItem from "../../components/flexItem/FlexItem";
 
 function Login() {
 
@@ -81,11 +82,11 @@ function Login() {
                     />
                 </FormContainer>
 
-                <div className={styles["section-item"]}>
+                <FlexItem className={styles["section-item"]}>
                     <img src={arrow} className={styles["arrow"]}/>
                     <p className={styles["register"]}>Ben je Plantenfluisteraar en heb je nog geen account? Registreer je <Link
                         to="/registreren">hier</Link> dan eerst.</p>
-                </div>
+                </FlexItem>
 
 
             </div>

@@ -12,6 +12,9 @@ import {useForm} from "react-hook-form";
 import {useHistory} from "react-router-dom";
 import FormContainer from "../../components/formContainer/FormContainer";
 import Button from "../../components/buttons/button/Button";
+import PageContainer from "../../components/pageContainer/PageContainer";
+import FlexContainer from "../../components/flexContainer/FlexContainer";
+import NummeredList from "../../components/nummeredList/NummeredList";
 
 
 function Aanvragen() {
@@ -60,37 +63,31 @@ function Aanvragen() {
 
     return (
         <>
-            <div className="section--split">
-                <ColoredContainer
-                    classNameItem="section-item section-item--split"
-                    classNameBlock="block block--left block--green"
-                    title="Aanvragen aanleg geveltuin"
-                    text="tekst aanvragen geveltuin"
-                    buttonClassNameBottom="button button--bottom button--bottom-split"
-                    buttonTitleBottom="Ga naar het aanvraagformulier"
-                    linkButton="#aanvraagformulier"
-                    buttonTypeBottom="button"
-                />
-                <ImageContainer
-                    source={aanlegGeveltuin}
-                    alt="aanleg-geveltuin"
-                    classNameImg="image image--right"
-                />
+            <PageContainer className="PageContainer">
+                <FlexContainer className="FlexContainer FlexContainer__white-split">
+                    <ColoredContainer
+                        classNameItem="FlexItem FlexItem__split"
+                        classNameBlock="block block--left block--green"
+                        title="Aanvragen aanleg geveltuin"
+                        text="Vul hieronder het aanvraagformulier in om jouw geveltuin aan te vragen. Hierna koppelen we je met een van onze Plantenfluisteraars."
+                    />
+                    <ImageContainer
+                        source={aanlegGeveltuin}
+                        alt="aanleg-geveltuin"
+                        classNameImg="image image--right"
+                    />
+                </FlexContainer>
+            </PageContainer>
 
-                <form
-                    onSubmit={handleSubmit(onSubmit)}
-                    className="section-item section-item--split"
-                >
-                    <h2 className="h2--form" id="aanvraagformulier">Aanvraagformulier</h2>
-                    <fieldset className="form--container">
+            <PageContainer>
+                <FlexContainer className="FlexContainer FlexContainer__white-split">
+            <form
+                onSubmit={handleSubmit(onSubmit)}
+                className="section-item section-item--split"
+            >
+                <h2 className="h2--form" id="aanvraagformulier">Aanvraagformulier</h2>
+                <fieldset className="form--container">
 
-                {/*<FormContainer*/}
-                {/*    classNameItem={styles["section-item"]}*/}
-                {/*    classNameBlock={styles["block-register"]}*/}
-                {/*    classNameContainer={styles["form--container"]}*/}
-                {/*    title="Aanvraagformulier"*/}
-                {/*    onSubmit={handleSubmit(onSubmit)}*/}
-                {/*>*/}
                     <InputElement
                         errors={errors}
                         register={register}
@@ -131,35 +128,35 @@ function Aanvragen() {
                             }
                         }}
                     />
-                        <InputElement
-                            errors={errors}
-                            register={register}
-                            classNameItem="form-item--half"
-                            name="phone"
-                            label="Telefoonnummer"
-                            inputType="tel"
-                            className="inputField"
-                            placeholder="06-12345678"
-                            validationRules={{
-                                required: "Telefoonnummer is verplicht",
-                            }}
-                        />
-                        <InputElement
-                            errors={errors}
-                            register={register}
-                            classNameItem="form-item--half"
-                            name="username"
-                            label="Gebruikersnaam"
-                            inputType="text"
-                            className="inputField"
-                            validationRules={{
-                                required: "Gebruikersnaam is verplicht",
-                                minLength: {
-                                    value: 6,
-                                    message: "De gebruikersnaam moet minimaal minstens 6 tekens bevatten",
-                                }
-                            }}
-                        />
+                    <InputElement
+                        errors={errors}
+                        register={register}
+                        classNameItem="form-item--half"
+                        name="phone"
+                        label="Telefoonnummer"
+                        inputType="tel"
+                        className="inputField"
+                        placeholder="06-12345678"
+                        validationRules={{
+                            required: "Telefoonnummer is verplicht",
+                        }}
+                    />
+                    <InputElement
+                        errors={errors}
+                        register={register}
+                        classNameItem="form-item--half"
+                        name="username"
+                        label="Gebruikersnaam"
+                        inputType="text"
+                        className="inputField"
+                        validationRules={{
+                            required: "Gebruikersnaam is verplicht",
+                            minLength: {
+                                value: 6,
+                                message: "De gebruikersnaam moet minimaal minstens 6 tekens bevatten",
+                            }
+                        }}
+                    />
                     <InputElement
                         errors={errors}
                         register={register}
@@ -188,18 +185,18 @@ function Aanvragen() {
                             required: "Straat is verplicht",
                         }}
                     />
-                        <InputElement
-                            errors={errors}
-                            register={register}
-                            classNameItem="form-item--half"
-                            name="housenumber"
-                            label="Huisnummer"
-                            inputType="text"
-                            className="inputField"
-                            validationRules={{
-                                required: "Huisnummer is verplicht",
-                            }}
-                        />
+                    <InputElement
+                        errors={errors}
+                        register={register}
+                        classNameItem="form-item--half"
+                        name="housenumber"
+                        label="Huisnummer"
+                        inputType="text"
+                        className="inputField"
+                        validationRules={{
+                            required: "Huisnummer is verplicht",
+                        }}
+                    />
                     <InputElement
                         errors={errors}
                         register={register}
@@ -272,30 +269,31 @@ function Aanvragen() {
                     >
                     </MultiSelectElement>
 
-                        <Button
+                    <Button
                         type="submit"
-                        className="button button--dark"
+                        className="button button--dark button--form"
                         name="Verzend aanvraag"
-                        />
+                    />
+                </fieldset>
+            </form>
 
-                    {/*<button*/}
-                    {/*    type="submit"*/}
-                    {/*    className="button button--dark"*/}
-                    {/*>*/}
-                    {/*    Verzend aanvraag*/}
-                    {/*</button>*/}
-
-                {/*</FormContainer>*/}
-                    </fieldset>
-                </form>
-
-                <ColoredContainer
-                    classNameItem="section-item section-item--split-top"
-                    classNameBlock="block block--right block--red"
-                    title="Planning"
-                    text="bullits planning"
-                />
-            </div>
+            <ColoredContainer
+                classNameItem="FlexItem FlexItem__split-top"
+                classNameBlock="block block--right block--red"
+                title="Planning"
+            >
+                <NummeredList>
+                    <li>Vul het aanvraagformulier in.</li>
+                    <li>Wij checken of je voldoet aan de vereisten en verzorgen vervolgens de aanvraag bij
+                        de gemeente.
+                    </li>
+                    <li>Bij akkoord koppelen we je aan een van onze Plantenfluisteraars.
+                    </li>
+                    <li>Na plaatsing van de geveltuin komt jouw Plantenfluisteraar langs om de geveltuin te beplanten.</li>
+                </NummeredList>
+            </ColoredContainer>
+                </FlexContainer>
+            </PageContainer>
         </>
     );
 }

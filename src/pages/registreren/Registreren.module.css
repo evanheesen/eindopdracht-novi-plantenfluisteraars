@@ -64,3 +64,8 @@ p.register {
 .arrow {
     margin-right: auto;
 }
+
+h2.title {
+    font-size: 2.2rem;
+    color: var(--green);
+}

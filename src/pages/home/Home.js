@@ -14,7 +14,7 @@ function Home() {
 
                     <FlexItem className="FlexItem__home-item">
                         <h1>Een groene geveltuin in een paar klikken</h1>
-                        <h2>Wij verzorgen de aanleg en het onderhoud van jouw geveltuin!</h2>
+                        <h2 className={styles.subtitle}>Wij verzorgen de aanleg en het onderhoud van jouw geveltuin!</h2>
                         <Button
                             type="button"
                             link="/concept"

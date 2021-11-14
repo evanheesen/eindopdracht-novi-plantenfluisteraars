@@ -1,0 +1,25 @@
+/* styling bullits numbered list */
+ol {
+    list-style: none;
+    counter-reset: my-counter;
+    /*max-width: 350px;*/
+    padding: 0 20px 0 20px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+ol li {
+    counter-increment: my-counter;
+    margin: 0 0 1rem 0;
+    position: relative;
+    display: flex;
+}
+
+ol li:before {
+    content: counter(my-counter) ". ";
+    color: #22333B;
+    font-weight: bold;
+    font-size: 25px;
+    position: relative;
+    margin-right: 20px;
+}

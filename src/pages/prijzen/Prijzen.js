@@ -1,7 +1,9 @@
 import styles from './Prijzen.module.css';
 import React from "react";
 import aanlegGeveltuin from "../../assets/aanleg-geveltuin.webp";
-import plant from "../../assets/plant-transparent.png";
+import wintergroen from "../../assets/wintergroen.png";
+import kleurrijkLaag from "../../assets/kleurrijk laag.png";
+import kleurrijkHoog from "../../assets/kleurrijk hoog.png";
 import ColoredContainer from "../../components/coloredContainer/ColoredContainer";
 import ImageContainer from "../../components/imageContainer/ImageContainer";
 import OverviewItem from "../../components/overviewContainer/overviewItem/OverviewItem";
@@ -60,15 +62,10 @@ function Prijzen() {
 
                     </FlexItem>
 
-                    <FlexItem className="section--center">
-                        <FlexItem
-                            className="FlexItem__overview"
-                            // buttonClassName="button button--bottom button--red button--bottom-centered"
-                            // buttonTitle="Vraag een geveltuin aan"
-                            // linkButton="/aanvragen"
-                        >
+                    <FlexItem className="FlexItem__center">
+                        <FlexItem className="FlexItem__overview">
                             <OverviewItem
-                                image={plant}
+                                image={wintergroen}
                                 imageAlt="plant-groen"
                                 subTitle="Pakket 1"
                                 description="Lage wintergroene beplanting"
@@ -78,7 +75,7 @@ function Prijzen() {
                                 bullit2="Hele jaar door groen"
                             />
                             <OverviewItem
-                                image={plant}
+                                image={kleurrijkLaag}
                                 imageAlt="plant-groen"
                                 subTitle="Pakket 2"
                                 description="Lage kleurrijke beplanting"
@@ -88,7 +85,7 @@ function Prijzen() {
                                 bullit2="Zeer kleurrijk in de lente en zomer"
                             />
                             <OverviewItem
-                                image={plant}
+                                image={kleurrijkHoog}
                                 imageAlt="plant-groen"
                                 subTitle="Pakket 3"
                                 description="Kleurrijke klimbeplanting"
@@ -102,7 +99,7 @@ function Prijzen() {
                                 type="button"
                                 className="button button--red"
                                 name="Vraag een geveltuin aan"
-                            ></Button>
+                            />
                         </FlexItem>
                     </FlexItem>
                 </FlexContainer>

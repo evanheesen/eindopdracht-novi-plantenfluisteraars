@@ -25,6 +25,7 @@
 .FlexItem__split-top {
     width: 50%;
     margin-bottom: auto;
+    margin-top: var(--gap-items);
 }
 
 .FlexItem__profile {
