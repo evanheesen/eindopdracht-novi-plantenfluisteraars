@@ -21,12 +21,12 @@ function GardenItemEmployee({id}) {
             try {
                 const result = await axios.get(`http://localhost:8081/gardens/${id}`,
                     {
-                    headers: {
-                        cancelToken: source.token,
-                        "Content-Type": "application/json",
-                        Authorization: `Bearer ${token}`,
-                    },
-                });
+                        headers: {
+                            cancelToken: source.token,
+                            "Content-Type": "application/json",
+                            Authorization: `Bearer ${token}`,
+                        },
+                    });
                 setGarden(result.data);
                 console.log("gardenItem result");
                 console.log(result.data);
@@ -62,9 +62,9 @@ function GardenItemEmployee({id}) {
                     },
                     {
                         headers: {
-                        cancelToken: source.token,
-                        'Content-type': 'application/json',
-                        Authorization: `Bearer ${token}`,
+                            cancelToken: source.token,
+                            'Content-type': 'application/json',
+                            Authorization: `Bearer ${token}`,
                         }
                     });
 

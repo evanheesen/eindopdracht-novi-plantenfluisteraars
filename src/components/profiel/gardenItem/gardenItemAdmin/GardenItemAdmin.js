@@ -15,15 +15,14 @@ function GardenItemAdmin({id}) {
 
         async function fetchData() {
             try {
-                const result = await axios.get(`http://localhost:8081/gardens/${id}`, {
-                        cancelToken: source.token,
-                    },
+                const result = await axios.get(`http://localhost:8081/gardens/${id}`,
                     {
                         headers: {
-                            "Content-Type": "application/json",
-                            Authorization: `Bearer ${token}`,
-                        }
-                    });
+                                cancelToken: source.token,
+                                "Content-Type": "application/json",
+                                Authorization: `Bearer ${token}`,
+                            }
+                        });
                 setGarden(result.data);
                 console.log("gardenItem result");
                 console.log(result.data);
@@ -32,39 +31,46 @@ function GardenItemAdmin({id}) {
                     source.cancel();
                 }
 
-            } catch (e) {
-                console.error(e);
+            } catch
+                (e)
+                {
+                    console.error(e);
+                }
             }
+
+            if (id) {
+                fetchData();
+            }
+
+            //    Hier id weggehaald al dependency!!!!!
         }
 
-        if (id) {
-            fetchData();
-        }
+    ,
+        []
+    )
+        ;
 
-    //    Hier id weggehaald al dependency!!!!!
-    }, []);
+        return (
+            <div className="garden-item">
+                {garden &&
+                <>
+                    <h4>{garden.street} {garden.houseNumber}, {garden.city}</h4>
+                    <p><strong>Datum aanvraag: </strong>{garden.submissionDate}</p>
+                    <p><strong>Pakket beplanting: </strong>{garden.packagePlants}</p>
+                    {garden.status === "Actief" &&
+                    <p><strong>Plantenfluisteraar: </strong>{garden.employee.firstName} {garden.employee.lastName}</p>
+                    }
 
-    return (
-        <div className="garden-item">
-            {garden &&
-            <>
-                <h4>{garden.street} {garden.houseNumber}, {garden.city}</h4>
-                <p><strong>Datum aanvraag: </strong>{garden.submissionDate}</p>
-                <p><strong>Pakket beplanting: </strong>{garden.packagePlants}</p>
-                {garden.status === "Actief" &&
-                <p><strong>Plantenfluisteraar: </strong>{garden.employee.firstName} {garden.employee.lastName}</p>
+                    <Button
+                        type="button"
+                        className={`button__status button__status--${garden.status}`}
+                        name={garden.status}
+                    />
+                </>
                 }
 
-                <Button
-                    type="button"
-                    className={`button__status button__status--${garden.status}`}
-                    name={garden.status}
-                />
-            </>
-            }
+            </div>
+        );
+    }
 
-        </div>
-    );
-}
-
-export default GardenItemAdmin;
+    export default GardenItemAdmin;

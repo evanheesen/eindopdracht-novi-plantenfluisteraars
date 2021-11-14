@@ -57,11 +57,10 @@ function Admin() {
             toggleLoading(true);
 
             try {
-                const result = await axios.get(`http://localhost:8081/gardens/${urlString}`, {
-                        cancelToken: source.token,
-                    },
+                const result = await axios.get(`http://localhost:8081/gardens/${urlString}`,
                     {
                         headers: {
+                            cancelToken: source.token,
                             "Content-Type": "application/json",
                             Authorization: `Bearer ${token}`,
                         }

@@ -14,11 +14,10 @@ function EmployeeItemAdmin({id}) {
 
         async function fetchData() {
             try {
-                const result = await axios.get(`http://localhost:8081/employees/${id}`, {
-                        cancelToken: source.token,
-                    },
+                const result = await axios.get(`http://localhost:8081/employees/${id}`,
                     {
                         headers: {
+                            cancelToken: source.token,
                             "Content-Type": "application/json",
                             Authorization: `Bearer ${token}`,
                         }
