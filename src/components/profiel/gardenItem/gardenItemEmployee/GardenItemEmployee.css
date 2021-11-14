@@ -6,3 +6,6 @@
     box-shadow: var(--box-shadow);
 }
 
+.option {
+    padding: 20px;
+}

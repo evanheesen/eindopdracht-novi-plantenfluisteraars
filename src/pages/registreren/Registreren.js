@@ -40,15 +40,6 @@ function Registreren() {
         console.log(data)
         setFile(data.dbFile[0]);
         console.log(data.dbFile[0]);
-        // const fileInfo = data.push('file',data.dbFile[0]);
-        // setFile(fileInfo);
-        // console.log(file);
-
-        // if (data.dbFile) {
-        //     setFile(data.dbFile[0])
-        // } else {
-        //     setFile({})
-        // }
 
         try {
             const result = await axios.post('http://localhost:8081/employees', {
@@ -90,20 +81,16 @@ function Registreren() {
         formData.append("dbFile", file)
 
         try {
-            const result = await axios.post(`http://localhost:8081/employees/${employeeId}/upload-file`, {
+            const result = await axios.post(`http://localhost:8081/files/${employeeId}/upload-file`, {
                 file: formData,
             }, {
+                    cancelToken: source.token,
+                },
+                {
                 headers: {
                     "Content-type": "multipart/form-data",
                 },
             });
-
-            // const result = await axios.post(`http://localhost:8081/employees/${employeeId}/upload-file`, formData,{
-            //     headers: {
-            //         "Content-type" : "multipart/form-data",
-            //     },
-            //     file : formData,
-            // });
 
             console.log(result)
 

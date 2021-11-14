@@ -90,6 +90,11 @@ function Profiel() {
                 console.log(result.data);
                 setGardens(result.data);
 
+                // Werkt nog niet!!! //
+                // if(userType === "employee" && data.dbFile.id) {
+                //     getFile()
+                // }
+
                 return function cleanup() {
                     source.cancel();
                 }
@@ -106,6 +111,38 @@ function Profiel() {
         }
 
     }, [overview])
+
+    // **** Ophalen bestand werkt nog niet!!
+    // async function getFile() {
+    //     const employeeId = data.id;
+    //     const fileId = data.dbFile.id;
+    //
+    //     toggleError(false);
+    //     toggleLoading(true);
+    //
+    //     try {
+    //         const result = await axios.get(`http://localhost:8081/files/${employeeId}/${fileId}`,
+    //             {
+    //                 headers: {
+    //                     cancelToken: source.token,
+    //                     "Content-Type": "application/json",
+    //                     Authorization: `Bearer ${token}`,
+    //                 }
+    //             });
+    //
+    //         console.log("Result data file: ")
+    //         console.log(result);
+    //
+    //         return function cleanup() {
+    //             source.cancel();
+    //         }
+    //
+    //     } catch (e) {
+    //         console.error(e);
+    //         toggleError(true);
+    //     }
+    //     toggleLoading(false);
+    // }
 
     return (
         <>
