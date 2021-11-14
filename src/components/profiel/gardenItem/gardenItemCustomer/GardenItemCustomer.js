@@ -17,14 +17,14 @@ function GardenItemCustomer({id}) {
 
         async function fetchData() {
             try {
-                const result = await axios.get(`http://localhost:8081/gardens/customers/${customerId}`, {
-                    cancelToken: source.token,
-                }, {
-                    headers: {
-                        "Content-Type": "application/json",
-                        Authorization: `Bearer ${token}`,
-                    }
-                });
+                const result = await axios.get(`http://localhost:8081/gardens/customers/${customerId}`,
+                    {
+                        headers: {
+                            cancelToken: source.token,
+                            "Content-Type": "application/json",
+                            Authorization: `Bearer ${token}`,
+                        }
+                    });
                 setGarden(result.data[0]);
                 console.log("gardenItem result");
                 console.log(result.data);

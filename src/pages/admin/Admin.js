@@ -97,11 +97,10 @@ function Admin() {
             toggleLoading(true);
 
             try {
-                const result = await axios.get(`http://localhost:8081/employees/${urlString}`, {
-                        cancelToken: source.token,
-                    },
+                const result = await axios.get(`http://localhost:8081/employees/${urlString}`,
                     {
                         headers: {
+                            cancelToken: source.token,
                             "Content-Type": "application/json",
                             Authorization: `Bearer ${token}`,
                         }

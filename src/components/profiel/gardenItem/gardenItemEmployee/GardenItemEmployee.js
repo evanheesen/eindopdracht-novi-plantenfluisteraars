@@ -19,10 +19,10 @@ function GardenItemEmployee({id}) {
 
         async function fetchData() {
             try {
-                const result = await axios.get(`http://localhost:8081/gardens/${id}`, {
-                    cancelToken: source.token,
-                }, {
+                const result = await axios.get(`http://localhost:8081/gardens/${id}`,
+                    {
                     headers: {
+                        cancelToken: source.token,
                         "Content-Type": "application/json",
                         Authorization: `Bearer ${token}`,
                     },
@@ -61,9 +61,11 @@ function GardenItemEmployee({id}) {
                         status: gardenStatus,
                     },
                     {
+                        headers: {
                         cancelToken: source.token,
                         'Content-type': 'application/json',
                         Authorization: `Bearer ${token}`,
+                        }
                     });
 
                 return function cleanup() {

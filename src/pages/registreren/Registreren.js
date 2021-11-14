@@ -77,8 +77,10 @@ function Registreren() {
 
     async function fileUpload() {
 
+        // Dit werkt niet!!
         let formData = new FormData();
         formData.append("dbFile", file)
+        console.log(formData);
 
         try {
             const result = await axios.post(`http://localhost:8081/files/${employeeId}/upload-file`, {
@@ -249,8 +251,6 @@ function Registreren() {
                         name="dbFile"
                         className="fileUpload"
                         label="Upload een leuke foto van jezelf"
-                        // onChange={getFileValue}
-                        // onChange={fileValue("l")}
                     />
 
                     <button
