@@ -16,6 +16,7 @@ import FlexItem from "../../components/flexItem/FlexItem";
 import GardenItemCustomer from "../../components/profiel/gardenItem/gardenItemCustomer/GardenItemCustomer";
 import GardenItemEmployee from "../../components/profiel/gardenItem/gardenItemEmployee/GardenItemEmployee";
 import PageContainer from "../../components/pageContainer/PageContainer";
+import LoadingIcon from "../../components/loadingIcon/LoadingIcon";
 
 function Profiel() {
 
@@ -243,7 +244,6 @@ function Profiel() {
                     <ColoredContainer
                         classNameItem="FlexItem FlexItem__center"
                         classNameBlock="block block--center block--white"
-                        // title="Open aanvragen"
                     >
                         <Description
                             title="Open aanvragen"
@@ -257,8 +257,8 @@ function Profiel() {
                         </InfoSection>
                     </ColoredContainer>}
                 </FlexContainer>
-                {/*{error && <span>Er is iets misgegaan bij het laden van het profiel. Probeer het opnieuw.</span>}*/}
-                {/*{loading && <span>Loading...</span>}*/}
+                {error && <span>Er is iets misgegaan bij het laden van het profiel. Probeer het opnieuw.</span>}
+                {loading && <span>Loading...</span>}
             </>}
 
             </PageContainer>

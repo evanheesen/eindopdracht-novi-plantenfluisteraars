@@ -58,6 +58,15 @@
     /*padding: var(--gap-items) 0 var(--gap-items) 0;*/
 }
 
+.FlexContainer__status-row {
+    width: var(--full-width);
+    justify-content: space-between;
+    gap: 0 var(--gap-items);
+    padding: 0;
+    margin: var(--gap-garden-items) 0 0 0;
+    align-items: center;
+}
+
 .FlexContainer__button-overview {
     width: var(--full-width);
     flex-flow: column wrap;

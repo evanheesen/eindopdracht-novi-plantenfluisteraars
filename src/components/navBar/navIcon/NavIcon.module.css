@@ -1,6 +1,6 @@
 .nav-button {
     border: none;
-    color: #F1F1EF;
+    color: var(--white);
     background-color: transparent;
     font-size: 18px;
     cursor: pointer;
@@ -24,14 +24,14 @@
 .dropdown-content {
 display: none;
     position: absolute;
-    background-color: #22333B;
+    background-color: var(--dark-blue);
     min-width: 250px;
     z-index: 1;
 }
 
 .dropdown-content Link {
     float: none;
-    color: #22333B;
+    color: var(--dark-blue);
     padding: 12px 16px;
     display: block;
     text-align: left;
@@ -42,7 +42,7 @@ display: none;
 /*}*/
 
 .dropdown-content Link:hover {
-    color: #CD5C5C;
+    color: var(--red);
 }
 
 /* styling dropdown button */

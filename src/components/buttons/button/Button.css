@@ -84,6 +84,11 @@
     font-size: 1rem;
 }
 
+.button__status--edit {
+    background-color: var(--darkgrey);
+    color: var(--dark-blue);
+}
+
 .button__status--Open {
     background-color: var(--yellow);
     color: black;

@@ -149,6 +149,28 @@ function Admin() {
                             >
                                 Geveltuintjes
                             </button>
+                            {mainOverview === "gardens" &&
+                            <>
+                                <Button
+                                    type="button"
+                                    className="button button--dark button--profile"
+                                    name="Toon alle geveltuintjes"
+                                    onClick={() => setOverviewGardens("all")}
+                                />
+                                <Button
+                                    type="button"
+                                    className="button button--dark button--profile"
+                                    name="Toon open aanvragen"
+                                    onClick={() => setOverviewGardens("open")}
+                                />
+                                <Button
+                                    type="button"
+                                    className="button button--dark button--profile"
+                                    name="Toon actieve aanvragen"
+                                    onClick={() => setOverviewGardens("actief")}
+                                />
+                            </>}
+
                             <button
                                 type="button"
                                 className="button button--dark button--admin"
@@ -156,27 +178,6 @@ function Admin() {
                             >
                                 Plantenfluisteraars
                             </button>
-                            {mainOverview === "gardens" &&
-                                <>
-                                    <Button
-                                        type="button"
-                                        className="button button--dark button--profile"
-                                        name="Toon alle geveltuintjes"
-                                        onClick={() => setOverviewGardens("all")}
-                                    />
-                                    <Button
-                                        type="button"
-                                        className="button button--dark button--profile"
-                                        name="Toon open aanvragen"
-                                        onClick={() => setOverviewGardens("open")}
-                                    />
-                                    <Button
-                                        type="button"
-                                        className="button button--dark button--profile"
-                                        name="Toon actieve aanvragen"
-                                        onClick={() => setOverviewGardens("actief")}
-                                    />
-                                </>}
                             {mainOverview === "employees" &&
                                 <>
                                     <Button

@@ -2,6 +2,10 @@ import React, {useEffect, useState} from 'react';
 import './GardenItemAdmin.css';
 import axios from "axios";
 import Button from "../../../buttons/button/Button";
+import EditIcon from "../../editIcon/EditIcon";
+import IconEdit from "../../../../assets/Aanpassen.png";
+import FlexItem from "../../../flexItem/FlexItem";
+import FlexContainer from "../../../flexContainer/FlexContainer";
 
 function GardenItemAdmin({id}) {
 
@@ -11,29 +15,28 @@ function GardenItemAdmin({id}) {
     const source = axios.CancelToken.source();
 
     useEffect(() => {
-        console.log(id);
+            console.log(id);
 
-        async function fetchData() {
-            try {
-                const result = await axios.get(`http://localhost:8081/gardens/${id}`,
-                    {
-                        headers: {
+            async function fetchData() {
+                try {
+                    const result = await axios.get(`http://localhost:8081/gardens/${id}`,
+                        {
+                            headers: {
                                 cancelToken: source.token,
                                 "Content-Type": "application/json",
                                 Authorization: `Bearer ${token}`,
                             }
                         });
-                setGarden(result.data);
-                console.log("gardenItem result");
-                console.log(result.data);
+                    setGarden(result.data);
+                    console.log("gardenItem result");
+                    console.log(result.data);
 
-                return function cleanup() {
-                    source.cancel();
-                }
+                    return function cleanup() {
+                        source.cancel();
+                    }
 
-            } catch
-                (e)
-                {
+                } catch
+                    (e) {
                     console.error(e);
                 }
             }
@@ -45,32 +48,41 @@ function GardenItemAdmin({id}) {
             //    Hier id weggehaald al dependency!!!!!
         }
 
-    ,
+        ,
         []
     )
-        ;
+    ;
 
-        return (
-            <div className="garden-item">
-                {garden &&
-                <>
-                    <h4>{garden.street} {garden.houseNumber}, {garden.city}</h4>
-                    <p><strong>Datum aanvraag: </strong>{garden.submissionDate}</p>
-                    <p><strong>Pakket beplanting: </strong>{garden.packagePlants}</p>
-                    {garden.status === "Actief" &&
-                    <p><strong>Plantenfluisteraar: </strong>{garden.employee.firstName} {garden.employee.lastName}</p>
-                    }
+    return (
+        <div className="garden-item">
+            {garden &&
+            <>
+                <h4>{garden.street} {garden.houseNumber}, {garden.city}</h4>
+                <p><strong>Datum aanvraag: </strong>{garden.submissionDate}</p>
+                <p><strong>Pakket beplanting: </strong>{garden.packagePlants}</p>
+                {garden.status === "Actief" &&
+                <p><strong>Plantenfluisteraar: </strong>{garden.employee.firstName} {garden.employee.lastName}</p>
+                }
 
+                <FlexContainer
+                    className="FlexContainer FlexContainer__status-row"
+                >
                     <Button
                         type="button"
                         className={`button__status button__status--${garden.status}`}
                         name={garden.status}
                     />
-                </>
-                }
+                    <EditIcon
+                        name="Edit icon"
+                        onClick=""
+                        icon={IconEdit}
+                    />
+                </FlexContainer>
+            </>
+            }
 
-            </div>
-        );
-    }
+        </div>
+    );
+}
 
-    export default GardenItemAdmin;
+export default GardenItemAdmin;
