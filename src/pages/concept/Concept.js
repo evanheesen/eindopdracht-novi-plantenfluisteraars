@@ -52,11 +52,11 @@ function Concept() {
                 <FlexContainer className="FlexContainer FlexContainer__white-centered">
                     <ColoredContainer
                         classNameItem="FlexItem__center"
-                        classNameBlock="block block--right block--green"
+                        classNameBlock="block block--right block--green bottom-button"
                         title="Hoe werkt het?"
                         buttonClassNameBottom="button button--bottom button--bottom-split"
                         buttonTitleBottom="Vraag een geveltuin aan"
-                        linkButton="/aanvragen"
+                        onClickButton={() => history.push("/aanvragen")}
                         buttonTypeBottom="button"
                     >
                         <NummeredList>

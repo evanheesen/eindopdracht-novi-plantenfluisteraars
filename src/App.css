@@ -27,6 +27,7 @@
     /*--padding-block: 60px;*/
     --padding-container: 0 20px 0 20px;
     --padding-button: 25px;
+    --padding-button-narrow: 15px;
     --gap-items: 50px;
     --gap-garden-items: 10px;
     --full-width: 100%;

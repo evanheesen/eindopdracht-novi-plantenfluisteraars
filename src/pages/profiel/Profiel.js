@@ -20,8 +20,9 @@ import PageContainer from "../../components/pageContainer/PageContainer";
 function Profiel() {
 
     const history = useHistory();
-    const {user} = useContext(AuthContext);
     const {getUserData} = useContext(AuthContext);
+
+    const {user} = useContext(AuthContext);
     const userType = user.type;
     const oppositePerson = userType === "customer" ? "Plantenfluisteraar" : "Bewoner";
     const data = user.info[userType]
@@ -64,7 +65,6 @@ function Profiel() {
             console.log("De gebruiker is niet geauthoriseerd")
             history.push("/login")
         }
-
     }, []);
 
     useEffect(() => {

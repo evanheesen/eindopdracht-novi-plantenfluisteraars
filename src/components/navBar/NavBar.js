@@ -14,7 +14,6 @@ function NavBar() {
     const {isAuth, logOut, user} = useContext(AuthContext);
     const history = useHistory();
 
-
     return (
         <nav className="nav-bar">
 
@@ -51,7 +50,7 @@ function NavBar() {
                 {isAuth ?
                     <>
                         <NavIcon
-                            link={() => history.push("/profiel")}
+                            link={() => history.push(user.info.authorities.length < 2 ? "/profiel" : "/admin")}
                             name="Profiel"
                             icon={userIcon}
                         />

@@ -23,6 +23,7 @@
 .OverviewItem:hover {
     background-color: rgba(241, 241, 239, 0.3);
     border-radius: 50px;
+    max-width: 450px;
 }
 
 .OverviewItem__subtitle {

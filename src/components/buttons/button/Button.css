@@ -5,8 +5,8 @@
     color: var(--white);
     border: none;
     border-radius: 30px;
-    padding: 25px 25px 25px 25px;
-    font-size: 20px;
+    padding: var(--padding-button);
+    font-size: 1.11rem;
     box-shadow: var(--box-shadow);
     /*border: var(--border-small);*/
 }
@@ -26,13 +26,13 @@
 .button--red {
     background-color: var(--red);
     margin-top: 10px;
-    padding: 15px 15px 15px 15px;
+    padding: var(--padding-button-narrow);
 }
 
 .button--dark {
     background-color: var(--dark-blue);
     margin-top: 10px;
-    padding: 15px 15px 15px 15px;
+    padding: var(--padding-button-narrow);
 }
 
 .button--top-split {
@@ -44,7 +44,14 @@
 .button--bottom-split, .button--bottom-centered {
     display: block;
     position: relative;
-    bottom: -95px;
+    bottom: calc(25px - var(--space-large));
+}
+
+.button--bottom-overview {
+    display: block;
+    position: relative;
+    background-color: var(--red);
+    bottom: calc(95px - var(--space-large));
 }
 
 .button--top-centered {
@@ -70,7 +77,7 @@
 .button__status {
     border: none;
     border-radius: var(--border-radius);
-    padding: 15px;
+    padding: var(--padding-button-narrow);
     background-color: var(--lightgrey);
     width: 200px;
     color: var(--white);

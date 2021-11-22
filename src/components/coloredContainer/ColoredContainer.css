@@ -27,14 +27,14 @@
 
 .block--center {
     padding-top: 20px;
-    min-width: 600px;
+    min-width: var(--width-center-item);
     width: fit-content;
     margin-left: auto;
     margin-right: auto;
 }
 
 .block--profile {
-    width: 400px;
+    width: var(--width-split-item);
 }
 
 .block--white {
@@ -60,5 +60,9 @@
     font-weight: var(--reg-font-weight);
     font-style: italic;
     margin-top: 10px;
+}
+
+.bottom-button {
+    padding-bottom: 0;
 }
 

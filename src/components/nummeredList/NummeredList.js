@@ -3,11 +3,11 @@ import './NummeredList.css';
 
 function NummeredList({children}) {
     return (
-        <p>
+        <>
             <ol>
                 {children}
             </ol>
-        </p>
+        </>
     );
 }
 

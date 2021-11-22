@@ -4,8 +4,11 @@ import Button from "../../components/buttons/button/Button";
 import FlexContainer from "../../components/flexContainer/FlexContainer";
 import FlexItem from "../../components/flexItem/FlexItem";
 import PageContainer from "../../components/pageContainer/PageContainer";
+import {useHistory} from "react-router-dom";
 
 function Home() {
+
+    const history = useHistory();
 
     return (
         <>
@@ -20,6 +23,7 @@ function Home() {
                             link="/concept"
                             className="button button--red"
                             name="Ik wil meer weten!"
+                            onClick={() => history.push("/concept")}
                         />
                     </FlexItem>
 

@@ -24,11 +24,11 @@ function Prijzen() {
                 <FlexContainer className="FlexContainer FlexContainer__white-split">
                     <ColoredContainer
                         classNameItem="FlexItem FlexItem__split-top"
-                        classNameBlock="block block--left block--green"
+                        classNameBlock="block block--left block--green bottom-button"
                         title="Prijzen"
                         buttonClassNameBottom="button button--bottom button--bottom-split"
                         buttonTitleBottom="Vraag een geveltuin aan"
-                        linkButton="/aanvragen"
+                        onClickButton={() => history.push("/aanvragen")}
                         buttonTypeBottom="button"
                     >
                         <p className="text-justified">
@@ -94,13 +94,13 @@ function Prijzen() {
                                 bullit1="Onderhoudsintensiever"
                                 bullit2="Zeer fraaie uitstraling"
                             />
-                            <Button
-                                link="/aanvragen"
-                                type="button"
-                                className="button button--red"
-                                name="Vraag een geveltuin aan"
-                            />
                         </FlexItem>
+                        <Button
+                            onClick={() => history.push("/aanvragen")}
+                            type="button"
+                            className="button button--bottom-overview"
+                            name="Vraag een geveltuin aan"
+                        />
                     </FlexItem>
                 </FlexContainer>
             </PageContainer>

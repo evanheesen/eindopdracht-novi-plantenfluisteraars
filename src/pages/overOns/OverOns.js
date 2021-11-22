@@ -5,8 +5,11 @@ import plantHand from "../../assets/plant-zaden.png";
 import ImageContainer from "../../components/imageContainer/ImageContainer";
 import PageContainer from "../../components/pageContainer/PageContainer";
 import FlexContainer from "../../components/flexContainer/FlexContainer";
+import {useHistory} from "react-router-dom";
 
 function OverOns() {
+
+    const history = useHistory();
 
     return (
         <>
@@ -30,11 +33,11 @@ function OverOns() {
                     />
                     <ColoredContainer
                         classNameItem="section-item section-item--split"
-                        classNameBlock="block block--right block--green"
+                        classNameBlock="block block--right block--green bottom-button"
                         title="Wat maakt ons speciaal?"
                         buttonClassNameBottom="button button--bottom button--bottom-split"
                         buttonTitleBottom="Vraag een geveltuin aan"
-                        linkButton="/aanvragen"
+                        onClickButton={() => history.push("/aanvragen")}
                         buttonTypeBottom="button"
                     >
                         <p className="text-justified">
