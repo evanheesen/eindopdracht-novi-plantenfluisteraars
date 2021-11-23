@@ -61,7 +61,7 @@ function GardenItemAdmin({id}) {
         console.log(data);
 
         try {
-            const result = await axios.patch('http://localhost:8081/gardens', {
+            const result = await axios.patch(`http://localhost:8081/gardens/admin/${id}`, {
                     street: data.street,
                     houseNumber: data.housenumber,
                     postalCode: data.postalcode,

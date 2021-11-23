@@ -200,7 +200,7 @@ function Admin() {
                         {mainOverview === "gardens" && overviewGardens != "" &&
                         <ColoredContainer
                             classNameItem="FlexItem FlexItem__center FlexItem__side"
-                            classNameBlock="block block--center block--white"
+                            classNameBlock="block block--center block--white block--admin"
                         >
                             <Description
                                 title={`${titleStatus} aanvragen`}
@@ -223,7 +223,7 @@ function Admin() {
                         {mainOverview === "employees" && overviewEmployees != "" &&
                         <ColoredContainer
                             classNameItem="FlexItem FlexItem__center FlexItem__side"
-                            classNameBlock="block block--center block--white"
+                            classNameBlock="block block--center block--white block--admin"
                         >
                             <Description
                                 title={`${titleEmployees} Plantenfluisteraars`}

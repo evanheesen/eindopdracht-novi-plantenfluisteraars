@@ -43,6 +43,11 @@
     /*border: 5px solid var(--dark-blue);*/
 }
 
+/* nog aanpassen */
+.block--admin {
+    min-height: 490px;
+}
+
 .block--green {
     background-color: var(--green);
 }
