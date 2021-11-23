@@ -67,6 +67,10 @@
     align-items: center;
 }
 
+.FlexContainer__edit {
+    gap: 0 0;
+}
+
 .FlexContainer__button-overview {
     width: var(--full-width);
     flex-flow: column wrap;

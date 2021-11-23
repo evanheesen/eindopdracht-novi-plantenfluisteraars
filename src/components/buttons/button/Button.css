@@ -4,7 +4,7 @@
     background-color: var(--dark-blue);
     color: var(--white);
     border: none;
-    border-radius: 30px;
+    border-radius: var(--border-radius-btn);
     padding: var(--padding-button);
     font-size: 1.11rem;
     box-shadow: var(--box-shadow);
@@ -66,12 +66,12 @@
 
 .button--red:hover {
     color: white;
-    background-color: #DE7171;
+    background-color: var(--red-hover);
 }
 
 .button--dark:hover, .button--bottom:hover {
     color: white;
-    background-color: #37525E;
+    background-color: var(--blue-hover);
 }
 
 .button__status {
@@ -82,6 +82,7 @@
     width: 200px;
     color: var(--white);
     font-size: 1rem;
+    box-shadow: var(--box-shadow-dark);
 }
 
 .button__status--edit {
@@ -115,6 +116,35 @@
     padding: 15px;
     background-color: var(--lightgrey);
     color: var(--dark-blue);
+}
+
+.button--edit {
+    background-color: var(--dark-blue);
+    width: 200px;
+    padding: var(--padding-button-narrow);
+    font-size: 0.9rem;
+    margin-top: 10px;
+    color: var(--white);
+    box-shadow: var(--box-shadow-dark);
+    border: none;
+    border-radius: var(--border-radius-btn);
+}
+
+.button--edit-cancel {
+    background-color: white;
+    color: var(--dark-blue);
+}
+
+.button--edit:hover {
+    background-color: var(--blue-hover);
+    color: var(--white);
+    cursor: pointer;
+}
+
+.button--edit-cancel:hover {
+    background-color: var(--lightgrey-hover);
+    color: var(--dark-blue);
+    /*cursor: pointer;*/
 }
 
 .button--profile {

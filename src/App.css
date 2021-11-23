@@ -8,10 +8,13 @@
 :root {
     /* colors: */
     --red: #CD5C5C;
+    --red-hover: #DE7171;
     --dark-blue: #22333B;
+    --blue-hover: #37525E;
     --green: #73956F;
     --white: #F1F1EF;
     --lightgrey: #E5E5E5;
+    --lightgrey-hover: #D3D3D3;
     --darkgrey: #BDBEBD;
     --yellow: #FFBA08;
     /* fonts */
@@ -43,8 +46,10 @@
     --width-form-half: calc(50% - 30px);
     /* decoration */
     --box-shadow: 3px 5px rgba(34, 51, 59, 0.25);
+    --box-shadow-dark: 3px 5px rgba(0, 0, 0, 0.25);
     --border-small: 1px solid black;
     --border-radius: 20px;
+    --border-radius-btn: 30px;
     --border-radius-img: 50px;
     --block-radius: 100px;
 }

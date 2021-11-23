@@ -56,6 +56,38 @@ function GardenItemAdmin({id}) {
 
     }, [id]);
 
+    async function onSubmit(data) {
+
+        console.log(data);
+
+        try {
+            const result = await axios.patch('http://localhost:8081/gardens', {
+                    street: data.street,
+                    houseNumber: data.housenumber,
+                    postalCode: data.postalcode,
+                    city: data.city,
+                    status: data.status,
+                    packagePlants: data.packageplants,
+                }, {
+                    cancelToken: source.token,
+                },
+                {
+                    headers: {
+                        "Content-Type": "application/json",
+                    }
+                });
+
+            console.log(result);
+            toggleEditFields(false);
+
+            return function cleanup() {
+                source.cancel();
+            }
+        } catch (e) {
+            console.error(e);
+        }
+
+    }
 
     return (
         <div className="garden-item">
@@ -84,23 +116,24 @@ function GardenItemAdmin({id}) {
                             name={garden.status}
                         />
 
-                        {/* when clicked, the */}
+                        {/* when clicked, the FormContainer will show instead */}
                         <EditIcon
                             name="Edit icon"
-                            // onClick=""
+                            onClick={() => toggleEditFields(true)}
                             icon={IconEdit}
                         />
                     </FlexContainer>
                 </>}
 
+                {editFields &&
                 <>
                     <ItemContent
                         title={`${garden.street} ${garden.houseNumber}, ${garden.city}`}
                     />
                     <FormContainer
-                        classNameContainer="form--container"
+                        classNameContainer="form--container form--edit"
                         classNameBlock="FlexItem FlexItem--split"
-                        // onSubmit={handleSubmit(onSubmit)}
+                        onSubmit={handleSubmit(onSubmit)}
                     >
                         <InputElement
                             errors={errors}
@@ -148,58 +181,63 @@ function GardenItemAdmin({id}) {
                             inputType="text"
                             className="inputField"
                         />
-                        {/*<div className="form-item--full">*/}
-                            <DropdownElement
-                                errors={errors}
-                                register={register}
-                                classNameItem="dropdown-item--half"
-                                label="Status"
-                                classNameSelect="dropdownField"
-                                nameSelect="status"
-                                idSelect="dropdown-status-edit"
-                            >
-                                <option value={garden.status}>{garden.status}</option>
-                                {garden.status === "Open" &&
-                                <option value="Actief">Accepteer</option>}
-                                {garden.status === "Actief" &&
-                                <option value="Afgerond">Afgerond</option>}
-                            </DropdownElement>
-                        {/*</div>*/}
+                        <DropdownElement
+                            errors={errors}
+                            register={register}
+                            classNameItem="dropdown-item--half"
+                            label="Status"
+                            classNameSelect="dropdownField"
+                            nameSelect="status"
+                            idSelect="dropdown-status-edit"
+                        >
+                            <option value={garden.status}>{garden.status}</option>
+                            {garden.status === "Open" &&
+                            <option value="Actief">Accepteer</option>}
+                            {garden.status === "Actief" &&
+                            <option value="Afgerond">Afgerond</option>}
+                        </DropdownElement>
+                        <DropdownElement
+                            errors={errors}
+                            register={register}
+                            classNameItem="dropdown-item--full"
+                            label="Pakket beplanting"
+                            classNameSelect="dropdownField"
+                            nameSelect="packagePlants"
+                            idSelect="dropdown-package-edit"
+                        >
+                            <option value={garden.packagePlants}>{garden.packagePlants}</option>
+                            <option value="Pakket 1 - Wintergroen"
+                                    disabled={garden.packagePlants === "Pakket 1 - Wintergroen"}>Pakket 1 - Wintergroen
+                            </option>
+                            <option value="Pakket 2 - Kleurrijk Laag"
+                                    disabled={garden.packagePlants === "Pakket 2 - Kleurrijk Laag"}>Pakket 2 - Kleurrijk
+                                Laag
+                            </option>
+                            <option value="Pakket 3 - Kleurrijk Hoog"
+                                    disabled={garden.packagePlants === "Pakket 3 - Kleurrijk Hoog"}>Pakket 3 - Kleurrijk
+                                Hoog
+                            </option>
+                        </DropdownElement>
 
+                        <FlexContainer
+                            className="FlexContainer FlexContainer__status-row FlexContainer__edit"
+                        >
+                        <Button
+                            type="submit"
+                            className="button--edit"
+                            name="Bevestig wijzigingen"
+                        />
+                            <Button
+                                type="button"
+                                className="button--edit button--edit-cancel"
+                                name="Annuleer"
+                                onClick={() => toggleEditFields(false)}
+                            />
+                        </FlexContainer>
 
-                        {/*<div className="form-item--full">*/}
-                        {/*    <p className="label--singleSelect">Pakket beplanting</p>*/}
-                        {/*    <SingleSelectElement*/}
-                        {/*        errors={errors}*/}
-                        {/*        register={register}*/}
-                        {/*        className="radioField"*/}
-                        {/*        name="packageplants"*/}
-                        {/*        checked={garden.packagePlants === "Pakket 1 - Wintergroen"}*/}
-                        {/*        value="Pakket 1 - Wintergroen"*/}
-                        {/*        label="Pakket 1 - Wintergroen"*/}
-                        {/*    />*/}
-                        {/*    <SingleSelectElement*/}
-                        {/*        errors={errors}*/}
-                        {/*        register={register}*/}
-                        {/*        className="radioField"*/}
-                        {/*        name="packageplants"*/}
-                        {/*        checked={garden.packagePlants === "Pakket 2 - Kleurrijk Laag"}*/}
-                        {/*        value="Pakket 2 - Kleurrijk Laag"*/}
-                        {/*        label="Pakket 2 - Kleurrijk Laag"*/}
-                        {/*    />*/}
-                        {/*    <SingleSelectElement*/}
-                        {/*        errors={errors}*/}
-                        {/*        register={register}*/}
-                        {/*        className="radioField"*/}
-                        {/*        name="packageplants"*/}
-                        {/*        checked={garden.packagePlants === "Pakket 3 - Kleurrijk Hoog"}*/}
-                        {/*        value="Pakket 3 - Kleurrijk Hoog"*/}
-                        {/*        label="Pakket 3 - Kleurrijk Hoog"*/}
-                        {/*    />*/}
-                        {/*</div>*/}
 
                     </FormContainer>
-                </>
+                </>}
 
             </>
             }

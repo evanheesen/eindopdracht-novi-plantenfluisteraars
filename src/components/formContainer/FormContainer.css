@@ -12,6 +12,12 @@
     max-width: 500px;
 }
 
+.form--edit {
+    margin-left: 0;
+    max-width: var(--width-split-item);
+    padding-right: var(--padding-garden-item);
+}
+
 /* form file upload field styling */
 input.fileUpload {
     margin-top: 2px;
