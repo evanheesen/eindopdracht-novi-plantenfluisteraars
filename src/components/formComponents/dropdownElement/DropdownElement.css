@@ -1,4 +1,5 @@
-.inputField {
+.dropdownField {
+    overflow: hidden;
     margin-top: 2px;
     padding: var(--padding-form-item);
     border: var(--border-small);
@@ -9,21 +10,14 @@
     font-size: 0.89rem;
 }
 
-.inputField:focus {
+.dropdownField:focus {
     outline-color: var(--green);
 }
 
-.input-error-message {
-    font-weight: 200;
-    font-style: italic;
-    color: var(--red);
-    font-size: 0.8rem;
-}
-
-.form-item--half {
+.dropdown-item--half {
     width: var(--width-form-half);
 }
 
-.form-item--full {
+.dropdown-item--full {
     width: var(--full-width);
 }

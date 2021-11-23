@@ -131,54 +131,54 @@ function Admin() {
             <PageContainer className="PageContainer PageContainer--image FlexContainer__image-container--profile">
                 {Object.keys(user).length > 0 &&
                 <>
-                <FlexContainer className="FlexContainer FlexContainer__white-centered FlexContainer__admin">
-                    <ColoredContainer
-                        classNameItem="FlexItem FlexItem__side"
-                        classNameBlock="block block--profile block--green"
-                        title="Dashboard admin"
-                    >
-                        <InfoSection>
-                            <strong>Gebruikersnaam:</strong> {user.info.username}
-                            <p><strong>Email:</strong> {user.info.email}</p>
-                        </InfoSection>
-                        <FlexContainer className="FlexContainer FlexContainer__button-admin">
-                            <button
-                                type="button"
-                                className="button button--dark button--admin"
-                                onClick={() => setMainOverview("gardens")}
-                            >
-                                Geveltuintjes
-                            </button>
-                            {mainOverview === "gardens" &&
-                            <>
-                                <Button
+                    <FlexContainer className="FlexContainer FlexContainer__white-centered FlexContainer__admin">
+                        <ColoredContainer
+                            classNameItem="FlexItem FlexItem__side"
+                            classNameBlock="block block--profile block--green"
+                            title="Dashboard admin"
+                        >
+                            <InfoSection>
+                                <strong>Gebruikersnaam:</strong> {user.info.username}
+                                <p><strong>Email:</strong> {user.info.email}</p>
+                            </InfoSection>
+                            <FlexContainer className="FlexContainer FlexContainer__button-admin">
+                                <button
                                     type="button"
-                                    className="button button--dark button--profile"
-                                    name="Toon alle geveltuintjes"
-                                    onClick={() => setOverviewGardens("all")}
-                                />
-                                <Button
-                                    type="button"
-                                    className="button button--dark button--profile"
-                                    name="Toon open aanvragen"
-                                    onClick={() => setOverviewGardens("open")}
-                                />
-                                <Button
-                                    type="button"
-                                    className="button button--dark button--profile"
-                                    name="Toon actieve aanvragen"
-                                    onClick={() => setOverviewGardens("actief")}
-                                />
-                            </>}
+                                    className="button button--dark button--admin"
+                                    onClick={() => setMainOverview("gardens")}
+                                >
+                                    Geveltuintjes
+                                </button>
+                                {mainOverview === "gardens" &&
+                                <>
+                                    <Button
+                                        type="button"
+                                        className="button button--dark button--profile"
+                                        name="Toon alle geveltuintjes"
+                                        onClick={() => setOverviewGardens("all")}
+                                    />
+                                    <Button
+                                        type="button"
+                                        className="button button--dark button--profile"
+                                        name="Toon open aanvragen"
+                                        onClick={() => setOverviewGardens("open")}
+                                    />
+                                    <Button
+                                        type="button"
+                                        className="button button--dark button--profile"
+                                        name="Toon actieve aanvragen"
+                                        onClick={() => setOverviewGardens("actief")}
+                                    />
+                                </>}
 
-                            <button
-                                type="button"
-                                className="button button--dark button--admin"
-                                onClick={() => setMainOverview("employees")}
-                            >
-                                Plantenfluisteraars
-                            </button>
-                            {mainOverview === "employees" &&
+                                <button
+                                    type="button"
+                                    className="button button--dark button--admin"
+                                    onClick={() => setMainOverview("employees")}
+                                >
+                                    Plantenfluisteraars
+                                </button>
+                                {mainOverview === "employees" &&
                                 <>
                                     <Button
                                         type="button"
@@ -193,47 +193,51 @@ function Admin() {
                                         onClick={() => setOverviewEmployees("actief")}
                                     />
                                 </>}
-                        </FlexContainer>
-                    </ColoredContainer>
+                            </FlexContainer>
+                        </ColoredContainer>
 
-                    {/*/* If button Aanvragen is clicked, show: */}
-                    {mainOverview === "gardens" && overviewGardens != "" &&
-                    <ColoredContainer
-                        classNameItem="FlexItem FlexItem__center FlexItem__side"
-                        classNameBlock="block block--center block--white"
-                    >
-                        <Description
-                            title={`${titleStatus} aanvragen`}
-                            className="description__centered"
-                            classNameTitle="description__title--red"
-                        />
-                        <InfoSection className="gardens-overview">
-                            {gardens.map((garden) => {
-                                return <GardenItemAdmin key={garden.id} id={garden.id}/>
-                            })}
-                        </InfoSection>
-                    </ColoredContainer>
-                    }
+                        {/*/* If button Aanvragen is clicked, show: */}
+                        {mainOverview === "gardens" && overviewGardens != "" &&
+                        <ColoredContainer
+                            classNameItem="FlexItem FlexItem__center FlexItem__side"
+                            classNameBlock="block block--center block--white"
+                        >
+                            <Description
+                                title={`${titleStatus} aanvragen`}
+                                className="description__centered"
+                                classNameTitle="description__title--red"
+                            />
+                            <InfoSection className="gardens-overview">
+                                {gardens.map((garden) => {
+                                    return <GardenItemAdmin
+                                        key={garden.id}
+                                        id={garden.id}
+                                    />
+                                })}
+                            </InfoSection>
 
-                    {/*/* If button Plantenfluisteraars is clicked, show: */}
-                    {mainOverview === "employees" && overviewEmployees != "" &&
-                    <ColoredContainer
-                        classNameItem="FlexItem FlexItem__center FlexItem__side"
-                        classNameBlock="block block--center block--white"
-                    >
-                        <Description
-                            title={`${titleEmployees} Plantenfluisteraars`}
-                            className="description__centered"
-                            classNameTitle="description__title--red"
-                        />
-                        <InfoSection className="gardens-overview">
-                            {employees.map((employee) => {
-                                return <EmployeeItemAdmin key={employee.id} id={employee.id}/>
-                            })}
-                        </InfoSection>
-                    </ColoredContainer>
-                    }
-                </FlexContainer>
+                        </ColoredContainer>
+                        }
+
+                        {/*/* If button Plantenfluisteraars is clicked, show: */}
+                        {mainOverview === "employees" && overviewEmployees != "" &&
+                        <ColoredContainer
+                            classNameItem="FlexItem FlexItem__center FlexItem__side"
+                            classNameBlock="block block--center block--white"
+                        >
+                            <Description
+                                title={`${titleEmployees} Plantenfluisteraars`}
+                                className="description__centered"
+                                classNameTitle="description__title--red"
+                            />
+                            <InfoSection className="gardens-overview">
+                                {employees.map((employee) => {
+                                    return <EmployeeItemAdmin key={employee.id} id={employee.id}/>
+                                })}
+                            </InfoSection>
+                        </ColoredContainer>
+                        }
+                    </FlexContainer>
                 </>}
 
                 {error && <span>Er is iets misgegaan bij het laden van het dashboard. Probeer het opnieuw.</span>}
