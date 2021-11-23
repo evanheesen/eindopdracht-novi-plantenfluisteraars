@@ -62,20 +62,19 @@ function GardenItemAdmin({id}) {
 
         try {
             const result = await axios.patch(`http://localhost:8081/gardens/admin/${id}`, {
-                    street: data.street,
-                    houseNumber: data.housenumber,
-                    postalCode: data.postalcode,
-                    city: data.city,
-                    status: data.status,
-                    packagePlants: data.packageplants,
-                }, {
+                street: data.street,
+                houseNumber: data.housenumber,
+                postalCode: data.postalcode,
+                city: data.city,
+                status: data.status,
+                packagePlants: data.packageplants,
+            }, {
+                headers: {
                     cancelToken: source.token,
-                },
-                {
-                    headers: {
-                        "Content-Type": "application/json",
-                    }
-                });
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`,
+                }
+            });
 
             console.log(result);
             toggleEditFields(false);
@@ -222,11 +221,11 @@ function GardenItemAdmin({id}) {
                         <FlexContainer
                             className="FlexContainer FlexContainer__status-row FlexContainer__edit"
                         >
-                        <Button
-                            type="submit"
-                            className="button--edit"
-                            name="Bevestig wijzigingen"
-                        />
+                            <Button
+                                type="submit"
+                                className="button--edit"
+                                name="Bevestig wijzigingen"
+                            />
                             <Button
                                 type="button"
                                 className="button--edit button--edit-cancel"
