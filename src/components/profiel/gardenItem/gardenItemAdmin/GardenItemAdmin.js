@@ -6,6 +6,7 @@ import EditIcon from "../../editIcon/EditIcon";
 import IconEdit from "../../../../assets/Aanpassen.png";
 import FlexItem from "../../../flexItem/FlexItem";
 import FlexContainer from "../../../flexContainer/FlexContainer";
+import ItemContent from "../../itemContent/ItemContent";
 
 function GardenItemAdmin({id}) {
 
@@ -57,12 +58,16 @@ function GardenItemAdmin({id}) {
         <div className="garden-item">
             {garden &&
             <>
-                <h4>{garden.street} {garden.houseNumber}, {garden.city}</h4>
-                <p><strong>Datum aanvraag: </strong>{garden.submissionDate}</p>
-                <p><strong>Pakket beplanting: </strong>{garden.packagePlants}</p>
-                {garden.status === "Actief" &&
-                <p><strong>Plantenfluisteraar: </strong>{garden.employee.firstName} {garden.employee.lastName}</p>
-                }
+                <ItemContent
+                title={`${garden.street} ${garden.houseNumber}, ${garden.city}`}
+                date={garden.submissionDate}
+                address={`${garden.street} ${garden.houseNumber}, ${garden.postalCode} ${garden.city}`}
+                plants={garden.packagePlants}
+                >
+                    {garden.status === "Actief" &&
+                    <p><strong>Plantenfluisteraar: </strong>{garden.employee.firstName} {garden.employee.lastName}</p>
+                    }
+                </ItemContent>
 
                 <FlexContainer
                     className="FlexContainer FlexContainer__status-row"
@@ -74,7 +79,7 @@ function GardenItemAdmin({id}) {
                     />
                     <EditIcon
                         name="Edit icon"
-                        onClick=""
+                        // onClick=""
                         icon={IconEdit}
                     />
                 </FlexContainer>

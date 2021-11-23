@@ -3,6 +3,7 @@ import axios from "axios";
 import './GardenItemEmployee.css';
 import DropdownButton from "../../../buttons/dropdownButton/DropdownButton";
 import {AuthContext} from "../../../../context/AuthContext";
+import ItemContent from "../../itemContent/ItemContent";
 
 function GardenItemEmployee({id}) {
 
@@ -86,10 +87,12 @@ function GardenItemEmployee({id}) {
         <section className="garden-item">
             {garden &&
             <>
-                <h4>{garden.street} {garden.houseNumber}, {garden.city}</h4>
-                <p><strong>Datum aanvraag: </strong>{garden.submissionDate}</p>
-                <p><strong>Adres: </strong>{garden.street} {garden.houseNumber}, {garden.city}</p>
-                <p><strong>Pakket beplanting: </strong>{garden.packagePlants}</p>
+                <ItemContent
+                    title={`${garden.street} ${garden.houseNumber}, ${garden.city}`}
+                    date={garden.submissionDate}
+                    address={`${garden.street} ${garden.houseNumber}, ${garden.postalCode} ${garden.city}`}
+                    plants={garden.packagePlants}
+                />
 
                 <DropdownButton
                     classNameButton="button__status"

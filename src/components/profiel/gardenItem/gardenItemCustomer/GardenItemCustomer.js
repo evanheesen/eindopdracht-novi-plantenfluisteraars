@@ -3,6 +3,7 @@ import axios from "axios";
 import InfoSection from "../../infoSection/InfoSection";
 import Button from "../../../buttons/button/Button";
 import {AuthContext} from "../../../../context/AuthContext";
+import ItemContent from "../../itemContent/ItemContent";
 
 function GardenItemCustomer({id}) {
 
@@ -47,19 +48,21 @@ function GardenItemCustomer({id}) {
         <section className="garden-item">
             {garden &&
             <>
-                <h4>{garden.street} {garden.houseNumber}, {garden.city}</h4>
-                <p><strong>Datum aanvraag: </strong>{garden.submissionDate}</p>
-                <p><strong>Adres: </strong>{garden.street} {garden.houseNumber}, {garden.city}</p>
-                <p><strong>Pakket beplanting: </strong>{garden.packagePlants}</p>
+                <ItemContent
+                    title={`${garden.street} ${garden.houseNumber}, ${garden.city}`}
+                    date={garden.submissionDate}
+                    address={`${garden.street} ${garden.houseNumber}, ${garden.postalCode} ${garden.city}`}
+                    plants={garden.packagePlants}
+                >
+                    {garden.status === "Actief" &&
+                    <>
+                        <p><strong>Plantenfluisteraar: </strong>{garden.employee.firstName} {garden.employee.lastName}
+                        </p>
+                        <p><strong>Telefoon Plantenfluisteraar: </strong>{garden.employee.phone}</p>
+                    </>
+                    }
+                </ItemContent>
 
-                {/*{garden.status != "Open" &&*/}
-                {/*<>*/}
-                {/*    <p><strong>Naam*/}
-                {/*        Plantenfluisteraar: </strong>{garden.employee.firstName} {garden.employee.lastName}*/}
-                {/*    </p>*/}
-                {/*    <p><strong>Telefoon Plantenfluisteraar: </strong>{garden.employee.phone}</p>*/}
-                {/*</>*/}
-                {/*}*/}
                 <Button
                     type="button"
                     className={`button__status button__status--${garden.status}`}
