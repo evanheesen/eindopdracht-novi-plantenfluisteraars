@@ -18,6 +18,7 @@ function GardenItemAdmin({id}) {
 
     const [garden, setGarden] = useState(null);
     const [editFields, toggleEditFields] = useState(false);
+    // const [refres]
     const {register, handleSubmit, formState: {errors}} = useForm();
     // const [gardenStatus, setGardenStatus] = useState("");
     const token = localStorage.getItem('token');
@@ -54,7 +55,8 @@ function GardenItemAdmin({id}) {
             fetchData();
         }
 
-    }, [id]);
+    // ##### id weggehaald hier!
+    }, []);
 
     async function onSubmit(data) {
 
@@ -62,12 +64,12 @@ function GardenItemAdmin({id}) {
 
         try {
             const result = await axios.patch(`http://localhost:8081/gardens/admin/${id}`, {
-                street: data.street,
-                houseNumber: data.housenumber,
-                postalCode: data.postalcode,
-                city: data.city,
+                street: data.street === "" ? garden.street : data.street,
+                houseNumber: data.housenumber === "" ? garden.houseNumber : data.housenumber,
+                postalCode: data.postalcode === "" ? garden.postalCode : data.postalcode,
+                city: data.city === "" ? garden.city : data.city,
                 status: data.status,
-                packagePlants: data.packageplants,
+                packagePlants: data.packagePlants,
             }, {
                 headers: {
                     cancelToken: source.token,
