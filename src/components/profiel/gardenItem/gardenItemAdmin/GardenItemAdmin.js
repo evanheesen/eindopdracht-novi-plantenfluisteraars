@@ -13,12 +13,13 @@ import styles from "../../../../pages/registreren/Registreren.module.css";
 import InputElement from "../../../formComponents/inputElement/InputElement";
 import SingleSelectElement from "../../../formComponents/singleSelectElement/SingleSelectElement";
 import DropdownElement from "../../../formComponents/dropdownElement/DropdownElement";
+import {resetFirstInputPolyfill} from "web-vitals/dist/modules/lib/polyfills/firstInputPolyfill";
 
 function GardenItemAdmin({id}) {
 
     const [garden, setGarden] = useState(null);
     const [editFields, toggleEditFields] = useState(false);
-    // const [refres]
+    const [toggle, setToggle] = useState(false);
     const {register, handleSubmit, formState: {errors}} = useForm();
     // const [gardenStatus, setGardenStatus] = useState("");
     const token = localStorage.getItem('token');
@@ -56,7 +57,7 @@ function GardenItemAdmin({id}) {
         }
 
     // ##### id weggehaald hier!
-    }, []);
+    }, [toggle]);
 
     async function onSubmit(data) {
 
@@ -80,6 +81,7 @@ function GardenItemAdmin({id}) {
 
             console.log(result);
             toggleEditFields(false);
+            setToggle(!toggle);
 
             return function cleanup() {
                 source.cancel();
