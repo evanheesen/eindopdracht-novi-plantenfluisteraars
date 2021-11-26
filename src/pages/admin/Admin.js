@@ -21,22 +21,14 @@ function Admin() {
     const source = axios.CancelToken.source();
 
     const [mainOverview, setMainOverview] = useState("");
-    const [overviewEmployees, setOverviewEmployees] = useState("");
-    const [overviewGardens, setOverviewGardens] = useState("");
+    const [overviewEmployees, setOverviewEmployees] = useState("all");
+    const [overviewGardens, setOverviewGardens] = useState("all");
     const [gardens, setGardens] = useState([]);
     const [employees, setEmployees] = useState([]);
     const [error, toggleError] = useState(false);
     const [loading, toggleLoading] = useState(false);
     const titleStatus = overviewGardens === "all" ? "Alle" : (overviewGardens === "open" ? "Open" : "Actieve");
     const titleEmployees = overviewEmployees === "all" ? "Alle" : "Actieve";
-
-    // function showOverview(url) {
-    //     setOverview(url === "alles" ? "" : url);
-    // }
-
-
-    //  #### Mee bezig: endpoints + service inrichten in backend maken voor status /all, /open, /active
-
 
     useEffect(() => {
         if (token) {
@@ -78,12 +70,12 @@ function Admin() {
                 console.error(e);
                 toggleError(true);
             }
-            toggleLoading(false);
         }
 
         if (overviewGardens) {
             getGardens(token);
         }
+        toggleLoading(false);
 
     }, [overviewGardens])
 
@@ -117,12 +109,12 @@ function Admin() {
                 console.error(e);
                 toggleError(true);
             }
-            toggleLoading(false);
         }
 
         if (overviewEmployees) {
             getGardens(token);
         }
+        toggleLoading(false);
 
     }, [overviewEmployees])
 
@@ -142,53 +134,56 @@ function Admin() {
                                 <p><strong>Email:</strong> {user.info.email}</p>
                             </InfoSection>
                             <FlexContainer className="FlexContainer FlexContainer__button-admin">
-                                <button
+                                <Button
                                     type="button"
                                     className="button button--dark button--admin"
                                     onClick={() => setMainOverview("gardens")}
-                                >
-                                    Geveltuintjes
-                                </button>
+                                    name="Geveltuintjes"
+                                />
                                 {mainOverview === "gardens" &&
                                 <>
                                     <Button
                                         type="button"
-                                        className="button button--dark button--profile"
+                                        className="button button--dark button--profile button--sub"
+                                        id="button--gardens-all"
                                         name="Toon alle geveltuintjes"
                                         onClick={() => setOverviewGardens("all")}
                                     />
                                     <Button
                                         type="button"
-                                        className="button button--dark button--profile"
+                                        className="button button--dark button--profile button--sub"
+                                        id="button--gardens-open"
                                         name="Toon open aanvragen"
                                         onClick={() => setOverviewGardens("open")}
                                     />
                                     <Button
                                         type="button"
-                                        className="button button--dark button--profile"
+                                        className="button button--dark button--profile button--sub"
+                                        id="button--gardens-active"
                                         name="Toon actieve aanvragen"
                                         onClick={() => setOverviewGardens("actief")}
                                     />
                                 </>}
 
-                                <button
+                                <Button
                                     type="button"
                                     className="button button--dark button--admin"
                                     onClick={() => setMainOverview("employees")}
-                                >
-                                    Plantenfluisteraars
-                                </button>
+                                    name="Plantenfluisteraars"
+                                />
                                 {mainOverview === "employees" &&
                                 <>
                                     <Button
                                         type="button"
-                                        className="button button--dark button--profile"
+                                        className="button button--dark button--profile button--sub"
+                                        id="button--employees-all"
                                         name="Toon alle Plantenfluisteraars"
                                         onClick={() => setOverviewEmployees("all")}
                                     />
                                     <Button
                                         type="button"
-                                        className="button button--dark button--profile"
+                                        className="button button--dark button--profile button--sub"
+                                        id="button--employees-active"
                                         name="Toon actieve Plantenfluisteraars"
                                         onClick={() => setOverviewEmployees("actief")}
                                     />

@@ -21,3 +21,7 @@
 .dropdown-item--full {
     width: var(--full-width);
 }
+
+select option:disabled {
+    display: none;
+}

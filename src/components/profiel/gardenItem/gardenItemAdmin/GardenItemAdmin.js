@@ -4,16 +4,12 @@ import axios from "axios";
 import Button from "../../../buttons/button/Button";
 import EditIcon from "../../editIcon/EditIcon";
 import IconEdit from "../../../../assets/Aanpassen.png";
-import FlexItem from "../../../flexItem/FlexItem";
 import FlexContainer from "../../../flexContainer/FlexContainer";
 import ItemContent from "../../itemContent/ItemContent";
 import FormContainer from "../../../formContainer/FormContainer";
 import {useForm} from "react-hook-form";
-import styles from "../../../../pages/registreren/Registreren.module.css";
 import InputElement from "../../../formComponents/inputElement/InputElement";
-import SingleSelectElement from "../../../formComponents/singleSelectElement/SingleSelectElement";
 import DropdownElement from "../../../formComponents/dropdownElement/DropdownElement";
-import {resetFirstInputPolyfill} from "web-vitals/dist/modules/lib/polyfills/firstInputPolyfill";
 
 function GardenItemAdmin({id}) {
 
@@ -21,7 +17,6 @@ function GardenItemAdmin({id}) {
     const [editFields, toggleEditFields] = useState(false);
     const [toggle, setToggle] = useState(false);
     const {register, handleSubmit, formState: {errors}} = useForm();
-    // const [gardenStatus, setGardenStatus] = useState("");
     const token = localStorage.getItem('token');
     const source = axios.CancelToken.source();
 
@@ -46,8 +41,7 @@ function GardenItemAdmin({id}) {
                     source.cancel();
                 }
 
-            } catch
-                (e) {
+            } catch (e) {
                 console.error(e);
             }
         }
@@ -56,7 +50,6 @@ function GardenItemAdmin({id}) {
             fetchData();
         }
 
-    // ##### id weggehaald hier!
     }, [toggle]);
 
     async function onSubmit(data) {
@@ -194,10 +187,10 @@ function GardenItemAdmin({id}) {
                             idSelect="dropdown-status-edit"
                         >
                             <option value={garden.status}>{garden.status}</option>
-                            {garden.status === "Open" &&
-                            <option value="Actief">Accepteer</option>}
-                            {garden.status === "Actief" &&
-                            <option value="Afgerond">Afgerond</option>}
+                            <option value="Inactief" disabled={garden.status === "Inactief"}>Inactief</option>
+                            <option value="Open" disabled={garden.status === "Open"}>Open</option>
+                            <option value="Inactief" disabled>Actief</option>
+                            <option value="Afgerond" disabled={garden.status === "Open" || garden.status === "Inactief" || garden.status === "Afgerond" }>Afgerond</option>
                         </DropdownElement>
                         <DropdownElement
                             errors={errors}
