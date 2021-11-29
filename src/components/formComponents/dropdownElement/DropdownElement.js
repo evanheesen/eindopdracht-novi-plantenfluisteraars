@@ -1,7 +1,7 @@
 import React from 'react';
 import './DropdownElement.css';
 
-function DropdownElement({ errors, register, validationRules, classNameItem, classNameSelect, label, nameSelect, idSelect, children }) {
+function DropdownElement({ errors, register, validationRules, classNameItem, classNameSelect, label, nameSelect, idSelect, onClickSelect, children }) {
     return (
         <div className={classNameItem}>
             <label htmlFor={`${nameSelect}-field`}>
@@ -11,6 +11,7 @@ function DropdownElement({ errors, register, validationRules, classNameItem, cla
                 className={classNameSelect}
                 name={nameSelect}
                 id={idSelect}
+                onClick={onClickSelect}
                 {...register(nameSelect, validationRules)}
             >
                 {children}

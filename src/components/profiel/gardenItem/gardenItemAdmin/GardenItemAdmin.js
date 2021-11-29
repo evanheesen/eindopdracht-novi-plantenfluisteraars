@@ -10,15 +10,19 @@ import FormContainer from "../../../formContainer/FormContainer";
 import {useForm} from "react-hook-form";
 import InputElement from "../../../formComponents/inputElement/InputElement";
 import DropdownElement from "../../../formComponents/dropdownElement/DropdownElement";
+import {logDOM} from "@testing-library/react";
+import DropdownOption from "../../../formComponents/dropdownElement/DropdownOption";
 
-function GardenItemAdmin({id}) {
+function GardenItemAdmin({ id }) {
 
     const [garden, setGarden] = useState(null);
+    // const [employees, setEmployees] = useState(null);
     const [editFields, toggleEditFields] = useState(false);
     const [toggle, setToggle] = useState(false);
     const {register, handleSubmit, formState: {errors}} = useForm();
     const token = localStorage.getItem('token');
     const source = axios.CancelToken.source();
+    let employees = [];
 
     useEffect(() => {
         console.log(id);
@@ -86,6 +90,39 @@ function GardenItemAdmin({id}) {
         }
 
     }
+
+    useEffect(() => {
+
+        async function getEmployees() {
+
+        try {
+            const employeeList = await axios.get(`http://localhost:8081/employees`,
+                {
+                    headers: {
+                        cancelToken: source.token,
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${token}`,
+                    }
+                });
+
+            employees = employeeList.data;
+            console.log("list employees:");
+            console.log(employees);
+            // setEmployees(employeeList.data);
+
+            return function cleanup() {
+                source.cancel();
+            }
+        } catch (e) {
+            console.error(e);
+        }
+    }
+
+        if (editFields) {
+            getEmployees();
+        }
+
+    }, [editFields]);
 
     return (
         <div className="garden-item">
@@ -213,7 +250,9 @@ function GardenItemAdmin({id}) {
                             <option value="Inactief" disabled={garden.status === "Inactief"}>Inactief</option>
                             <option value="Open" disabled={garden.status === "Open"}>Open</option>
                             <option value="Inactief" disabled>Actief</option>
-                            <option value="Afgerond" disabled={garden.status === "Open" || garden.status === "Inactief" || garden.status === "Afgerond" }>Afgerond</option>
+                            <option value="Afgerond"
+                                    disabled={garden.status === "Open" || garden.status === "Inactief" || garden.status === "Afgerond"}>Afgerond
+                            </option>
                         </DropdownElement>
                         <DropdownElement
                             errors={errors}
@@ -237,6 +276,32 @@ function GardenItemAdmin({id}) {
                                 Hoog
                             </option>
                         </DropdownElement>
+
+
+                        {/* Get list employees in dropdown */}
+                        <DropdownElement
+                            errors={errors}
+                            register={register}
+                            classNameItem="dropdown-item--full"
+                            label="Plantenfluisteraar"
+                            classNameSelect="dropdownField"
+                            nameSelect="employee"
+                            idSelect="dropdown-employee-edit"
+                        >
+                            {garden.employee &&
+                            <>
+                                <option value={garden.employee.id}>{garden.employee.firstName} {garden.employee.lastName}</option>
+                                {employees.map((employee) => {
+                                    return <DropdownOption
+                                    id={employee.id}
+                                    source={source}
+                                    token={token}
+                                    key={employee.id}
+                                    />
+                                })}
+                            </>}
+                        </DropdownElement>
+
 
                         <FlexContainer
                             className="FlexContainer FlexContainer__status-row FlexContainer__edit"
