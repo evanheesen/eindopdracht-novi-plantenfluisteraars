@@ -218,7 +218,6 @@ function Profiel() {
                         {gardens.map((garden) => {
                             return <GardenItemCustomer key={garden.id} id={garden.id} oppositePerson={oppositePerson}/>
                         })}
-                        {/*<GardenItemCustomer id={gardens[0].id} oppositePerson={oppositePerson}/>*/}
                     </ColoredContainer>}
 
                     {/* ###### Deze twee nog samenvoegen?? */}

@@ -58,6 +58,8 @@ function GardenItemAdmin({id}) {
 
         try {
             const result = await axios.patch(`http://localhost:8081/gardens/admin/${id}`, {
+                firstName: data.firstname === "" ? garden.customer.firstName : data.firstname,
+                lastName: data.lastname === "" ? garden.customer.lastName : data.lastname,
                 street: data.street === "" ? garden.street : data.street,
                 houseNumber: data.housenumber === "" ? garden.houseNumber : data.housenumber,
                 postalCode: data.postalcode === "" ? garden.postalCode : data.postalcode,
@@ -96,6 +98,7 @@ function GardenItemAdmin({id}) {
                         date={garden.submissionDate}
                         address={`${garden.street} ${garden.houseNumber}, ${garden.postalCode} ${garden.city}`}
                         plants={garden.packagePlants}
+                        customer={`${garden.customer.firstName} ${garden.customer.lastName}`}
                     >
                         {garden.status === "Actief" &&
                         <p><strong>Plantenfluisteraar: </strong>{garden.employee.firstName} {garden.employee.lastName}
@@ -131,6 +134,26 @@ function GardenItemAdmin({id}) {
                         classNameBlock="FlexItem FlexItem--split"
                         onSubmit={handleSubmit(onSubmit)}
                     >
+                        <InputElement
+                            errors={errors}
+                            register={register}
+                            classNameItem="form-item--half"
+                            name="firstname"
+                            placeholder={garden.customer.firstName}
+                            label="Voornaam bewoner"
+                            inputType="text"
+                            className="inputField"
+                        />
+                        <InputElement
+                            errors={errors}
+                            register={register}
+                            classNameItem="form-item--half"
+                            name="lastname"
+                            placeholder={garden.customer.lastName}
+                            label="Achternaam"
+                            inputType="text"
+                            className="inputField"
+                        />
                         <InputElement
                             errors={errors}
                             register={register}
