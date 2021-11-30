@@ -16,8 +16,7 @@ import DropdownOption from "../../../formComponents/dropdownElement/DropdownOpti
 function GardenItemAdmin({ id }) {
 
     const [garden, setGarden] = useState(null);
-    // const [employees, setEmployees] = useState(null);
-    const [editFields, toggleEditFields] = useState(false);
+    const [editFields, toggleEditFields] = useState(false)
     const [toggle, setToggle] = useState(false);
     const {register, handleSubmit, formState: {errors}} = useForm();
     const token = localStorage.getItem('token');
@@ -79,8 +78,33 @@ function GardenItemAdmin({ id }) {
             });
 
             console.log(result);
-            toggleEditFields(false);
             setToggle(!toggle);
+            toggleEditFields(false);
+
+            return function cleanup() {
+                source.cancel();
+            }
+        } catch (e) {
+            console.error(e);
+        }
+
+    }
+
+    async function deleteItem() {
+
+        try {
+            const result = await axios.delete(`http://localhost:8081/gardens/delete/${id}`,
+                {
+                headers: {
+                    cancelToken: source.token,
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`,
+                }
+            });
+
+            console.log(result);
+            setToggle(!toggle);
+            toggleEditFields(false);
 
             return function cleanup() {
                 source.cancel();
@@ -108,7 +132,6 @@ function GardenItemAdmin({ id }) {
             employees = employeeList.data;
             console.log("list employees:");
             console.log(employees);
-            // setEmployees(employeeList.data);
 
             return function cleanup() {
                 source.cancel();
@@ -288,20 +311,27 @@ function GardenItemAdmin({ id }) {
                             nameSelect="employee"
                             idSelect="dropdown-employee-edit"
                         >
+
+                            {/* Dit werkt nog niet!! Waarom niet?? */}
                             {garden.employee &&
                             <>
                                 <option value={garden.employee.id}>{garden.employee.firstName} {garden.employee.lastName}</option>
                                 {employees.map((employee) => {
-                                    return <DropdownOption
-                                    id={employee.id}
-                                    source={source}
-                                    token={token}
-                                    key={employee.id}
-                                    />
+                                    return <option value={employee.id}>{employee.firstName}</option>
+                                    // <DropdownOption
+                                    //     key={employee.id}
+                                    //     id={employee.id}
+                                    // />
                                 })}
-                            </>}
+                                </>}
                         </DropdownElement>
 
+                        <Button
+                        type="button"
+                        className="button--delete"
+                        name="Item verwijderen"
+                        onClick={deleteItem}
+                        />
 
                         <FlexContainer
                             className="FlexContainer FlexContainer__status-row FlexContainer__edit"

@@ -164,3 +164,13 @@
 .button--profile:active {
     background-color: var(--blue-hover);
 }
+
+.button--delete {
+    background-color: transparent;
+    font-size: 0.9rem;
+    border: none;
+    color: var(--red);
+    font-weight: bold;
+    cursor: pointer;
+    margin: 10px auto 0 auto;
+}
