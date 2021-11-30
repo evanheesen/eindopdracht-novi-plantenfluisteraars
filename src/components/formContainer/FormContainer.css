@@ -15,7 +15,8 @@
 .form--edit {
     margin-left: 0;
     max-width: var(--width-split-item);
-    padding-right: var(--padding-garden-item);
+    /*padding-right: var(--padding-garden-item);*/
+    padding-right: 0;
 }
 
 /* form file upload field styling */

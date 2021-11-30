@@ -103,7 +103,6 @@ function GardenItemAdmin({ id }) {
             });
 
             console.log(result);
-            setToggle(!toggle);
             toggleEditFields(false);
 
             return function cleanup() {
@@ -202,7 +201,7 @@ function GardenItemAdmin({ id }) {
                             placeholder={garden.customer.firstName}
                             label="Voornaam bewoner"
                             inputType="text"
-                            className="inputField"
+                            className="inputField inputField--edit"
                         />
                         <InputElement
                             errors={errors}
@@ -212,7 +211,7 @@ function GardenItemAdmin({ id }) {
                             placeholder={garden.customer.lastName}
                             label="Achternaam"
                             inputType="text"
-                            className="inputField"
+                            className="inputField inputField--edit"
                         />
                         <InputElement
                             errors={errors}
@@ -222,7 +221,7 @@ function GardenItemAdmin({ id }) {
                             placeholder={garden.street}
                             label="Straat"
                             inputType="text"
-                            className="inputField"
+                            className="inputField inputField--edit"
                         />
                         <InputElement
                             errors={errors}
@@ -232,7 +231,7 @@ function GardenItemAdmin({ id }) {
                             label="Huisnummer"
                             placeholder={garden.houseNumber}
                             inputType="text"
-                            className="inputField"
+                            className="inputField inputField--edit"
                         />
                         <InputElement
                             errors={errors}
@@ -242,7 +241,7 @@ function GardenItemAdmin({ id }) {
                             label="Postcode"
                             placeholder={garden.postalCode}
                             inputType="text"
-                            className="inputField"
+                            className="inputField inputField--edit"
                             validationRules={{
                                 pattern: {
                                     value: /^[0-9]{4}[a-zA-Z]{2}$/,
@@ -258,7 +257,7 @@ function GardenItemAdmin({ id }) {
                             label="Woonplaats"
                             placeholder={garden.city}
                             inputType="text"
-                            className="inputField"
+                            className="inputField inputField--edit"
                         />
                         <DropdownElement
                             errors={errors}

@@ -9,6 +9,10 @@
     font-size: 0.89rem;
 }
 
+.inputField--edit {
+    width: auto;
+}
+
 .inputField:focus {
     outline-color: var(--green);
 }

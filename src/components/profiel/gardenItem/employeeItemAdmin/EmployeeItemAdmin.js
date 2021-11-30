@@ -9,6 +9,7 @@ import IconEdit from "../../../../assets/Aanpassen.png";
 import EditIcon from "../../editIcon/EditIcon";
 import FormContainer from "../../../formContainer/FormContainer";
 import InputElement from "../../../formComponents/inputElement/InputElement";
+import DropdownElement from "../../../formComponents/dropdownElement/DropdownElement";
 
 function EmployeeItemAdmin({id}) {
 
@@ -132,7 +133,7 @@ function EmployeeItemAdmin({id}) {
                             placeholder={employee.firstName}
                             label="Voornaam"
                             inputType="text"
-                            className="inputField"
+                            className="inputField inputField--edit"
                         />
                         <InputElement
                             errors={errors}
@@ -142,7 +143,7 @@ function EmployeeItemAdmin({id}) {
                             placeholder={employee.lastName}
                             label="Achternaam"
                             inputType="text"
-                            className="inputField"
+                            className="inputField inputField--edit"
                         />
                         <InputElement
                             errors={errors}
@@ -152,7 +153,7 @@ function EmployeeItemAdmin({id}) {
                             placeholder={employee.phone}
                             label="Telefoonnummer"
                             inputType="text"
-                            className="inputField"
+                            className="inputField inputField--edit"
                         />
                         <InputElement
                             errors={errors}
@@ -162,7 +163,7 @@ function EmployeeItemAdmin({id}) {
                             placeholder={employee.street}
                             label="Straat"
                             inputType="text"
-                            className="inputField"
+                            className="inputField inputField--edit"
                         />
                         <InputElement
                             errors={errors}
@@ -172,7 +173,7 @@ function EmployeeItemAdmin({id}) {
                             label="Huisnummer"
                             placeholder={employee.houseNumber}
                             inputType="text"
-                            className="inputField"
+                            className="inputField inputField--edit"
                         />
                         <InputElement
                             errors={errors}
@@ -182,7 +183,7 @@ function EmployeeItemAdmin({id}) {
                             label="Postcode"
                             placeholder={employee.postalCode}
                             inputType="text"
-                            className="inputField"
+                            className="inputField inputField--edit"
                             validationRules={{
                                 pattern: {
                                     value: /^[0-9]{4}[a-zA-Z]{2}$/,
@@ -198,8 +199,21 @@ function EmployeeItemAdmin({id}) {
                             label="Woonplaats"
                             placeholder={employee.city}
                             inputType="text"
-                            className="inputField"
+                            className="inputField inputField--edit"
                         />
+                        <DropdownElement
+                            errors={errors}
+                            register={register}
+                            classNameItem="dropdown-item--half"
+                            label="Status"
+                            classNameSelect="dropdownField"
+                            nameSelect="status"
+                            idSelect="dropdown-status-edit"
+                        >
+                            <option value={employee.status}>{employee.status}</option>
+                            <option value="Inactief" disabled={employee.status === "Inactief"}>Inactief</option>
+                            <option value="Actief" disabled={employee.status === "Actief" || employee.status === "Inactief"}>Actief</option>
+                        </DropdownElement>
 
                         <FlexContainer
                             className="FlexContainer FlexContainer__status-row FlexContainer__edit"
