@@ -113,7 +113,6 @@
 
 .button--admin {
     font-size: 0.9rem;
-    /*padding: 15px;*/
     background-color: var(--lightgrey);
     color: var(--dark-blue);
 }
@@ -157,7 +156,7 @@
     max-width: 280px;
 }
 
-#button--gardens-all:focus, #button--gardens-open:focus, #button--gardens-active:focus, #button--employees-all:focus, #button--employees-active:focus {
+#button--gardens-all:focus, #button--gardens-open:focus, #button--gardens-active:focus, #button--employees-all:focus, #button--employees-active:focus, #button--users-all:focus, #button--users-new:focus {
     background-color: var(--blue-hover);
 }
 

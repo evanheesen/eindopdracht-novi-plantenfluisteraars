@@ -117,7 +117,7 @@ function AuthContextProvider({children}) {
         const decodedToken = jwtDecode(token);
         console.log(decodedToken);
 
-        getUserData(token, decodedToken, "/profiel");
+        getUserData(token, decodedToken, "/profile");
         console.log("Je bent ingelogd");
     }
 

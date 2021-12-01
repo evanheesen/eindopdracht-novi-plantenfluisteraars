@@ -27,7 +27,7 @@ function GardenItemCustomer({id}) {
                         }
                     });
                 setGarden(result.data[0]);
-                console.log("gardenItem result");
+                console.log("databaseItem result");
                 console.log(result.data);
 
                 return function cleanup() {

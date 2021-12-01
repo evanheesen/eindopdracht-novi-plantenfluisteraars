@@ -9,12 +9,12 @@ import ImageContainer from "../../components/imageContainer/ImageContainer";
 import Button from "../../components/buttons/button/Button";
 import Description from "../../components/description/Description";
 import jwtDecode from "jwt-decode";
-import InfoSection from "../../components/profiel/infoSection/InfoSection";
+import InfoSection from "../../components/profile/infoSection/InfoSection";
 import FlexContainer from "../../components/flexContainer/FlexContainer";
-import FileUpload from "../../components/profiel/fileUpload/FileUpload";
+import FileUpload from "../../components/profile/fileUpload/FileUpload";
 import FlexItem from "../../components/flexItem/FlexItem";
-import GardenItemCustomer from "../../components/profiel/gardenItem/gardenItemCustomer/GardenItemCustomer";
-import GardenItemEmployee from "../../components/profiel/gardenItem/gardenItemEmployee/GardenItemEmployee";
+import GardenItemCustomer from "../../components/profile/databaseItem/gardenItemCustomer/GardenItemCustomer";
+import GardenItemEmployee from "../../components/profile/databaseItem/gardenItemEmployee/GardenItemEmployee";
 import PageContainer from "../../components/pageContainer/PageContainer";
 import LoadingIcon from "../../components/loadingIcon/LoadingIcon";
 

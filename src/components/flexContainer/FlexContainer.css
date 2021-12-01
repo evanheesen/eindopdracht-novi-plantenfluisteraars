@@ -87,8 +87,5 @@
     align-items: flex-start;
     justify-content: flex-start;
     margin: 0;
-    padding-top: var(--space-small);
-    /*gap: 0 var(--gap-items);*/
-    /*margin-top: var(--space-medium);*/
-    /*padding: var(--gap-items) 0 var(--gap-items) 0;*/
+    padding: var(--space-small) 0 0 0;
 }

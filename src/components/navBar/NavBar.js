@@ -50,7 +50,7 @@ function NavBar() {
                 {isAuth ?
                     <>
                         <NavIcon
-                            link={() => history.push(user.info.authorities.length < 2 ? "/profiel" : "/admin")}
+                            link={() => history.push(user.info.authorities.length < 2 ? "/profile" : "/admin")}
                             name="Profiel"
                             icon={userIcon}
                         />

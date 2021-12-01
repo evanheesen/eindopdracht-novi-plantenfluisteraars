@@ -29,7 +29,7 @@ function GardenItemEmployee({id}) {
                         },
                     });
                 setGarden(result.data);
-                console.log("gardenItem result");
+                console.log("databaseItem result");
                 console.log(result.data);
 
                 return function cleanup() {

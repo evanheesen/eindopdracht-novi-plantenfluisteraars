@@ -4,13 +4,14 @@ import {AuthContext} from "../../context/AuthContext";
 import {useHistory} from "react-router-dom";
 import FlexContainer from "../../components/flexContainer/FlexContainer";
 import ColoredContainer from "../../components/coloredContainer/ColoredContainer";
-import InfoSection from "../../components/profiel/infoSection/InfoSection";
+import InfoSection from "../../components/profile/infoSection/InfoSection";
 import Button from "../../components/buttons/button/Button";
 import Description from "../../components/description/Description";
 import axios from "axios";
-import GardenItemAdmin from "../../components/profiel/gardenItem/gardenItemAdmin/GardenItemAdmin";
-import EmployeeItemAdmin from "../../components/profiel/gardenItem/employeeItemAdmin/EmployeeItemAdmin";
+import GardenItemAdmin from "../../components/profile/databaseItem/gardenItemAdmin/GardenItemAdmin";
+import EmployeeItemAdmin from "../../components/profile/databaseItem/employeeItemAdmin/EmployeeItemAdmin";
 import PageContainer from "../../components/pageContainer/PageContainer";
+import UserItemAdmin from "../../components/profile/databaseItem/userItemAdmin/UserItemAdmin";
 
 function Admin() {
 
@@ -23,8 +24,11 @@ function Admin() {
     const [mainOverview, setMainOverview] = useState("");
     const [overviewEmployees, setOverviewEmployees] = useState("all");
     const [overviewGardens, setOverviewGardens] = useState("all");
+    const [overviewAdmins, setOverviewAdmins] = useState("all");
     const [gardens, setGardens] = useState([]);
     const [employees, setEmployees] = useState([]);
+    const [admins, setAdmins] = useState([]);
+
     const [error, toggleError] = useState(false);
     const [loading, toggleLoading] = useState(false);
     const titleStatus = overviewGardens === "all" ? "Alle" : (overviewGardens === "open" ? "Open" : "Actieve");
@@ -83,7 +87,7 @@ function Admin() {
         const urlString = overviewEmployees === "all" ? "" : "status/" + overviewEmployees;
         console.log(urlString);
 
-        async function getGardens(token) {
+        async function getEmployees(token) {
             toggleError(false);
             toggleLoading(true);
 
@@ -112,11 +116,52 @@ function Admin() {
         }
 
         if (overviewEmployees) {
-            getGardens(token);
+            getEmployees(token);
         }
         toggleLoading(false);
 
     }, [overviewEmployees])
+
+
+
+    useEffect(() => {
+
+        async function getAdmins(token) {
+            toggleError(false);
+            toggleLoading(true);
+
+            try {
+                const result = await axios.get(`http://localhost:8081/users/authority/admin`,
+                    {
+                        headers: {
+                            cancelToken: source.token,
+                            "Content-Type": "application/json",
+                            Authorization: `Bearer ${token}`,
+                        }
+                    });
+
+                setAdmins(result.data);
+                console.log("result admins: ");
+                console.log(result.data);
+
+                return function cleanup() {
+                    source.cancel();
+                }
+
+            } catch (e) {
+                console.error(e);
+                toggleError(true);
+            }
+        }
+
+        if (overviewAdmins) {
+            getAdmins(token);
+        }
+        toggleLoading(false);
+
+    }, [overviewAdmins])
+
+
 
     return (
         <>
@@ -188,6 +233,31 @@ function Admin() {
                                         onClick={() => setOverviewEmployees("actief")}
                                     />
                                 </>}
+
+                                <Button
+                                    type="button"
+                                    className="button button--dark button--admin"
+                                    onClick={() => setMainOverview("users")}
+                                    name="Administrators"
+                                />
+                                {mainOverview === "users" &&
+                                <>
+                                    <Button
+                                        type="button"
+                                        className="button button--dark button--profile button--sub"
+                                        id="button--users-all"
+                                        name="Toon alle Administrators"
+                                        onClick={() => setOverviewAdmins("all")}
+                                    />
+                                    <Button
+                                        type="button"
+                                        className="button button--dark button--profile button--sub"
+                                        id="button--users-new"
+                                        name="Maak nieuwe Administrator"
+                                        onClick={() => setOverviewAdmins("actief")}
+                                    />
+                                </>}
+
                             </FlexContainer>
                         </ColoredContainer>
 
@@ -235,6 +305,33 @@ function Admin() {
                             </InfoSection>
                         </ColoredContainer>
                         }
+
+
+
+                        {/*/* If button Administrators is clicked, show: */}
+                        {mainOverview === "admins" && overviewAdmins != "" &&
+                        <ColoredContainer
+                            classNameItem="FlexItem FlexItem__center FlexItem__side"
+                            classNameBlock="block block--center block--white block--admin"
+                        >
+                            <Description
+                                title="Alle administrators"
+                                className="description__centered"
+                                classNameTitle="description__title--red"
+                            />
+                            <InfoSection className="gardens-overview">
+                                {admins.map((admin) => {
+                                    return <UserItemAdmin
+                                        key={admin.id}
+                                        username={admin.username}
+                                    />
+                                })}
+                            </InfoSection>
+                        </ColoredContainer>
+                        }
+
+
+
                     </FlexContainer>
                 </>}
 
