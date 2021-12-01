@@ -227,7 +227,10 @@ function Admin() {
                             />
                             <InfoSection className="gardens-overview">
                                 {employees.map((employee) => {
-                                    return <EmployeeItemAdmin key={employee.id} id={employee.id}/>
+                                    return <EmployeeItemAdmin
+                                        key={employee.id}
+                                        id={employee.id}
+                                    />
                                 })}
                             </InfoSection>
                         </ColoredContainer>

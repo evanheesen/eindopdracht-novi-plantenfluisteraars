@@ -11,7 +11,7 @@ import FormContainer from "../../../formContainer/FormContainer";
 import InputElement from "../../../formComponents/inputElement/InputElement";
 import DropdownElement from "../../../formComponents/dropdownElement/DropdownElement";
 
-function EmployeeItemAdmin({id}) {
+function EmployeeItemAdmin({ id }) {
 
     const [employee, setEmployee] = useState(null);
     const [editFields, toggleEditFields] = useState(false);
@@ -65,6 +65,7 @@ function EmployeeItemAdmin({id}) {
                 houseNumber: data.housenumber === "" ? employee.houseNumber : data.housenumber,
                 postalCode: data.postalcode === "" ? employee.postalCode : data.postalcode,
                 city: data.city === "" ? employee.city : data.city,
+                status: data.status,
             }, {
                 headers: {
                     cancelToken: source.token,
@@ -76,6 +77,30 @@ function EmployeeItemAdmin({id}) {
             console.log(result);
             toggleEditFields(false);
             setToggle(!toggle);
+
+            return function cleanup() {
+                source.cancel();
+            }
+        } catch (e) {
+            console.error(e);
+        }
+
+    }
+
+    async function deleteItem() {
+
+        try {
+            const result = await axios.delete(`http://localhost:8081/employees/delete/${id}`,
+                {
+                    headers: {
+                        cancelToken: source.token,
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${token}`,
+                    }
+                });
+
+            console.log(result);
+            toggleEditFields(false);
 
             return function cleanup() {
                 source.cancel();
@@ -214,6 +239,13 @@ function EmployeeItemAdmin({id}) {
                             <option value="Inactief" disabled={employee.status === "Inactief"}>Inactief</option>
                             <option value="Actief" disabled={employee.status === "Actief" || employee.status === "Inactief"}>Actief</option>
                         </DropdownElement>
+
+                        <Button
+                            type="button"
+                            className="button--delete"
+                            name="Item verwijderen"
+                            onClick={deleteItem}
+                        />
 
                         <FlexContainer
                             className="FlexContainer FlexContainer__status-row FlexContainer__edit"

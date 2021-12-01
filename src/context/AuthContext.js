@@ -13,10 +13,10 @@ export const AuthContext = createContext({});
 
 function AuthContextProvider({children}) {
 
-    // const [userType, setUserType] = useState();
     let userType = "";
     const [isAuth, toggleIsAuth] = useState({
         isAuth: false,
+        admin: false,
         user: null,
         status: 'pending',
     });
@@ -72,6 +72,7 @@ function AuthContextProvider({children}) {
             toggleIsAuth({
                 ...isAuth,
                 isAuth: true,
+                admin: checkAdmin === true,
                 user: {
                     info: result.data,
                     type: userType,
@@ -88,6 +89,7 @@ function AuthContextProvider({children}) {
             // als er iets mis is gegaan, geen data in state:
             toggleIsAuth({
                 isAuth: false,
+                admin: false,
                 user: null,
                 status: 'done',
             });
@@ -101,6 +103,7 @@ function AuthContextProvider({children}) {
         toggleIsAuth({
             ...isAuth,
             isAuth: false,
+            admin: false,
             user: null,
         });
 
@@ -123,6 +126,7 @@ function AuthContextProvider({children}) {
     const contextAuth = {
         isAuth: isAuth.isAuth,
         user: isAuth.user,
+        admin: isAuth.admin,
         logIn: logIn,
         logOut: logOut,
         getUserData: getUserData,
