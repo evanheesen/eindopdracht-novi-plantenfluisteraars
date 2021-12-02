@@ -16,12 +16,12 @@ import DropdownOption from "../../../formComponents/dropdownElement/DropdownOpti
 function GardenItemAdmin({ id }) {
 
     const [garden, setGarden] = useState(null);
+    const [employees, setEmployees] = useState([]);
     const [editFields, toggleEditFields] = useState(false)
     const [toggle, setToggle] = useState(false);
     const {register, handleSubmit, formState: {errors}} = useForm();
     const token = localStorage.getItem('token');
     const source = axios.CancelToken.source();
-    let employees = [];
 
     useEffect(() => {
         console.log(id);
@@ -128,7 +128,7 @@ function GardenItemAdmin({ id }) {
                     }
                 });
 
-            employees = employeeList.data;
+            setEmployees(employeeList.data);
             console.log("list employees:");
             console.log(employees);
 
@@ -268,7 +268,7 @@ function GardenItemAdmin({ id }) {
                             nameSelect="status"
                             idSelect="dropdown-status-edit"
                         >
-                            <option value={garden.status}>{garden.status}</option>
+                            <option value={garden.status} disabled selected hidden>{garden.status}</option>
                             <option value="Inactief" disabled={garden.status === "Inactief"}>Inactief</option>
                             <option value="Open" disabled={garden.status === "Open"}>Open</option>
                             <option value="Inactief" disabled>Actief</option>
@@ -285,7 +285,7 @@ function GardenItemAdmin({ id }) {
                             nameSelect="packagePlants"
                             idSelect="dropdown-package-edit"
                         >
-                            <option value={garden.packagePlants}>{garden.packagePlants}</option>
+                            <option value={garden.packagePlants} disabled selected hidden>{garden.packagePlants}</option>
                             <option value="Pakket 1 - Wintergroen"
                                     disabled={garden.packagePlants === "Pakket 1 - Wintergroen"}>Pakket 1 - Wintergroen
                             </option>
@@ -299,8 +299,6 @@ function GardenItemAdmin({ id }) {
                             </option>
                         </DropdownElement>
 
-
-                        {/* Get list employees in dropdown */}
                         <DropdownElement
                             errors={errors}
                             register={register}
@@ -310,19 +308,15 @@ function GardenItemAdmin({ id }) {
                             nameSelect="employee"
                             idSelect="dropdown-employee-edit"
                         >
-
-                            {/* Dit werkt nog niet!! Waarom niet?? */}
                             {garden.employee &&
-                            <>
-                                <option value={garden.employee.id}>{garden.employee.firstName} {garden.employee.lastName}</option>
-                                {employees.map((employee) => {
-                                    return <option value={employee.id}>{employee.firstName}</option>
-                                    // <DropdownOption
-                                    //     key={employee.id}
-                                    //     id={employee.id}
-                                    // />
+                            <option value={garden.employee.id} disabled selected hidden>{garden.employee.firstName} {garden.employee.lastName}</option>}
+
+                            {garden.employee === null &&
+                                <option disabled="disabled" disabled selected hidden>Maak een keuze</option>}
+
+                            {employees.map((employee) => {
+                                    return <option value={employee.id} key={employee.id} disabled={garden.employee === null ? "" : (employee.id === garden.employee.id ? "disabled" : "")}>{employee.firstName} {employee.lastName}</option>
                                 })}
-                                </>}
                         </DropdownElement>
 
                         <Button

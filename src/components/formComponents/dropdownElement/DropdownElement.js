@@ -2,6 +2,7 @@ import React from 'react';
 import './DropdownElement.css';
 
 function DropdownElement({ errors, register, validationRules, classNameItem, classNameSelect, label, nameSelect, idSelect, onClickSelect, children }) {
+
     return (
         <div className={classNameItem}>
             <label htmlFor={`${nameSelect}-field`}>
@@ -15,6 +16,7 @@ function DropdownElement({ errors, register, validationRules, classNameItem, cla
                 {...register(nameSelect, validationRules)}
             >
                 {children}
+
             </select>
             {errors[nameSelect] && <p className="input-error-message">{errors[nameSelect].message}</p>}
         </div>

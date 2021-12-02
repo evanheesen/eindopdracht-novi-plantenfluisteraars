@@ -23,5 +23,5 @@
 }
 
 select option:disabled {
-    display: none;
+    /*display: none;*/
 }

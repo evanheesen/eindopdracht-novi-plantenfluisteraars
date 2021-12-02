@@ -122,8 +122,6 @@ function Admin() {
 
     }, [overviewEmployees])
 
-
-
     useEffect(() => {
 
         async function getAdmins(token) {
@@ -131,7 +129,7 @@ function Admin() {
             toggleLoading(true);
 
             try {
-                const result = await axios.get(`http://localhost:8081/users/authority/admin`,
+                const result = await axios.get(`http://localhost:8081/users/`,
                     {
                         headers: {
                             cancelToken: source.token,
@@ -140,9 +138,14 @@ function Admin() {
                         }
                     });
 
-                setAdmins(result.data);
+                const users = result.data;
+                const listAdmins = users.filter((user) => {
+                    return user.authorities.some(authority => (authority.authority === "ROLE_ADMIN"))
+                });
+
+                setAdmins(listAdmins);
                 console.log("result admins: ");
-                console.log(result.data);
+                console.log(listAdmins);
 
                 return function cleanup() {
                     source.cancel();
@@ -237,10 +240,10 @@ function Admin() {
                                 <Button
                                     type="button"
                                     className="button button--dark button--admin"
-                                    onClick={() => setMainOverview("users")}
+                                    onClick={() => setMainOverview("admins")}
                                     name="Administrators"
                                 />
-                                {mainOverview === "users" &&
+                                {mainOverview === "admins" &&
                                 <>
                                     <Button
                                         type="button"

@@ -235,7 +235,7 @@ function EmployeeItemAdmin({ id }) {
                             nameSelect="status"
                             idSelect="dropdown-status-edit"
                         >
-                            <option value={employee.status}>{employee.status}</option>
+                            <option value={employee.status} disabled selected hidden>{employee.status}</option>
                             <option value="Inactief" disabled={employee.status === "Inactief"}>Inactief</option>
                             <option value="Actief" disabled={employee.status === "Actief" || employee.status === "Inactief"}>Actief</option>
                         </DropdownElement>
