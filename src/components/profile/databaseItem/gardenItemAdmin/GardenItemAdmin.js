@@ -22,7 +22,6 @@ function GardenItemAdmin({ id }) {
     const {register, handleSubmit, formState: {errors}} = useForm();
     const token = localStorage.getItem('token');
     const source = axios.CancelToken.source();
-    let editStatus = "";
 
     useEffect(() => {
         console.log(id);
@@ -133,7 +132,6 @@ function GardenItemAdmin({ id }) {
             setEmployees(employeeList.data);
             console.log("list employees:");
             console.log(employees);
-            editStatus = document.getElementById("dropdown-status-edit").value;
 
             return function cleanup() {
                 source.cancel();
@@ -273,9 +271,7 @@ function GardenItemAdmin({ id }) {
                             defaultValue="statusDefault"
                         >
                             <option value="statusDefault" disabled>{garden.status}</option>
-                            <option value="Inactief" hidden={garden.status === "Inactief"}>Inactief</option>
                             <option value="Open" hidden={garden.status === "Open"}>Open</option>
-                            <option value="Actief" hidden>Actief</option>
                             <option value="Afgerond"
                                     hidden={garden.status === "Open" || garden.status === "Inactief" || garden.status === "Afgerond"}>Afgerond
                             </option>
@@ -304,7 +300,7 @@ function GardenItemAdmin({ id }) {
                             </option>
                         </DropdownElement>
 
-                        {editStatus === "statusDefault" &&
+                        {garden.status === "Open" &&
                         <DropdownElement
                             errors={errors}
                             register={register}
@@ -326,7 +322,8 @@ function GardenItemAdmin({ id }) {
                             {employees.map((employee) => {
                                     return <option value={employee.id} key={employee.id} hidden={garden.employee === null ? false : employee.id === garden.employee.id}>{employee.firstName} {employee.lastName}</option>
                                 })}
-                        </DropdownElement>}
+                        </DropdownElement>
+                        }
 
                         <Button
                         type="button"

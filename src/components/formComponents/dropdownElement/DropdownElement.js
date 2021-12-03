@@ -1,7 +1,7 @@
 import React from 'react';
 import './DropdownElement.css';
 
-function DropdownElement({ errors, register, validationRules, classNameItem, classNameSelect, label, nameSelect, idSelect, onClickSelect, defaultValue, currentItem, arrayList, children }) {
+function DropdownElement({ errors, register, validationRules, classNameItem, classNameSelect, label, nameSelect, idSelect, onClickSelect, onChangeSelect, defaultValue, currentItem, arrayList, children }) {
 
     return (
         <div className={classNameItem}>
@@ -13,6 +13,7 @@ function DropdownElement({ errors, register, validationRules, classNameItem, cla
                 name={nameSelect}
                 id={idSelect}
                 onClick={onClickSelect}
+                onChange={onChangeSelect}
                 defaultValue={defaultValue}
                 {...register(nameSelect, validationRules)}
             >
