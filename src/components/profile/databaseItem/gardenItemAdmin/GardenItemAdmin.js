@@ -22,6 +22,7 @@ function GardenItemAdmin({ id }) {
     const {register, handleSubmit, formState: {errors}} = useForm();
     const token = localStorage.getItem('token');
     const source = axios.CancelToken.source();
+    let editStatus = "";
 
     useEffect(() => {
         console.log(id);
@@ -61,14 +62,15 @@ function GardenItemAdmin({ id }) {
 
         try {
             const result = await axios.patch(`http://localhost:8081/gardens/admin/${id}`, {
-                firstName: data.firstname === "" ? garden.customer.firstName : data.firstname,
-                lastName: data.lastname === "" ? garden.customer.lastName : data.lastname,
-                street: data.street === "" ? garden.street : data.street,
-                houseNumber: data.housenumber === "" ? garden.houseNumber : data.housenumber,
-                postalCode: data.postalcode === "" ? garden.postalCode : data.postalcode,
-                city: data.city === "" ? garden.city : data.city,
+                firstName: data.firstname,
+                lastName: data.lastname,
+                street: data.street,
+                houseNumber: data.housenumber,
+                postalCode: data.postalcode,
+                city: data.city,
                 status: data.status,
                 packagePlants: data.packagePlants,
+                employee: data.employee,
             }, {
                 headers: {
                     cancelToken: source.token,
@@ -131,6 +133,7 @@ function GardenItemAdmin({ id }) {
             setEmployees(employeeList.data);
             console.log("list employees:");
             console.log(employees);
+            editStatus = document.getElementById("dropdown-status-edit").value;
 
             return function cleanup() {
                 source.cancel();
@@ -267,13 +270,14 @@ function GardenItemAdmin({ id }) {
                             classNameSelect="dropdownField"
                             nameSelect="status"
                             idSelect="dropdown-status-edit"
+                            defaultValue="statusDefault"
                         >
-                            <option value={garden.status} disabled selected hidden>{garden.status}</option>
-                            <option value="Inactief" disabled={garden.status === "Inactief"}>Inactief</option>
-                            <option value="Open" disabled={garden.status === "Open"}>Open</option>
-                            <option value="Inactief" disabled>Actief</option>
+                            <option value="statusDefault" disabled>{garden.status}</option>
+                            <option value="Inactief" hidden={garden.status === "Inactief"}>Inactief</option>
+                            <option value="Open" hidden={garden.status === "Open"}>Open</option>
+                            <option value="Actief" hidden>Actief</option>
                             <option value="Afgerond"
-                                    disabled={garden.status === "Open" || garden.status === "Inactief" || garden.status === "Afgerond"}>Afgerond
+                                    hidden={garden.status === "Open" || garden.status === "Inactief" || garden.status === "Afgerond"}>Afgerond
                             </option>
                         </DropdownElement>
                         <DropdownElement
@@ -284,21 +288,23 @@ function GardenItemAdmin({ id }) {
                             classNameSelect="dropdownField"
                             nameSelect="packagePlants"
                             idSelect="dropdown-package-edit"
+                            defaultValue="packageDefault"
                         >
-                            <option value={garden.packagePlants} disabled selected hidden>{garden.packagePlants}</option>
+                            <option value="packageDefault" disabled>{garden.packagePlants}</option>
                             <option value="Pakket 1 - Wintergroen"
-                                    disabled={garden.packagePlants === "Pakket 1 - Wintergroen"}>Pakket 1 - Wintergroen
+                                    hidden={garden.packagePlants === "Pakket 1 - Wintergroen"}>Pakket 1 - Wintergroen
                             </option>
                             <option value="Pakket 2 - Kleurrijk Laag"
-                                    disabled={garden.packagePlants === "Pakket 2 - Kleurrijk Laag"}>Pakket 2 - Kleurrijk
+                                    hidden={garden.packagePlants === "Pakket 2 - Kleurrijk Laag"}>Pakket 2 - Kleurrijk
                                 Laag
                             </option>
                             <option value="Pakket 3 - Kleurrijk Hoog"
-                                    disabled={garden.packagePlants === "Pakket 3 - Kleurrijk Hoog"}>Pakket 3 - Kleurrijk
+                                    hidden={garden.packagePlants === "Pakket 3 - Kleurrijk Hoog"}>Pakket 3 - Kleurrijk
                                 Hoog
                             </option>
                         </DropdownElement>
 
+                        {editStatus === "statusDefault" &&
                         <DropdownElement
                             errors={errors}
                             register={register}
@@ -307,17 +313,20 @@ function GardenItemAdmin({ id }) {
                             classNameSelect="dropdownField"
                             nameSelect="employee"
                             idSelect="dropdown-employee-edit"
+                            defaultValue="employeeDefault"
+                            // currentItem={garden.employee}
+                            // arrayList={employees}
                         >
                             {garden.employee &&
-                            <option value={garden.employee.id} disabled selected hidden>{garden.employee.firstName} {garden.employee.lastName}</option>}
+                            <option value="employeeDefault" disabled>{garden.employee.firstName} {garden.employee.lastName}</option>}
 
-                            {garden.employee === null &&
-                                <option disabled="disabled" disabled selected hidden>Maak een keuze</option>}
+                            {!garden.employee &&
+                                <option value="employeeDefault" disabled>Maak een keuze</option>}
 
                             {employees.map((employee) => {
-                                    return <option value={employee.id} key={employee.id} disabled={garden.employee === null ? "" : (employee.id === garden.employee.id ? "disabled" : "")}>{employee.firstName} {employee.lastName}</option>
+                                    return <option value={employee.id} key={employee.id} hidden={garden.employee === null ? false : employee.id === garden.employee.id}>{employee.firstName} {employee.lastName}</option>
                                 })}
-                        </DropdownElement>
+                        </DropdownElement>}
 
                         <Button
                         type="button"
