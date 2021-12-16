@@ -10,8 +10,6 @@ import FormContainer from "../../../formContainer/FormContainer";
 import {useForm} from "react-hook-form";
 import InputElement from "../../../formComponents/inputElement/InputElement";
 import DropdownElement from "../../../formComponents/dropdownElement/DropdownElement";
-import {logDOM} from "@testing-library/react";
-import DropdownOption from "../../../formComponents/dropdownElement/DropdownOption";
 
 function GardenItemAdmin({ id }) {
 
@@ -19,12 +17,12 @@ function GardenItemAdmin({ id }) {
     const [employees, setEmployees] = useState([]);
     const [editFields, toggleEditFields] = useState(false)
     const [toggle, setToggle] = useState(false);
-    const {register, handleSubmit, formState: {errors}} = useForm();
+    const [itemDeleted, toggleItemDeleted] = useState(false);
+    const {register, reset, handleSubmit, formState: {errors}} = useForm();
     const token = localStorage.getItem('token');
     const source = axios.CancelToken.source();
 
     useEffect(() => {
-        console.log(id);
 
         async function fetchData() {
             try {
@@ -105,6 +103,7 @@ function GardenItemAdmin({ id }) {
 
             console.log(result);
             toggleEditFields(false);
+            toggleItemDeleted(true);
 
             return function cleanup() {
                 source.cancel();
@@ -147,9 +146,32 @@ function GardenItemAdmin({ id }) {
 
     }, [editFields]);
 
+    useEffect(() => {
+
+        if (itemDeleted) {
+            setGarden("deleted");
+        }
+
+    }, [itemDeleted]);
+
+    function cancelEdit() {
+        toggleEditFields(false);
+        reset({
+            firstname: garden.customer.firstName,
+            lastname: garden.customer.lastName,
+            street: garden.street,
+            housenumber: garden.houseNumber,
+            postalcode: garden.postalCode,
+            city: garden.city,
+            status: garden.status,
+            packagePlants: garden.packagePlants,
+            employee: "employeeDefault"
+        });
+    }
+
     return (
         <div className="garden-item">
-            {garden &&
+            {garden && garden != "deleted" &&
             <>
                 {!editFields &&
                 <>
@@ -174,8 +196,6 @@ function GardenItemAdmin({ id }) {
                             className={`button__status button__status--${garden.status}`}
                             name={garden.status}
                         />
-
-                        {/* when clicked, the FormContainer will show instead */}
                         <EditIcon
                             name="Edit icon"
                             onClick={() => toggleEditFields(true)}
@@ -310,8 +330,6 @@ function GardenItemAdmin({ id }) {
                             nameSelect="employee"
                             idSelect="dropdown-employee-edit"
                             defaultValue="employeeDefault"
-                            // currentItem={garden.employee}
-                            // arrayList={employees}
                         >
                             {garden.employee &&
                             <option value="employeeDefault" disabled>{garden.employee.firstName} {garden.employee.lastName}</option>}
@@ -344,7 +362,7 @@ function GardenItemAdmin({ id }) {
                                 type="button"
                                 className="button--edit button--edit-cancel"
                                 name="Annuleer"
-                                onClick={() => toggleEditFields(false)}
+                                onClick={cancelEdit}
                             />
                         </FlexContainer>
 
@@ -353,6 +371,11 @@ function GardenItemAdmin({ id }) {
                 </>}
 
             </>
+            }
+            {garden && garden === "deleted" &&
+            <ItemContent
+            title="Item succesvol verwijderd"
+            />
             }
 
         </div>

@@ -47,6 +47,8 @@ function Admin() {
     useEffect(() => {
         const urlString = overviewGardens === "all" ? "" : "status/" + overviewGardens;
         console.log(urlString);
+        // console.log("Reload garden status:")
+        // console.log(reloadGardens);
 
         async function getGardens(token) {
             toggleError(false);

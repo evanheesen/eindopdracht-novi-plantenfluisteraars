@@ -16,7 +16,6 @@ function UserItemAdmin( {username} ) {
     const {register, handleSubmit, formState: {errors}} = useForm();
     const token = localStorage.getItem('token');
     const source = axios.CancelToken.source();
-    // let status = "Inactief";
 
     useEffect(() => {
         console.log(username);
@@ -51,6 +50,8 @@ function UserItemAdmin( {username} ) {
         }
 
     }, [toggle]);
+
+
 
     return (
         <div className="garden-item">

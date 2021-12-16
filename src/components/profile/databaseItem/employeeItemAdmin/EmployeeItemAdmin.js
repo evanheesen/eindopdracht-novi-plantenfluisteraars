@@ -16,7 +16,8 @@ function EmployeeItemAdmin({ id }) {
     const [employee, setEmployee] = useState(null);
     const [editFields, toggleEditFields] = useState(false);
     const [toggle, setToggle] = useState(false);
-    const {register, handleSubmit, formState: {errors}} = useForm();
+    const [itemDeleted, toggleItemDeleted] = useState(false);
+    const {register, reset, handleSubmit, formState: {errors}} = useForm();
     const token = localStorage.getItem('token');
     const source = axios.CancelToken.source();
 
@@ -58,13 +59,13 @@ function EmployeeItemAdmin({ id }) {
 
         try {
             const result = await axios.patch(`http://localhost:8081/employees/edit/${id}`, {
-                firstName: data.firstname === "" ? employee.firstName : data.firstname,
-                lastName: data.lastname === "" ? employee.lastName : data.lastname,
-                phone: data.phone === "" ? employee.phone : data.phone,
-                street: data.street === "" ? employee.street : data.street,
-                houseNumber: data.housenumber === "" ? employee.houseNumber : data.housenumber,
-                postalCode: data.postalcode === "" ? employee.postalCode : data.postalcode,
-                city: data.city === "" ? employee.city : data.city,
+                firstName: data.firstname,
+                lastName: data.lastname,
+                phone: data.phone,
+                street: data.street,
+                houseNumber: data.housenumber,
+                postalCode: data.postalcode,
+                city: data.city,
                 status: data.status,
             }, {
                 headers: {
@@ -101,6 +102,7 @@ function EmployeeItemAdmin({ id }) {
 
             console.log(result);
             toggleEditFields(false);
+            toggleItemDeleted(true);
 
             return function cleanup() {
                 source.cancel();
@@ -111,9 +113,31 @@ function EmployeeItemAdmin({ id }) {
 
     }
 
+    useEffect(() => {
+
+        if (itemDeleted) {
+            setEmployee("deleted");
+        }
+
+    }, [itemDeleted]);
+
+    function cancelEdit() {
+        toggleEditFields(false);
+        reset({
+            firstname: employee.firstName,
+            lastname: employee.lastName,
+            phone: employee.phone,
+            street: employee.street,
+            housenumber: employee.houseNumber,
+            postalcode: employee.postalCode,
+            city: employee.city,
+            status: employee.status
+        });
+    }
+
     return (
         <div className="garden-item">
-            {employee &&
+            {employee && employee != "deleted" &&
             <>
                 {!editFields &&
                 <>
@@ -137,8 +161,7 @@ function EmployeeItemAdmin({ id }) {
                             icon={IconEdit}
                         />
                     </FlexContainer>
-                </>
-                }
+                </>}
 
                 {editFields &&
                 <>
@@ -234,10 +257,11 @@ function EmployeeItemAdmin({ id }) {
                             classNameSelect="dropdownField"
                             nameSelect="status"
                             idSelect="dropdown-status-edit"
+                            defaultValue="statusDefault"
                         >
-                            <option value={employee.status} disabled selected hidden>{employee.status}</option>
-                            <option value="Inactief" disabled={employee.status === "Inactief"}>Inactief</option>
-                            <option value="Actief" disabled={employee.status === "Actief" || employee.status === "Inactief"}>Actief</option>
+                            <option value="statusDefault" disabled>{employee.status}</option>
+                            <option value="Inactief" hidden={employee.status === "Inactief"}>Inactief</option>
+                            <option value="Actief" hidden={employee.status === "Actief" || employee.status === "Inactief"}>Actief</option>
                         </DropdownElement>
 
                         <Button
@@ -259,7 +283,7 @@ function EmployeeItemAdmin({ id }) {
                                 type="button"
                                 className="button--edit button--edit-cancel"
                                 name="Annuleer"
-                                onClick={() => toggleEditFields(false)}
+                                onClick={cancelEdit}
                             />
                         </FlexContainer>
 
@@ -269,6 +293,11 @@ function EmployeeItemAdmin({ id }) {
 
 
             </>
+            }
+            {employee && employee === "deleted" &&
+            <ItemContent
+                title="Item succesvol verwijderd"
+            />
             }
 
         </div>
