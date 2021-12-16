@@ -163,8 +163,8 @@ function GardenItemAdmin({ id }) {
             housenumber: garden.houseNumber,
             postalcode: garden.postalCode,
             city: garden.city,
-            status: garden.status,
-            packagePlants: garden.packagePlants,
+            status: "statusDefault",
+            packagePlants: "packageDefault",
             employee: "employeeDefault"
         });
     }

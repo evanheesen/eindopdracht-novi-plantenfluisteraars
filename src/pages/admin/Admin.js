@@ -327,7 +327,7 @@ function Admin() {
                             <InfoSection className="gardens-overview">
                                 {admins.map((admin) => {
                                     return <UserItemAdmin
-                                        key={admin.id}
+                                        key={admin.username}
                                         username={admin.username}
                                     />
                                 })}

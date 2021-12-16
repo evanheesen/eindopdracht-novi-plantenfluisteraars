@@ -131,7 +131,7 @@ function EmployeeItemAdmin({ id }) {
             housenumber: employee.houseNumber,
             postalcode: employee.postalCode,
             city: employee.city,
-            status: employee.status
+            status: "statusDefault"
         });
     }
 
@@ -292,8 +292,7 @@ function EmployeeItemAdmin({ id }) {
                 }
 
 
-            </>
-            }
+            </>}
             {employee && employee === "deleted" &&
             <ItemContent
                 title="Item succesvol verwijderd"
