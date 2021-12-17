@@ -12,6 +12,7 @@ import GardenItemAdmin from "../../components/profile/databaseItem/gardenItemAdm
 import EmployeeItemAdmin from "../../components/profile/databaseItem/employeeItemAdmin/EmployeeItemAdmin";
 import PageContainer from "../../components/pageContainer/PageContainer";
 import UserItemAdmin from "../../components/profile/databaseItem/userItemAdmin/UserItemAdmin";
+import AddAdmin from "../../components/profile/databaseItem/addAdmin/AddAdmin";
 
 function Admin() {
 
@@ -47,8 +48,6 @@ function Admin() {
     useEffect(() => {
         const urlString = overviewGardens === "all" ? "" : "status/" + overviewGardens;
         console.log(urlString);
-        // console.log("Reload garden status:")
-        // console.log(reloadGardens);
 
         async function getGardens(token) {
             toggleError(false);
@@ -167,7 +166,6 @@ function Admin() {
     }, [overviewAdmins])
 
 
-
     return (
         <>
             <PageContainer className="PageContainer PageContainer--image FlexContainer__image-container--profile">
@@ -221,6 +219,7 @@ function Admin() {
                                     onClick={() => setMainOverview("employees")}
                                     name="Plantenfluisteraars"
                                 />
+
                                 {mainOverview === "employees" &&
                                 <>
                                     <Button
@@ -245,6 +244,7 @@ function Admin() {
                                     onClick={() => setMainOverview("admins")}
                                     name="Administrators"
                                 />
+
                                 {mainOverview === "admins" &&
                                 <>
                                     <Button
@@ -259,7 +259,7 @@ function Admin() {
                                         className="button button--dark button--profile button--sub"
                                         id="button--users-new"
                                         name="Maak nieuwe Administrator"
-                                        onClick={() => setOverviewAdmins("actief")}
+                                        onClick={() => setOverviewAdmins("new")}
                                     />
                                 </>}
 
@@ -312,7 +312,6 @@ function Admin() {
                         }
 
 
-
                         {/*/* If button Administrators is clicked, show: */}
                         {mainOverview === "admins" && overviewAdmins != "" &&
                         <ColoredContainer
@@ -320,10 +319,11 @@ function Admin() {
                             classNameBlock="block block--center block--white block--admin"
                         >
                             <Description
-                                title="Alle administrators"
+                                title={overviewAdmins === "new" ? "Voeg administrator toe" : "Alle administrators"}
                                 className="description__centered"
                                 classNameTitle="description__title--red"
                             />
+                            {overviewAdmins === "all" &&
                             <InfoSection className="gardens-overview">
                                 {admins.map((admin) => {
                                     return <UserItemAdmin
@@ -331,10 +331,14 @@ function Admin() {
                                         username={admin.username}
                                     />
                                 })}
+                            </InfoSection>}
+                            {overviewAdmins === "new" &&
+                            <InfoSection className="gardens-overview">
+                                <AddAdmin/>
                             </InfoSection>
+                            }
                         </ColoredContainer>
                         }
-
 
 
                     </FlexContainer>

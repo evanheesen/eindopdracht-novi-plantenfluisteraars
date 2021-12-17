@@ -86,7 +86,7 @@ function UserItemAdmin( {username} ) {
     async function deleteItem() {
 
         try {
-            const result = await axios.delete(`http://localhost:8081/users/delete/${username}`,
+            const result = await axios.delete(`http://localhost:8081/users/${username}`,
                 {
                     headers: {
                         cancelToken: source.token,

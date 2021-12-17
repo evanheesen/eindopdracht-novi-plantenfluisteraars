@@ -215,7 +215,7 @@ function Registreren() {
                         register={register}
                         classNameItem="form-item--half"
                         name="username"
-                        label="Username"
+                        label="Gebruikersnaam"
                         inputType="text"
                         placeholder="minimaal 6 karakters"
                         className={styles["inputField"]}
