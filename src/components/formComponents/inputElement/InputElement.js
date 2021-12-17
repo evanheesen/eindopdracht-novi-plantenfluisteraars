@@ -1,7 +1,7 @@
 import React from 'react';
 import './InputElement.css';
 
-function InputElement({ errors, register, classNameItem, name, label, inputType, placeholder, value, className ,validationRules, onChange }) {
+function InputElement({ errors, errorUsername, register, classNameItem, name, label, inputType, placeholder, value, className ,validationRules, onChange }) {
     return (
         <div className={classNameItem}>
             <label htmlFor={`${name}-field`}>
@@ -30,6 +30,7 @@ function InputElement({ errors, register, classNameItem, name, label, inputType,
                         {...register(name, validationRules)}
                     />
                     {errors[name] && <p className="input-error-message">{errors[name].message}</p>}
+                    {errorUsername && <p className="input-error-message">Deze username bestaat al</p>}
                 </>)}
         </div>
     );
